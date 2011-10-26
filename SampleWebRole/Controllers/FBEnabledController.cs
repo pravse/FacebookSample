@@ -8,7 +8,6 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Configuration;
-using AzureHelper;
 using SampleWebRole.Models;
 using FacebookIntegration;
 
@@ -18,6 +17,17 @@ namespace SampleWebRole.Controllers
     {
         static public string FBAppIdLookupKey = "FBAppId";
         static public string FBRegCallbackKey = "FBRegistrationCallback";
+
+
+#if  !RUNNING_IN_AZURE
+        public class ConfigHelper
+        {
+            static public string GetConfigurationSettingValue(string SettingKey)
+            {
+                return ConfigurationManager.AppSettings[SettingKey];
+            }
+        }
+#endif
 
         public CodeGenerator FBScriptGenerator { get; set; }
 
