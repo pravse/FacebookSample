@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AzureHelper">
-      <HintPath>..\..\Helper\AzureHelper\bin\Debug\AzureHelper.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.WindowsAzure.Diagnostics" />
     <Reference Include="Microsoft.WindowsAzure.ServiceRuntime" />

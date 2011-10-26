@@ -9,7 +9,6 @@ using System.Web.Routing;
 using System.Web.Security;
 using SampleWebRole.Models;
 using FacebookIntegration;
-using AzureHelper;
 
 namespace SampleWebRole.Controllers
 {

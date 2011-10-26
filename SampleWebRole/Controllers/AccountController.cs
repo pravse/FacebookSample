@@ -8,7 +8,6 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Configuration;
-using AzureHelper;
 using SampleWebRole.Models;
 using FacebookIntegration;
 
