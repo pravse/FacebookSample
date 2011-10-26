@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Diagnostics;
-using Microsoft.WindowsAzure.ServiceRuntime;
 
 namespace MvcWebRole1
 {
+#if RUNNING_IN_AZURE
     public class WebRole : RoleEntryPoint
     {
         public override bool OnStart()
@@ -17,4 +15,5 @@ namespace MvcWebRole1
             return base.OnStart();
         }
     }
+#endif
 }

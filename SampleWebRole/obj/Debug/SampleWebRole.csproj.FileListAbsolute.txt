@@ -44,12 +44,8 @@ C:\AzureProjects\AzureSample\SampleWebRole\obj\Debug\MvcWebRole1.pdb
 C:\AzureProjects\FBSample\SampleWebRole\bin\MvcWebRole1.dll
 C:\AzureProjects\FBSample\SampleWebRole\bin\MvcWebRole1.pdb
 C:\AzureProjects\FBSample\SampleWebRole\bin\FBIntegration.dll
-C:\AzureProjects\FBSample\SampleWebRole\bin\Microsoft.WindowsAzure.Diagnostics.dll
-C:\AzureProjects\FBSample\SampleWebRole\bin\Microsoft.WindowsAzure.StorageClient.dll
 C:\AzureProjects\FBSample\SampleWebRole\bin\System.Web.Mvc.dll
 C:\AzureProjects\FBSample\SampleWebRole\bin\FBIntegration.pdb
-C:\AzureProjects\FBSample\SampleWebRole\bin\Microsoft.WindowsAzure.Diagnostics.xml
-C:\AzureProjects\FBSample\SampleWebRole\bin\Microsoft.WindowsAzure.StorageClient.xml
 C:\AzureProjects\FBSample\SampleWebRole\bin\System.Web.Mvc.xml
 C:\AzureProjects\FBSample\SampleWebRole\obj\Debug\ResolveAssemblyReference.cache
 C:\AzureProjects\FBSample\SampleWebRole\obj\Debug\MvcWebRole1.dll
