@@ -1,0 +1,15 @@
+C:\AzureProjects\Incredibeads\ClassLibrary1\obj\Debug\ResolveAssemblyReference.cache
+C:\AzureProjects\Incredibeads\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\AzureProjects\Incredibeads\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\AzureProjects\Incredibeads\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\AzureProjects\Incredibeads\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\AzureProjects\Helper\FacebookIntegration\bin\Debug\FBIntegration.dll
+C:\AzureProjects\Helper\FacebookIntegration\bin\Debug\FBIntegration.pdb
+C:\AzureProjects\Helper\FacebookIntegration\obj\Debug\ResolveAssemblyReference.cache
+C:\AzureProjects\Helper\FacebookIntegration\obj\Debug\FBIntegration.dll
+C:\AzureProjects\Helper\FacebookIntegration\obj\Debug\FBIntegration.pdb
+C:\AzureProjects\FBSample\FacebookIntegration\bin\Debug\FBIntegration.dll
+C:\AzureProjects\FBSample\FacebookIntegration\bin\Debug\FBIntegration.pdb
+C:\AzureProjects\FBSample\FacebookIntegration\obj\Debug\ResolveAssemblyReference.cache
+C:\AzureProjects\FBSample\FacebookIntegration\obj\Debug\FBIntegration.dll
+C:\AzureProjects\FBSample\FacebookIntegration\obj\Debug\FBIntegration.pdb

@@ -1,0 +1,11 @@
+C:\AzureProjects\Incredibeads\MvcWebRole1\bin\MvcWebRole1.dll
+C:\AzureProjects\Incredibeads\MvcWebRole1\bin\MvcWebRole1.pdb
+C:\AzureProjects\Incredibeads\MvcWebRole1\bin\Microsoft.WindowsAzure.Diagnostics.dll
+C:\AzureProjects\Incredibeads\MvcWebRole1\bin\Microsoft.WindowsAzure.StorageClient.dll
+C:\AzureProjects\Incredibeads\MvcWebRole1\bin\System.Web.Mvc.dll
+C:\AzureProjects\Incredibeads\MvcWebRole1\bin\Microsoft.WindowsAzure.Diagnostics.xml
+C:\AzureProjects\Incredibeads\MvcWebRole1\bin\Microsoft.WindowsAzure.StorageClient.xml
+C:\AzureProjects\Incredibeads\MvcWebRole1\bin\System.Web.Mvc.xml
+C:\AzureProjects\Incredibeads\MvcWebRole1\obj\Debug\ResolveAssemblyReference.cache
+C:\AzureProjects\Incredibeads\MvcWebRole1\obj\Debug\MvcWebRole1.dll
+C:\AzureProjects\Incredibeads\MvcWebRole1\obj\Debug\MvcWebRole1.pdb
