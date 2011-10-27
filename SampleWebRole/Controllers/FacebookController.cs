@@ -33,7 +33,8 @@ namespace SampleWebRole.Controllers
             ViewData["LikeIFrame"] = FBScriptGenerator.GenerateLike(
                             Style,
                             "Ref1",
-                            this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme));
+                            ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme),
+                                                           Request.Url));
 
             ViewData["ActivityFeedIFrame"] = FBScriptGenerator.GenerateActivityFeed(
                                         Style,
@@ -42,7 +43,8 @@ namespace SampleWebRole.Controllers
 
             ViewData["LikeFacepileIFrame"] = FBScriptGenerator.GenerateLikeFacepile(
                 Style,
-                this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme));
+                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme),
+                                                Request.Url));
 
             ViewData["AppFacepileIFrame"] = FBScriptGenerator.GenerateAppFacepile(Style);
 
@@ -67,7 +69,7 @@ namespace SampleWebRole.Controllers
             ViewData["LikeHtml5"] = FBScriptGenerator.GenerateLike(
                             Style,
                             "Ref3",
-                            this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme),
+                            ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url),
                             true);
 
             ViewData["LikeBoxHtml5"] = FBScriptGenerator.GenerateLikeBox(
@@ -83,11 +85,11 @@ namespace SampleWebRole.Controllers
 
             ViewData["CommentsHtml5"] = FBScriptGenerator.GenerateComments(
                             Style,
-                            this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme));
+                            ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url));
 
             ViewData["LikeFacepileHtml5"] = FBScriptGenerator.GenerateLikeFacepile(
                 Style,
-                this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme));
+                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url));
 
             ViewData["AppFacepileHtml5"] = FBScriptGenerator.GenerateAppFacepile(Style);
 
@@ -106,7 +108,7 @@ namespace SampleWebRole.Controllers
                 FBScriptGenerator.FBAppId); // id of a facebook user or application id
 
             ViewData["FriendsDialogURI"] = FBScriptGenerator.FriendDialogUri("Satya.Nadella",
-                                                this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme, Request.Url.Host),
+                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme), Request.Url),
                                                 false);
 
             ViewData["FeedDialogURI"] = FBScriptGenerator.FeedDialogUri(

@@ -31,7 +31,14 @@ namespace SampleWebRole.Controllers
             {
                 return ConfigurationManager.AppSettings["host"];
             }
+
+            static public string CreateExternalUrl(string ReturnUrl, Uri BaseUri)
+            {
+                return ReturnUrl.Replace((BaseUri.Host +":"+ BaseUri.Port), BaseUri.Host);
+            }
         }
+
+
 #endif
 
         public CodeGenerator FBScriptGenerator { get; set; }
