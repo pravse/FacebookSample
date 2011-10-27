@@ -23,7 +23,12 @@
         <tr>
             <td>
                 <p>
-        <a href="<%= ViewData["FriendsDialogUri"]%>">Here</a> is a link to a dialog to add a friend...
+        <a href="<%= ViewData["FriendsDialogUri"]%>">Here</a> is a link to a dialog to add Satya Nadella as your friend.
+                </p>
+            </td>
+            <td>
+                <p>
+        <a href="<%= ViewData["FeedDialogUri"]%>">Here</a> is a link to a dialog to post a feed about this page
                 </p>
             </td>
         </tr>

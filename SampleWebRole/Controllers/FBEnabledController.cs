@@ -26,6 +26,11 @@ namespace SampleWebRole.Controllers
             {
                 return ConfigurationManager.AppSettings[SettingKey];
             }
+
+            static public string GetHostName()
+            {
+                return ConfigurationManager.AppSettings["host"];
+            }
         }
 #endif
 

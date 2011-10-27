@@ -90,6 +90,7 @@
     <Content Include="Views\Facebook\RicherJS.aspx" />
     <Content Include="Views\Facebook\NoAppId.aspx" />
     <Content Include="Views\Facebook\IFramePlugins.aspx" />
+    <Content Include="Content\Penguins.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

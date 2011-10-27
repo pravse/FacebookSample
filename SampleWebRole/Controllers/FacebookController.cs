@@ -105,8 +105,17 @@ namespace SampleWebRole.Controllers
                 "Example of FB dialogs", // site name (simple description)
                 FBScriptGenerator.FBAppId); // id of a facebook user or application id
 
-            ViewData["FriendsDialogURI"] = FBScriptGenerator.FriendDialogUri("4",
-                                                this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }, Request.Url.Scheme));
+            ViewData["FriendsDialogURI"] = FBScriptGenerator.FriendDialogUri("Satya.Nadella",
+                                                this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme, Request.Url.Host),
+                                                false);
+
+            ViewData["FeedDialogURI"] = FBScriptGenerator.FeedDialogUri(
+                                                this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme, Request.Url.Host),
+                                                Request.Url.AbsoluteUri, 
+                                                "Sample FB Dialogs",
+                                                "Some simple samples of FB Dialogs",
+                                                "Very useful if you don't know the first thing about FB APIs",
+                                                "http://static.howstuffworks.com/gif/willow/goldfish-info0.gif");
 
             return View();
         }

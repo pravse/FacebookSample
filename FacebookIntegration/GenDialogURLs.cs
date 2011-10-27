@@ -10,8 +10,10 @@ namespace FacebookIntegration
     {
 #region private
         static private string friendDialogUri = "http://www.facebook.com/dialog/friends";
+        static private string feedDialogUri = "http://www.facebook.com/dialog/feed";
         static private string oauthDialogUri = "http://www.facebook.com/dialog/oauth";
 #endregion
+
         public string FriendDialogUri(
             string FriendId, 
             string RedirectUri,
@@ -26,7 +28,27 @@ namespace FacebookIntegration
                 "show_error=" + ((false == ShowError) ? "false" : "true");
         }
 
-        public enum OAuthResponseType {
+        public string FeedDialogUri(
+            string RedirectUri,
+            string LinkUri,
+            string LinkName,
+            string LinkCaption,
+            string LinkDescription,
+            string PictureUri)
+        {
+            return feedDialogUri + "/?" +
+                "app_id=" + this.FBAppId + "&" +
+                "redirect_uri=" + RedirectUri + "&" +
+                "link=" + LinkUri + "&" +
+                "name=" + LinkName + "&" +
+                "caption=" + LinkCaption + "&" +
+                "description=" + LinkDescription + "&" +
+                "picture=" + PictureUri;
+        }
+
+
+        public enum OAuthResponseType
+        {
             TOKEN
         }
 
