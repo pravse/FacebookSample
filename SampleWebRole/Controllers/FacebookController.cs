@@ -112,8 +112,8 @@ namespace SampleWebRole.Controllers
                                                 false);
 
             ViewData["FeedDialogURI"] = FBScriptGenerator.FeedDialogUri(
-                                                this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme, Request.Url.Host),
-                                                Request.Url.AbsoluteUri, 
+                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme), Request.Url),
+                                                ConfigHelper.CreateExternalUrl(Request.Url.AbsoluteUri, Request.Url),
                                                 "Sample FB Dialogs",
                                                 "Some simple samples of FB Dialogs",
                                                 "Very useful if you don't know the first thing about FB APIs",
@@ -139,7 +139,6 @@ namespace SampleWebRole.Controllers
 
             ViewData["LikeBoxHtml5"] = FBScriptGenerator.GenerateLikeBox(
                             Style,
-                //                            this.Url.Encode("http://www.facebook.com/cocacola"),
                             "http://www.facebook.com/cocacola",
                             true, true);
 
@@ -166,7 +165,6 @@ namespace SampleWebRole.Controllers
 
             ViewData["LikeBoxHtml5"] = FBScriptGenerator.GenerateLikeBox(
                             Style,
-                //                            this.Url.Encode("http://www.facebook.com/cocacola"),
                             "http://www.facebook.com/cocacola",
                             true, true);
 
@@ -181,8 +179,8 @@ namespace SampleWebRole.Controllers
             ViewData["FBRoot"] = FBScriptGenerator.GenerateRoot(true);
             ViewData["FBLoginHtml5"] = FBScriptGenerator.GenerateLogin(CodeGenerator.CodeStyle.HTML5, null, true, 200, 1);
 
-            ViewData["FBRegisterOrLoginHtml5"] = FBScriptGenerator.GenerateRegisterOrLogin(CodeGenerator.CodeStyle.HTML5, 
-                      this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Register", id = UrlParameter.Optional }, Request.Url.Scheme));
+            ViewData["FBRegisterOrLoginHtml5"] = FBScriptGenerator.GenerateRegisterOrLogin(CodeGenerator.CodeStyle.HTML5,
+                      ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Register", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url));
 
             return View();
         }
@@ -196,7 +194,7 @@ namespace SampleWebRole.Controllers
 
             string RegistrationCallbackUri = (null != ConfigHelper.GetConfigurationSettingValue(FBRegCallbackKey)) ?
                                                 ConfigHelper.GetConfigurationSettingValue(FBRegCallbackKey) :
-                                                this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Register", id = UrlParameter.Optional }, Request.Url.Scheme);
+                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Register", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url);
 
             ViewData["FBRegistrationIFrame"] = FBScriptGenerator.GenerateRegister(CodeGenerator.CodeStyle.IFRAME, RegistrationCallbackUri);
             ViewData["FBRegistrationHtml5"] = FBScriptGenerator.GenerateRegister(CodeGenerator.CodeStyle.HTML5, RegistrationCallbackUri);
@@ -204,7 +202,7 @@ namespace SampleWebRole.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(string SignedRequest)
+        public ActionResult RegisterCallback()
         {
             return RedirectToAction("Index", "Home");
             /****
