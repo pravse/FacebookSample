@@ -73,7 +73,7 @@ namespace SampleWebRole.Controllers
             ViewData["LikeBoxHtml5"] = FBScriptGenerator.GenerateLikeBox(
                             Style, 
 //                            this.Url.Encode("http://www.facebook.com/praveen.seshadri"),
-                            "http://www.facebook.com/praveen.seshadri",
+                            "www.facebook.com/cocacola",
                             true, true);
 
             ViewData["ActivityFeedHtml5"] = FBScriptGenerator.GenerateActivityFeed(
@@ -87,8 +87,9 @@ namespace SampleWebRole.Controllers
 
             ViewData["LikeFacepileHtml5"] = FBScriptGenerator.GenerateLikeFacepile(
                 Style,
-                //                this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme));
-                "http://www.facebook.com/cocacola");
+                this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme));
+
+            ViewData["AppFacepileHtml5"] = FBScriptGenerator.GenerateAppFacepile(Style);
 
             return View();
         }

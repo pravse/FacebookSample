@@ -38,11 +38,11 @@
         </tr>
         <tr>
             <td>
-        Here is a Like Facepile (photos of people who like this page)
+        Here is a Like Facepile (photos of people who like this page). This will be empty if no users currently like this page.
         <%= ViewData["LikeFacepileIFrame"] %>
             </td>
             <td>
-        Here is an App Facepile (photos of people who signed up for a specific Facebook app)
+        Here is an App Facepile (photos of people who signed up for this Facebook app). This will be empty if no users currently are signed up for this app.
         <%= ViewData["AppFacepileIFrame"] %>
             </td>
         </tr>
