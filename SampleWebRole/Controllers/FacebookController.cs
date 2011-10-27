@@ -74,7 +74,7 @@ namespace SampleWebRole.Controllers
                             Style, 
 //                            this.Url.Encode("http://www.facebook.com/praveen.seshadri"),
                             "www.facebook.com/cocacola",
-                            true, true);
+                            true, false);
 
             ViewData["ActivityFeedHtml5"] = FBScriptGenerator.GenerateActivityFeed(
                                         Style,
@@ -105,7 +105,8 @@ namespace SampleWebRole.Controllers
                 "Example of FB dialogs", // site name (simple description)
                 FBScriptGenerator.FBAppId); // id of a facebook user or application id
 
-            ViewData["FriendsDialogURI"] = FBScriptGenerator.FriendDialogUri("4", "www.example.com");
+            ViewData["FriendsDialogURI"] = FBScriptGenerator.FriendDialogUri("4",
+                                                this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }, Request.Url.Scheme));
 
             return View();
         }
@@ -132,9 +133,6 @@ namespace SampleWebRole.Controllers
                             true, true);
 
 
-
-            ViewData["FriendsDialogURI"] = FBScriptGenerator.FriendDialogUri("4", "www.example.com");
-
             ViewData["AppFacepileHtml5"] = FBScriptGenerator.GenerateAppFacepile(Style);
 
             return View();
@@ -160,10 +158,6 @@ namespace SampleWebRole.Controllers
                 //                            this.Url.Encode("http://www.facebook.com/cocacola"),
                             "http://www.facebook.com/cocacola",
                             true, true);
-
-
-
-            ViewData["FriendsDialogURI"] = FBScriptGenerator.FriendDialogUri("4", "www.example.com");
 
             return View();
         }

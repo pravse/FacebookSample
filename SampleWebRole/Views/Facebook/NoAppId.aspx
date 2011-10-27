@@ -42,13 +42,12 @@
             <td>
         Here is a like Facepile (photos of users who like this page). This will be empty if no users currently like this page.
         <%= ViewData["LikeFacepileHtml5"] %>
-            </td>
-            <td>
+
         Here is an App Facepile (photos of people who signed up for this Facebook app). This will be empty if no users currently are signed up for this app.
         <%= ViewData["AppFacepileHtml5"] %>
             </td>
             <td>
-         LikeBox to like my facebook page ...
+         LikeBox to like the CocaCola page (this only works for commercial FB pages, not user pages)
         <%= ViewData["LikeBoxHtml5"] %>
             </td>
        </tr>
