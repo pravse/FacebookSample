@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using System.Diagnostics;
 using SampleWebRole.Models;
 using FacebookIntegration;
 
@@ -194,7 +195,7 @@ namespace SampleWebRole.Controllers
 
             string RegistrationCallbackUri = (null != ConfigHelper.GetConfigurationSettingValue(FBRegCallbackKey)) ?
                                                 ConfigHelper.GetConfigurationSettingValue(FBRegCallbackKey) :
-                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Register", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url);
+                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "RegisterCallback", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url);
 
             ViewData["FBRegistrationIFrame"] = FBScriptGenerator.GenerateRegister(CodeGenerator.CodeStyle.IFRAME, RegistrationCallbackUri);
             ViewData["FBRegistrationHtml5"] = FBScriptGenerator.GenerateRegister(CodeGenerator.CodeStyle.HTML5, RegistrationCallbackUri);
@@ -204,7 +205,13 @@ namespace SampleWebRole.Controllers
         [HttpPost]
         public ActionResult RegisterCallback()
         {
-            return RedirectToAction("Index", "Home");
+            string SignedRequest = this.Request["signed_request"];
+            Debug.Assert(null != SignedRequest);
+
+            ViewData["SignedRequest"] = SignedRequest;
+
+            // should have received a signed request. Get it and try to decipher it
+            return RedirectToAction("Facebook", "Register");
             /****
             if (ModelState.IsValid)
             {

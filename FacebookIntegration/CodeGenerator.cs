@@ -55,6 +55,7 @@ namespace FacebookIntegration
             options = Options;
         }
 
+
         /// <summary>
         /// This asynchronously loads the FB Javascript SDK (for HTML5 and XFBML)
         /// </summary>
@@ -62,10 +63,11 @@ namespace FacebookIntegration
         public string GenerateRoot(bool WithAppId=true)
         {
             return "<div id=\"fb-root\"></div> " +
+                   "<script src=\"../Scripts/jquery-1.4.1.js\"></script> \n" + 
                    "<script>  " + 
                         generateFBInit(WithAppId) + 
                         generateLoadSDK() + 
-                        "</script> ";
+                        "</script> \n";
         }
 
         /// <summary
@@ -125,9 +127,16 @@ namespace FacebookIntegration
                         " FB.init({ \n" +
                         options.GetInitParameters(WithAppId) +
                         "}); \n" +
-                        " // additional initialization code here \n" +
-                        " }; ";
+                        " PostFBInit(); \n" + 
+                        " }; \n";
         }
+        /***
+        // additional initialization code here \n" +
+        // Raise a JQuery event so that initialization code can be defined that subscribes to the event \n" +
+        // $(\"head\").trigger('FBInitComplete'); \n" +
+        // if (typeof PostFBInit == 'function') { PostFBInit();} \n" +
+         * ***/
+
         #endregion
     }
 }
