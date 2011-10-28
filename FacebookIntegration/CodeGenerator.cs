@@ -63,9 +63,8 @@ namespace FacebookIntegration
         public string GenerateRoot(bool WithAppId=true)
         {
             return "<div id=\"fb-root\"></div> " +
-                   "<script src=\"../Scripts/jquery-1.4.1.js\"></script> \n" +
-                    generateLoadSDK() +
-                   "<script>  " + generateFBInit(WithAppId) + "</script> \n";
+                   "<script>  " + generateFBInit(WithAppId) + "</script> \n" +
+                    generateLoadSDK() + "\n";
         }
 
         /// <summary

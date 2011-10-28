@@ -6,12 +6,3 @@
    d.getElementsByTagName('head')[0].appendChild(js); 
   } (document));
 
-        private string generateFBInit(bool WithAppId)
-        {
-            Debug.Assert(null != options);
-            return " window.fbAsyncInit = function() { \n" +
-                        " FB.init({ \n" +
-                        options.GetInitParameters(WithAppId) +
-                        "}); \n" +
-                        " PostFBInit(); \n" + 
-                        " }; \n";
