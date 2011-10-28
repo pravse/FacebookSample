@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\FBInit.js" />
     <Content Include="Views\Facebook\Dialogs.aspx" />
     <Content Include="Views\Facebook\WithAppId.aspx" />
     <Content Include="Views\Facebook\RicherJS.aspx" />

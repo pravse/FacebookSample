@@ -63,11 +63,9 @@ namespace FacebookIntegration
         public string GenerateRoot(bool WithAppId=true)
         {
             return "<div id=\"fb-root\"></div> " +
-                   "<script src=\"../Scripts/jquery-1.4.1.js\"></script> \n" + 
-                   "<script>  " + 
-                        generateFBInit(WithAppId) + 
-                        generateLoadSDK() + 
-                        "</script> \n";
+                   "<script src=\"../Scripts/jquery-1.4.1.js\"></script> \n" +
+                    generateLoadSDK() +
+                   "<script>  " + generateFBInit(WithAppId) + "</script> \n";
         }
 
         /// <summary
@@ -111,13 +109,7 @@ namespace FacebookIntegration
 
         private string generateLoadSDK()
         {
-            return " (function (d) { " +
-                        " var js, id = 'facebook-jssdk';  " +
-                        " if (d.getElementById(id)) { return; }   " +
-                        " js = d.createElement('script'); js.id = id; js.async = true; " +
-                        " js.src = \"//connect.facebook.net/en_US/all.js\"; " +
-                        " d.getElementsByTagName('head')[0].appendChild(js); " +
-                        " } (document)); ";
+            return "<script src=\"../Scripts/FBInit.js\"></script>\n"; 
         }
 
         private string generateFBInit(bool WithAppId)
@@ -127,7 +119,7 @@ namespace FacebookIntegration
                         " FB.init({ \n" +
                         options.GetInitParameters(WithAppId) +
                         "}); \n" +
-                        " PostFBInit(); \n" + 
+                        " if (typeof PostFBInit == 'function') { PostFBInit();} \n" + 
                         " }; \n";
         }
         /***

@@ -17,6 +17,7 @@ namespace SampleWebRole.Controllers
     [HandleError]
     public class FacebookController : FBEnabledController
     {
+        string SignedRequest = null;
 
         public ActionResult IFramePlugins()
         {
@@ -199,16 +200,20 @@ namespace SampleWebRole.Controllers
 
             ViewData["FBRegistrationIFrame"] = FBScriptGenerator.GenerateRegister(CodeGenerator.CodeStyle.IFRAME, RegistrationCallbackUri);
             ViewData["FBRegistrationHtml5"] = FBScriptGenerator.GenerateRegister(CodeGenerator.CodeStyle.HTML5, RegistrationCallbackUri);
+
+            if (null != SignedRequest)
+            {
+                ViewData["SignedRequest"] = SignedRequest;
+            }
+ 
             return View();
         }
 
         [HttpPost]
         public ActionResult RegisterCallback()
         {
-            string SignedRequest = this.Request["signed_request"];
+            SignedRequest = this.Request["signed_request"];
             Debug.Assert(null != SignedRequest);
-
-            ViewData["SignedRequest"] = SignedRequest;
 
             // should have received a signed request. Get it and try to decipher it
             return RedirectToAction("Register", "Facebook");

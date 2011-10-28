@@ -54,7 +54,7 @@
 
 
         <p> Or if you already have registered this app, just log in now via Facebook</p>
-        <%= this.ViewData["FBLoginIFrame"] %>
+        <%= this.ViewData["FBLoginIHtml5"] %>
         
     </div>
 

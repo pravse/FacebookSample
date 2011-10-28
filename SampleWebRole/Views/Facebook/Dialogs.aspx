@@ -11,6 +11,16 @@
     Interacting with Friends
 </asp:Content>
 
+<asp:Content ID="JQueryInclude" ContentPlaceHolderID="JQuery" runat="server">
+    <script type="text/javascript" src="../Scripts/jquery-1.4.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            // any jquery stuff you want to add
+        });
+    </script>
+</asp:Content>
+
+
 <asp:Content ID="NoJSContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Dialogs</h2>
     <p>

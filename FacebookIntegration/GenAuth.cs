@@ -49,10 +49,11 @@ namespace FacebookIntegration
             string returnHTML = "<div> </div>";
             if (CodeStyle.HTML5 == Style)
             {
-                returnHTML = "<div class=\"fb-registration\" " +
-                                            "data-redirect-uri=\"" + redirectUri + "\" " +
-                                            "data-fields=\"" + getFields() + "\" " +
-                                            "></div>";
+                // note ---- this only exists in XFBML right now. Cheat for now and return XFBML until FB fixes this
+                returnHTML = "<fb:registration " +
+                                            "redirect-uri=\"" + redirectUri + "\" " +
+                                            "fields=\"" + getFields() + "\" " +
+                                            "/>";
             }
             else if (CodeStyle.IFRAME == Style)
             {
@@ -112,9 +113,10 @@ namespace FacebookIntegration
             Debug.Assert(null != RegisterCallbackUri);
             if (CodeStyle.HTML5 == Style)
             {
-                returnHTML = "<div class=\"fb-login-button\" " +
-                                            "data-registration-uri=\"" + RegisterCallbackUri + "\" " +
-                                            "></div>";
+                // note ---- this only exists in XFBML right now. Cheat for now and return XFBML until FB fixes this
+                returnHTML = "<fb:login-button " +
+                                            "registration-url=\"" + RegisterCallbackUri + "\" " +
+                                            "/>";
             }
             else
             {
