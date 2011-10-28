@@ -17,7 +17,7 @@
                 if (response.authResponse) {
                     $('#LoggedIn')[0].style.display = "";
                     $('#NotLoggedIn')[0].style.display = "none";
-                    $('#LoggedIn')[0].innerHTML = "Welcome haha. You are already logged in.";
+                    $('#LoggedIn')[0].innerHTML = "Welcome " + response.authResponse.userID + ". You are already logged in with access token " + response.authResponse.accessToken + "\n";
                 }
                 else {
                     $('#LoggedIn')[0].style.display = "none";
