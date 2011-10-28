@@ -211,7 +211,7 @@ namespace SampleWebRole.Controllers
             ViewData["SignedRequest"] = SignedRequest;
 
             // should have received a signed request. Get it and try to decipher it
-            return RedirectToAction("Facebook", "Register");
+            return RedirectToAction("Register", "Facebook");
             /****
             if (ModelState.IsValid)
             {

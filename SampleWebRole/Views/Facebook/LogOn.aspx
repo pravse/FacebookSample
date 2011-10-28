@@ -17,6 +17,7 @@
                 if (response.authResponse) {
                     $('#LoggedIn')[0].style.display = "";
                     $('#NotLoggedIn')[0].style.display = "none";
+                    $('#LoggedIn')[0].innerHTML = "Welcome haha. You are already logged in.";
                 }
                 else {
                     $('#LoggedIn')[0].style.display = "none";
@@ -42,9 +43,8 @@
         Junk content. Should not show
     </div>
 
-
     <div id="LoggedIn"  style="display:block">
-        Welcome fair user!
+        You are logged in already.
     </div>
 
     <div id="NotLoggedIn"  style="display:block">
@@ -53,7 +53,7 @@
 
 
 
-        <p>Or if you already have registered this app, just log in now via Facebook</p>
+        <p> Or if you already have registered this app, just log in now via Facebook</p>
         <%= this.ViewData["FBLoginIFrame"] %>
         
     </div>

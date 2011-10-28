@@ -35,7 +35,7 @@ namespace FacebookIntegration
 
         private string getRegistrationOptions()
         {
-            return "scrolling=\"auto\" frameborder=\"no\" style=\"border:none\" allowTransparency=\"true\" width=\"200\" height=\"330\"";
+            return "scrolling=\"auto\" frameborder=\"no\" style=\"border:none\" allowTransparency=\"true\" width=\"300\" height=\"330\"";
         }
 
         #endregion
