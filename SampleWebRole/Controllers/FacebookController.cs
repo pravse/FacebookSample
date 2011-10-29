@@ -98,6 +98,20 @@ namespace SampleWebRole.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult AddFriendCallback()
+        {
+            DialogModel model = new DialogModel();
+            model.AddFriendResponse = this.Request["action"];
+            if (null != model.AddFriendResponse)
+            {
+                model.IsValid = true;
+                ViewData.Model = model;
+            }
+
+            return View("Dialogs"); 
+        }
+
         public ActionResult Dialogs()
         {
             // TODO: put in appropriate tags
@@ -112,11 +126,11 @@ namespace SampleWebRole.Controllers
             ViewData["FBRoot"] = FBScriptGenerator.GenerateRoot(true);
 
             ViewData["FriendsDialogUriPage"] = FBScriptGenerator.FriendDialogUri("Satya.Nadella",
-                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url),
+                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "AddFriendCallback", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url),
                                                 false);
 
             ViewData["FriendsDialogUriIFrame"] = FBScriptGenerator.FriendDialogUri("Satya.Nadella",
-                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url),
+                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "AddFriendCallback", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url),
                                                 true);
 
             ViewData["FeedDialogUriPage"] = FBScriptGenerator.FeedDialogUri(
