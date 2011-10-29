@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<SampleWebRole.Models.DialogModel>" %>
 
 <script runat="server">
 
@@ -17,16 +17,24 @@
 
         function PostFBInit() {
             FB.getLoginStatus(function (response) {
-                alert("Made it here");
                 if (response.authResponse) {
-                    alert("Made it here with access token: " + response.authResponse.accessToken);
-                    $("a").each(function () { alert("HRef 1:" + this.href + "\n" + "HRef 2:" + this.href.replace("ACCESS_TOKEN_STUB", response.authResponse.accessToken)); this.href = this.href.replace("ACCESS_TOKEN_STUB", response.authResponse.accessToken); });
+                    $("a").each(function () {
+                        if (null != this.href.match("ACCESS_TOKEN_STUB")) {
+                            alert("Found href :" + this.href);
+                            this.href = this.href.replace("ACCESS_TOKEN_STUB", response.authResponse.accessToken);
+                            alert("replaced by href :" + this.href);
+                        }
+                    });
                 }
             });
         }
 
         $(function () {
             // any jquery stuff you want to add
+            if (true == <%=this.Model.IsValid%>) {
+                alert("Received message from action: " + <%= this.Model.AddFriendResponse%>);
+            }
+
         });
     </script>
 </asp:Content>

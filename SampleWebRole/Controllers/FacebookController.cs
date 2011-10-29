@@ -112,15 +112,15 @@ namespace SampleWebRole.Controllers
             ViewData["FBRoot"] = FBScriptGenerator.GenerateRoot(true);
 
             ViewData["FriendsDialogUriPage"] = FBScriptGenerator.FriendDialogUri("Satya.Nadella",
-                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme), Request.Url),
+                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url),
                                                 false);
 
             ViewData["FriendsDialogUriIFrame"] = FBScriptGenerator.FriendDialogUri("Satya.Nadella",
-                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme), Request.Url),
+                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url),
                                                 true);
 
             ViewData["FeedDialogUriPage"] = FBScriptGenerator.FeedDialogUri(
-                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme), Request.Url),
+                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url),
                                                 ConfigHelper.CreateExternalUrl(Request.Url.AbsoluteUri, Request.Url),
                                                 "Sample FB Dialogs",
                                                 "Some simple samples of FB Dialogs",
@@ -129,7 +129,7 @@ namespace SampleWebRole.Controllers
                                                 false);
 
             ViewData["FeedDialogUriIFrame"] = FBScriptGenerator.FeedDialogUri(
-                                     ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme), Request.Url),
+                                     ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url),
                                      ConfigHelper.CreateExternalUrl(Request.Url.AbsoluteUri, Request.Url),
                                      "Sample FB Dialogs",
                                      "Some simple samples of FB Dialogs",
@@ -138,7 +138,7 @@ namespace SampleWebRole.Controllers
                                      true);
 
             ViewData["SendDialogUriPage"] = FBScriptGenerator.SendDialogUri(
-                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme), Request.Url),
+                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url),
                                                 "praveen.seshadri",
                                                 ConfigHelper.CreateExternalUrl(Request.Url.AbsoluteUri, Request.Url),
                                                 "Sample FB Dialogs",
@@ -148,7 +148,7 @@ namespace SampleWebRole.Controllers
                                                 false);
 
             ViewData["SendDialogUriIFrame"] = FBScriptGenerator.SendDialogUri(
-                                     ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme), Request.Url),
+                                     ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url),
                                      "praveen.seshadri",
                                      ConfigHelper.CreateExternalUrl(Request.Url.AbsoluteUri, Request.Url),
                                      "Sample FB Dialogs",

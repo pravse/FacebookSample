@@ -12,26 +12,22 @@ namespace SampleWebRole.Models
 {
 
     #region Models
-    public class SocialModel
+    public class DialogModel
     {
-        [Required]
-        [DisplayName("Answer")]
-        public string Answer { get; set; }
-
-        [DisplayName("Response")]
-        public string Response { get; set; }
+        public string AddFriendResponse = null; 
+        public bool IsValid = false;
     }
 
     #endregion
 
     #region Services
 
-    public interface ISocialService
+    public interface IDialogService
     {
         bool DummyMethod(string value);
     }
 
-    public class SocialService : ISocialService
+    public class DialogService : IDialogService
     {
         public bool DummyMethod(string value)
         {
