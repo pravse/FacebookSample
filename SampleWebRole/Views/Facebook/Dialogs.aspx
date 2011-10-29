@@ -31,7 +31,7 @@
 
         $(function () {
             // any jquery stuff you want to add
-            if (true == <%=this.Model.IsValid%>) {
+            if (true == <%=this.Model.AddFriendResponseValid%>) {
                 alert("Received message from action: " + <%= this.Model.AddFriendResponse%>);
             }
 

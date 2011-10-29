@@ -18,6 +18,7 @@ namespace SampleWebRole.Controllers
     public class FacebookController : FBEnabledController
     {
         string SignedRequest = null;
+        ISocialService fbService = new FacebookService();
 
         public ActionResult IFramePlugins()
         {
@@ -101,22 +102,18 @@ namespace SampleWebRole.Controllers
         [HttpPost]
         public ActionResult AddFriendCallback()
         {
-            DialogModel model = new DialogModel();
-            model.AddFriendResponse = this.Request["action"];
-            if (null != model.AddFriendResponse)
+            Debug.Assert(null != fbService);
+            if (null != this.Request["action"])
             {
-                model.IsValid = true;
-                ViewData.Model = model;
+                fbService.AddFriendResponse(this.Request["action"]);
             }
 
-            return View("Dialogs"); 
+            return RedirectToAction("Dialogs", "Facebook");
         }
 
         public ActionResult Dialogs()
         {
-            DialogModel model = new DialogModel();
-            model.IsValid = false;
-            ViewData.Model = model;
+            ViewData.Model = fbService.Model;
 
             // TODO: put in appropriate tags
             ViewData["OpenGraphTags"] = FBScriptGenerator.GenerateOpenGraphTags(
