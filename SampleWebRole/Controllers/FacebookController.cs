@@ -109,6 +109,8 @@ namespace SampleWebRole.Controllers
                 "Example of FB dialogs", // site name (simple description)
                 FBScriptGenerator.FBAppId); // id of a facebook user or application id
 
+            ViewData["FBRoot"] = FBScriptGenerator.GenerateRoot(true);
+
             ViewData["FriendsDialogUriPage"] = FBScriptGenerator.FriendDialogUri("Satya.Nadella",
                                                 ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme), Request.Url),
                                                 false);
