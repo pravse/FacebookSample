@@ -99,7 +99,6 @@ namespace SampleWebRole.Controllers
             return View();
         }
 
-        [HttpPost]
         public ActionResult AddFriendCallback()
         {
             Debug.Assert(null != fbService);
