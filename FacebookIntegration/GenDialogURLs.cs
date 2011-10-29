@@ -26,7 +26,7 @@ namespace FacebookIntegration
                 "app_id=" + this.FBAppId + "&" +
                 "redirect_uri=" + RedirectUri + "&" +
                 "display=" + ((false == ShowInIFrame) ? "page" : "iframe") + "&" +
-                ((true == ShowInIFrame) ? "access_token=ACCESS_TOKEN_STUB" : "") +
+                ((true == ShowInIFrame) ? "access_token=ACCESS_TOKEN_STUB&" : "") +
                 "show_error=" + ((false == ShowError) ? "false" : "true");
         }
 
@@ -49,7 +49,7 @@ namespace FacebookIntegration
                 "description=" + LinkDescription + "&" +
                 "picture=" + PictureUri + "&" +
                 "display=" + ((false == ShowInIFrame) ? "page" : "iframe") + "&" +
-                ((true == ShowInIFrame) ? "access_token=ACCESS_TOKEN_STUB" : "") +
+                ((true == ShowInIFrame) ? "access_token=ACCESS_TOKEN_STUB&" : "") +
                 "show_error=" + ((false == ShowError) ? "false" : "true");
         }
 
@@ -74,7 +74,7 @@ namespace FacebookIntegration
                 "description=" + LinkDescription + "&" +
                 "picture=" + PictureUri + "&" +
                 "display=" + ((false == ShowInIFrame) ? "page" : "iframe") + "&" +
-                ((true == ShowInIFrame) ? "access_token=ACCESS_TOKEN_STUB" : "") +
+                ((true == ShowInIFrame) ? "access_token=ACCESS_TOKEN_STUB&" : "") +
                 "show_error=" + ((false == ShowError) ? "false" : "true");
         }
 
