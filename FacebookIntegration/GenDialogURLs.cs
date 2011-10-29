@@ -11,6 +11,7 @@ namespace FacebookIntegration
 #region private
         static private string friendDialogUri = "http://www.facebook.com/dialog/friends";
         static private string feedDialogUri = "http://www.facebook.com/dialog/feed";
+        static private string sendDialogUri = "http://www.facebook.com/dialog/send";
         static private string oauthDialogUri = "http://www.facebook.com/dialog/oauth";
 #endregion
 
@@ -25,6 +26,7 @@ namespace FacebookIntegration
                 "app_id=" + this.FBAppId + "&" +
                 "redirect_uri=" + RedirectUri + "&" +
                 "display=" + ((false == ShowInIFrame) ? "page" : "iframe") + "&" +
+                ((true == ShowInIFrame) ? "access_token=ACCESS_TOKEN_STUB" : "") +
                 "show_error=" + ((false == ShowError) ? "false" : "true");
         }
 
@@ -47,6 +49,7 @@ namespace FacebookIntegration
                 "description=" + LinkDescription + "&" +
                 "picture=" + PictureUri + "&" +
                 "display=" + ((false == ShowInIFrame) ? "page" : "iframe") + "&" +
+                ((true == ShowInIFrame) ? "access_token=ACCESS_TOKEN_STUB" : "") +
                 "show_error=" + ((false == ShowError) ? "false" : "true");
         }
 
@@ -61,7 +64,7 @@ namespace FacebookIntegration
             bool ShowInIFrame = true,
             bool ShowError = true)
         {
-            return feedDialogUri + "/?" +
+            return sendDialogUri + "/?" +
                 "app_id=" + this.FBAppId + "&" +
                 "redirect_uri=" + RedirectUri + "&" +
                 "to=" + SendTo + "&" + 
@@ -71,6 +74,7 @@ namespace FacebookIntegration
                 "description=" + LinkDescription + "&" +
                 "picture=" + PictureUri + "&" +
                 "display=" + ((false == ShowInIFrame) ? "page" : "iframe") + "&" +
+                ((true == ShowInIFrame) ? "access_token=ACCESS_TOKEN_STUB" : "") +
                 "show_error=" + ((false == ShowError) ? "false" : "true");
         }
 

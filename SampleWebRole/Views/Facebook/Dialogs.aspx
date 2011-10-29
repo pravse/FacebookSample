@@ -14,6 +14,15 @@
 <asp:Content ID="JQueryInclude" ContentPlaceHolderID="JQuery" runat="server">
     <script type="text/javascript" src="../Scripts/jquery-1.4.1.js"></script>
     <script type="text/javascript">
+
+        function PostFBInit() {
+            FB.getLoginStatus(function (response) {
+                if (response.authResponse) {
+                    $("[href]").each(function () { this.hRef = this.hRef.replace("ACCESS_TOKEN_STUB", response.authResponse.accessToken); });  
+                }
+            });
+        }
+
         $(function () {
             // any jquery stuff you want to add
         });
