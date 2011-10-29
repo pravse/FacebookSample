@@ -34,7 +34,6 @@
     <table>
         <tr>
             <td>
-                <h2> Friends Dialog</h2>
                 <p>
         <a href="<%= ViewData["FriendsDialogUriPage"]%>">Here</a> is a link to a dialog (on a separate page) to add Satya Nadella as your friend.
                 </p>
@@ -43,21 +42,11 @@
                 </p>
             </td>
             <td>
-                <h2> Feed Dialog</h2>
                 <p>
         <a href="<%= ViewData["FeedDialogUriPage"]%>">Here</a> is a link to a dialog (on a separate page) to post a feed about this page
                 </p>
                 <p>
         <a href="<%= ViewData["FeedDialogUriIFrame"]%>">Here</a> is a link to a dialog (in an IFrame) to post a feed about this page
-                </p>
-            </td>
-            <td>
-                <h2> Send Dialog</h2>
-                <p>
-        <a href="<%= ViewData["SendDialogUriPage"]%>">Here</a> is a link to a dialog (on a separate page) to send a message.
-                </p>
-                <p>
-        <a href="<%= ViewData["SendDialogUriIFrame"]%>">Here</a> is a link to a dialog (in an IFrame) to send a message.
                 </p>
             </td>
         </tr>

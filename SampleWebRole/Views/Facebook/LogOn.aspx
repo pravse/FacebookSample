@@ -23,12 +23,12 @@
                     $('#LoggedIn')[0].style.display = "none";
                     $('#NotLoggedIn')[0].style.display = "";
                 }
-                $('#Junk')[0].style.display = "none";
             });
         }
 
         $(function () {
             $('#LoggedIn')[0].style.display = "none";
+            $('#NotLoggedIn')[0].style.display = "none";
         });
 
     </script>
@@ -38,10 +38,6 @@
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
     <%= this.ViewData["FBRoot"] %>
     <h2>Log On and Registration</h2>
-
-    <div id="Junk" style="display:block">
-        Junk content. Should not show
-    </div>
 
     <div id="LoggedIn"  style="display:block">
         You are logged in already.
@@ -54,7 +50,7 @@
 
 
         <p> Or if you already have registered this app, just log in now via Facebook</p>
-        <%= this.ViewData["FBLoginIHtml5"] %>
+        <%= this.ViewData["FBLoginHtml5"] %>
         
     </div>
 

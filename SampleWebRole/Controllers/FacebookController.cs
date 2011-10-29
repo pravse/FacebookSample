@@ -109,17 +109,51 @@ namespace SampleWebRole.Controllers
                 "Example of FB dialogs", // site name (simple description)
                 FBScriptGenerator.FBAppId); // id of a facebook user or application id
 
-            ViewData["FriendsDialogURI"] = FBScriptGenerator.FriendDialogUri("Satya.Nadella",
+            ViewData["FriendsDialogUriPage"] = FBScriptGenerator.FriendDialogUri("Satya.Nadella",
                                                 ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme), Request.Url),
                                                 false);
 
-            ViewData["FeedDialogURI"] = FBScriptGenerator.FeedDialogUri(
+            ViewData["FriendsDialogUriIFrame"] = FBScriptGenerator.FriendDialogUri("Satya.Nadella",
+                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme), Request.Url),
+                                                true);
+
+            ViewData["FeedDialogUriPage"] = FBScriptGenerator.FeedDialogUri(
                                                 ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme), Request.Url),
                                                 ConfigHelper.CreateExternalUrl(Request.Url.AbsoluteUri, Request.Url),
                                                 "Sample FB Dialogs",
                                                 "Some simple samples of FB Dialogs",
                                                 "Very useful if you don't know the first thing about FB APIs",
-                                                "http://static.howstuffworks.com/gif/willow/goldfish-info0.gif");
+                                                "http://static.howstuffworks.com/gif/willow/goldfish-info0.gif",
+                                                false);
+
+            ViewData["FeedDialogUriIFrame"] = FBScriptGenerator.FeedDialogUri(
+                                     ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme), Request.Url),
+                                     ConfigHelper.CreateExternalUrl(Request.Url.AbsoluteUri, Request.Url),
+                                     "Sample FB Dialogs",
+                                     "Some simple samples of FB Dialogs",
+                                     "Very useful if you don't know the first thing about FB APIs",
+                                     "http://static.howstuffworks.com/gif/willow/goldfish-info0.gif",
+                                     true);
+
+            ViewData["SendDialogUriPage"] = FBScriptGenerator.SendDialogUri(
+                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme), Request.Url),
+                                                "praveen.seshadri",
+                                                ConfigHelper.CreateExternalUrl(Request.Url.AbsoluteUri, Request.Url),
+                                                "Sample FB Dialogs",
+                                                "Some simple samples of FB Dialogs",
+                                                "Very useful if you don't know the first thing about FB APIs",
+                                                "http://static.howstuffworks.com/gif/willow/goldfish-info0.gif",
+                                                false);
+
+            ViewData["SendDialogUriIFrame"] = FBScriptGenerator.SendDialogUri(
+                                     ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new RouteValueDictionary(new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }), Request.Url.Scheme), Request.Url),
+                                     "praveen.seshadri",
+                                     ConfigHelper.CreateExternalUrl(Request.Url.AbsoluteUri, Request.Url),
+                                     "Sample FB Dialogs",
+                                     "Some simple samples of FB Dialogs",
+                                     "Very useful if you don't know the first thing about FB APIs",
+                                     "http://static.howstuffworks.com/gif/willow/goldfish-info0.gif",
+                                     true);
 
             return View();
         }
@@ -139,18 +173,39 @@ namespace SampleWebRole.Controllers
 
             ViewData["FBRoot"] = FBScriptGenerator.GenerateRoot(true);
 
+            ViewData["FBRootWithoutAppId"] = FBScriptGenerator.GenerateRoot(false);
+
+            ViewData["LikeHtml5"] = FBScriptGenerator.GenerateLike(
+                            Style,
+                            "Ref3",
+                            ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url),
+                            true);
+
             ViewData["LikeBoxHtml5"] = FBScriptGenerator.GenerateLikeBox(
                             Style,
-                            "http://www.facebook.com/cocacola",
-                            true, true);
+                //                            this.Url.Encode("http://www.facebook.com/praveen.seshadri"),
+                            "www.facebook.com/cocacola",
+                            true, false);
 
+            ViewData["ActivityFeedHtml5"] = FBScriptGenerator.GenerateActivityFeed(
+                                        Style,
+                                        "Ref4",
+                                        "www.huffingtonpost.com,news.yahoo.com");
+
+            ViewData["CommentsHtml5"] = FBScriptGenerator.GenerateComments(
+                            Style,
+                            ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url));
+
+            ViewData["LikeFacepileHtml5"] = FBScriptGenerator.GenerateLikeFacepile(
+                Style,
+                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url));
 
             ViewData["AppFacepileHtml5"] = FBScriptGenerator.GenerateAppFacepile(Style);
 
             return View();
         }
 
-        public ActionResult RicherJS()
+        public ActionResult Queries()
         {
             CodeGenerator.CodeStyle Style = CodeGenerator.CodeStyle.HTML5;
 
@@ -162,7 +217,7 @@ namespace SampleWebRole.Controllers
                 "website", // type
                 "http://www.example.com", // url
                 "http://www.example.com/image.gif", // url of an image
-                "Example of FB controls that use AppId", // site name (simple description)
+                "Example of FB queries", // site name (simple description)
                 FBScriptGenerator.FBAppId); // id of a facebook user or application id
 
             ViewData["LikeBoxHtml5"] = FBScriptGenerator.GenerateLikeBox(

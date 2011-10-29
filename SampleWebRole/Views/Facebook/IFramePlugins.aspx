@@ -8,7 +8,7 @@
     }
 </script>
 <asp:Content ID="NoJSTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Interacting with Friends
+    Interacting via IFrames
 </asp:Content>
 <asp:Content ID="OpenGraphTagsContent" ContentPlaceHolderID="OpenGraphTags" runat="server">
     <%=this.ViewData["OpenGraphTags"]%>

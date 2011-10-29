@@ -8,7 +8,7 @@
     }
 </script>
 <asp:Content ID="NoAppId" ContentPlaceHolderID="TitleContent" runat="server">
-    <p>Interacting with Friends</p>
+    Facebook Queries
 </asp:Content>
 <asp:Content ID="OpenGraphTagsContent" ContentPlaceHolderID="OpenGraphTags" runat="server">
     <%=this.ViewData["OpenGraphTags"]%>

@@ -8,7 +8,7 @@
     }
 </script>
 <asp:Content ID="NoAppId" ContentPlaceHolderID="TitleContent" runat="server">
-    <p>Interacting with Friends</p>
+    Controls with an AppId
 </asp:Content>
 <asp:Content ID="OpenGraphTagsContent" ContentPlaceHolderID="OpenGraphTags" runat="server">
     <%=this.ViewData["OpenGraphTags"]%>
@@ -27,35 +27,37 @@
 <asp:Content ID="NoJSContent" ContentPlaceHolderID="MainContent" runat="server">
     <%= this.ViewData["FBRootWithoutAppId"] %>
     <p>
-        The Facebook controls on this page require the FB Javascript SDK and HTML5. However, they do not require that the app has registered itself with facebook (i.e. the app does not need an AppId).
-        In general, these controls can integrate more richly with the rest of the web page (as compared to IFRAME-based plugins).
-        If you serve this page on a site that isn't accessible by Facebook (eg: on your localhost for debugging), some of the control will not be fully functional because Facebook checks the calling site.
+        The Facebook controls on this page require the FB Javascript SDK and HTML5. This is identical to the "No AppId" page, except that the SDK is initialized with this applications Facebook AppId. This alters the behaviors of some of the controls.
     </p>
     <table>
         <tr>
-            <td width="200">
-                <p>
-        Here is an Activity Feed (for the www.huffingtonpost.com and news.yahoo.com 
-        domains).
-        <%= ViewData["ActivityFeedHtml5"] %> 
-                </p>
-            </td>
-            <td width="200">
-                <p>
+            <td>
         Here is some general content with a Like Button. 
         <%= ViewData["LikeHtml5"] %>
-
+            </td>
+            <td>
         Add some comments to this page ...
         <%= ViewData["CommentsHtml5"] %>
-                </p>
             </td>
-            <td width="200">
-                <p>
-        LikeBox to like my facebook page ...
-        <%= ViewData["LikeBoxHtml5"] %>
-                </p>
+            <td>
+         Here is an Activity Feed (for the www.huffingtonpost.com and news.yahoo.com 
+        domains).
+        <%= ViewData["ActivityFeedHtml5"] %> 
             </td>
         </tr>
+        <tr>
+            <td>
+        Here is a like Facepile (photos of users who like this page). This will be empty if no users currently like this page.
+        <%= ViewData["LikeFacepileHtml5"] %>
+
+        Here is an App Facepile (photos of people who signed up for this Facebook app). This will be empty if no users currently are signed up for this app.
+        <%= ViewData["AppFacepileHtml5"] %>
+            </td>
+            <td>
+         LikeBox to like the CocaCola page (this only works for commercial FB pages, not user pages)
+        <%= ViewData["LikeBoxHtml5"] %>
+            </td>
+       </tr>
     </table>
 </asp:Content>
 

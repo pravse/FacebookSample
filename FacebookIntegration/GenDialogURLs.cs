@@ -34,7 +34,9 @@ namespace FacebookIntegration
             string LinkName,
             string LinkCaption,
             string LinkDescription,
-            string PictureUri)
+            string PictureUri,
+            bool ShowInIFrame = true,
+            bool ShowError = true)
         {
             return feedDialogUri + "/?" +
                 "app_id=" + this.FBAppId + "&" +
@@ -43,7 +45,33 @@ namespace FacebookIntegration
                 "name=" + LinkName + "&" +
                 "caption=" + LinkCaption + "&" +
                 "description=" + LinkDescription + "&" +
-                "picture=" + PictureUri;
+                "picture=" + PictureUri + "&" +
+                "display=" + ((false == ShowInIFrame) ? "page" : "iframe") + "&" +
+                "show_error=" + ((false == ShowError) ? "false" : "true");
+        }
+
+        public string SendDialogUri(
+            string RedirectUri,
+            string SendTo,
+            string LinkUri,
+            string LinkName,
+            string LinkCaption,
+            string LinkDescription,
+            string PictureUri,
+            bool ShowInIFrame = true,
+            bool ShowError = true)
+        {
+            return feedDialogUri + "/?" +
+                "app_id=" + this.FBAppId + "&" +
+                "redirect_uri=" + RedirectUri + "&" +
+                "to=" + SendTo + "&" + 
+                "link=" + LinkUri + "&" +
+                "name=" + LinkName + "&" +
+                "caption=" + LinkCaption + "&" +
+                "description=" + LinkDescription + "&" +
+                "picture=" + PictureUri + "&" +
+                "display=" + ((false == ShowInIFrame) ? "page" : "iframe") + "&" +
+                "show_error=" + ((false == ShowError) ? "false" : "true");
         }
 
 

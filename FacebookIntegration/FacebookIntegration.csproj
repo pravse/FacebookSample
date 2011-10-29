@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenRequests.cs" />
     <Compile Include="GenFacepile.cs" />
     <Compile Include="GenComments.cs" />
     <Compile Include="GenActivityFeed.cs" />

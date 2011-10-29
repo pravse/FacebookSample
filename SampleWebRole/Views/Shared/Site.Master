@@ -27,9 +27,10 @@
                     <li><%: Html.ActionLink("Home", "Index", "Home")%></li>
                     <li><%: Html.ActionLink("IFramePlugins", "IFramePlugins", "Facebook")%></li>
                     <li><%: Html.ActionLink("No AppId", "NoAppId", "Facebook")%></li>
-                    <li><%: Html.ActionLink("Dialogs", "Dialogs", "Facebook")%></li>
                     <li><%: Html.ActionLink("Using AppId", "WithAppId", "Facebook")%></li>
-                    <li><%: Html.ActionLink("Richer JS", "RicherJS", "Facebook")%></li>
+                    <li><%: Html.ActionLink("Dialogs", "Dialogs", "Facebook")%></li>
+                    <li><%: Html.ActionLink("Requests", "Requests", "Facebook")%></li>
+                    <li><%: Html.ActionLink("Queries", "Queries", "Facebook")%></li>
                 </ul>
             
             </div>
