@@ -114,6 +114,10 @@ namespace SampleWebRole.Controllers
 
         public ActionResult Dialogs()
         {
+            DialogModel model = new DialogModel();
+            model.IsValid = false;
+            ViewData.Model = model;
+
             // TODO: put in appropriate tags
             ViewData["OpenGraphTags"] = FBScriptGenerator.GenerateOpenGraphTags(
                 "Dummy Title", // title
