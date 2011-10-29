@@ -19,7 +19,7 @@
             FB.getLoginStatus(function (response) {
                 alert("Made it here");
                 if (response.authResponse) {
-                    $("a").each(function () { alert("HRef 1:" + this.hRef); this.hRef = this.hRef.replace("ACCESS_TOKEN_STUB", response.authResponse.accessToken); });
+                    $("a").each(function () { alert("HRef 1:" + this.href); this.href = this.href.replace("ACCESS_TOKEN_STUB", response.authResponse.accessToken); });
                 }
             });
         }
