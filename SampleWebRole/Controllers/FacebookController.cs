@@ -130,7 +130,7 @@ namespace SampleWebRole.Controllers
                                                 false);
 
             ViewData["FriendsDialogUriIFrame"] = FBScriptGenerator.FriendDialogUri("Satya.Nadella",
-                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "AddFriendCallback", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url),
+                                                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url),
                                                 true);
 
             ViewData["FeedDialogUriPage"] = FBScriptGenerator.FeedDialogUri(
