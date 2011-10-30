@@ -25,7 +25,7 @@
 
 
 <asp:Content ID="NoJSContent" ContentPlaceHolderID="MainContent" runat="server">
-    <%= this.ViewData["FBRootWithoutAppId"] %>
+    <%= this.ViewData["FBRoot"] %>
     <p>
         The Facebook controls on this page require the FB Javascript SDK and HTML5. This is identical to the "No AppId" page, except that the SDK is initialized with this applications Facebook AppId. This alters the behaviors of some of the controls.
     </p>

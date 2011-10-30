@@ -14,7 +14,7 @@ namespace SampleWebRole.Models
     #region Models
     public class SocialModel
     {
-        public string AddFriendResponse = null; 
+        public string AddFriendResponse = ""; 
         public bool   AddFriendResponseValid = false;
 
     }

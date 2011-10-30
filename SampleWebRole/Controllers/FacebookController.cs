@@ -189,8 +189,6 @@ namespace SampleWebRole.Controllers
 
             ViewData["FBRoot"] = FBScriptGenerator.GenerateRoot(true);
 
-            ViewData["FBRootWithoutAppId"] = FBScriptGenerator.GenerateRoot(false);
-
             ViewData["LikeHtml5"] = FBScriptGenerator.GenerateLike(
                             Style,
                             "Ref3",

@@ -14,28 +14,32 @@
 <asp:Content ID="JQueryInclude" ContentPlaceHolderID="JQuery" runat="server">
     <script type="text/javascript" src="../Scripts/jquery-1.4.1.js"></script>
     <script type="text/javascript">
-
-        function PostFBInit() {
+        
+        PostFBInit = function() {
+            alert("PostFBInit: Got to stage A");
             FB.getLoginStatus(function (response) {
+                alert("PostFBInit: Got to stage B");
                 if (response.authResponse) {
                     $("a").each(function () {
                         if (null != this.href.match("ACCESS_TOKEN_STUB")) {
-                            alert("Found href :" + this.href);
+                            alert("PostFBInit: Found href :" + this.href);
                             this.href = this.href.replace("ACCESS_TOKEN_STUB", response.authResponse.accessToken);
-                            alert("replaced by href :" + this.href);
+                            alert("PostFBInit: replaced by href :" + this.href);
                         }
                     });
                 }
             });
-        }
+        };
 
         $(function () {
             // any jquery stuff you want to add
-            if (true == <%=this.Model.AddFriendResponseValid%>) {
-                alert("Received message from action: " + <%= this.Model.AddFriendResponse%>);
+            alert("document.ready: started");
+            if (true == <%= this.Model.AddFriendResponseValid.ToString().ToLower()%>) {
+                alert("Received message from action: " + "<%= this.Model.AddFriendResponse%>");
             }
-
+            alert("document.ready: ended");
         });
+
     </script>
 </asp:Content>
 

@@ -118,7 +118,7 @@ namespace FacebookIntegration
                         " FB.init({ \n" +
                         options.GetInitParameters(WithAppId) +
                         "}); \n" +
-                        " if (typeof PostFBInit == 'function') { PostFBInit();} \n" + 
+                        " if (typeof PostFBInit == 'function') { PostFBInit();}  \n" + 
                         " }; \n";
         }
         /***
