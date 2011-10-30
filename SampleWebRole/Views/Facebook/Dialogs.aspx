@@ -33,7 +33,7 @@
 
         $(function () {
             // any jquery stuff you want to add
-            alert("document.ready: started");
+            alert("document.ready: started. Response valid = " + "<%= this.Model.AddFriendResponseValid%>");
             if (true == <%= this.Model.AddFriendResponseValid.ToString().ToLower()%>) {
                 alert("Received message from action: " + "<%= this.Model.AddFriendResponse%>");
             }

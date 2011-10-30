@@ -14,7 +14,7 @@
 
         <div id="header">
             <div id="title">
-                <h1>Facebook Integration Sample App</h1>
+                <h2>Facebook Integration Sample <asp:ContentPlaceHolder ID="AppBuildVersion" runat="server" /> </h2>
             </div>
               
             <div id="logindisplay">
