@@ -22,6 +22,8 @@ namespace SampleWebRole.Controllers
 
         public ActionResult IFramePlugins()
         {
+            SetCommonViewData();
+
             CodeGenerator.CodeStyle Style = CodeGenerator.CodeStyle.IFRAME;
 
             // TODO: put in appropriate tags
@@ -54,20 +56,12 @@ namespace SampleWebRole.Controllers
             return View();
         }
 
-        public ActionResult NoAppId()
+        public void InitHtml5ControlsViewData()
         {
             CodeGenerator.CodeStyle Style = CodeGenerator.CodeStyle.HTML5;
 
-            // TODO: put in appropriate tags
-            ViewData["OpenGraphTags"] = FBScriptGenerator.GenerateOpenGraphTags(
-                "Dummy Title", // title
-                "website", // type
-                "http://www.example.com", // url
-                "http://www.example.com/image.gif", // url of an image
-                "Example of FB controls that don't need AppId", // site name (simple description)
-                FBScriptGenerator.FBAppId); // id of a facebook user or application id
-
             ViewData["FBRootWithoutAppId"] = FBScriptGenerator.GenerateRoot(false);
+            ViewData["FBRoot"] = FBScriptGenerator.GenerateRoot(true);
 
             ViewData["LikeHtml5"] = FBScriptGenerator.GenerateLike(
                             Style,
@@ -76,8 +70,8 @@ namespace SampleWebRole.Controllers
                             true);
 
             ViewData["LikeBoxHtml5"] = FBScriptGenerator.GenerateLikeBox(
-                            Style, 
-//                            this.Url.Encode("http://www.facebook.com/praveen.seshadri"),
+                            Style,
+                //                            this.Url.Encode("http://www.facebook.com/praveen.seshadri"),
                             "www.facebook.com/cocacola",
                             true, false);
 
@@ -96,6 +90,41 @@ namespace SampleWebRole.Controllers
 
             ViewData["AppFacepileHtml5"] = FBScriptGenerator.GenerateAppFacepile(Style);
 
+        }
+
+        public ActionResult NoAppId()
+        {
+            SetCommonViewData();
+
+            InitHtml5ControlsViewData();
+
+            // TODO: put in appropriate tags
+            ViewData["OpenGraphTags"] = FBScriptGenerator.GenerateOpenGraphTags(
+                "Dummy Title", // title
+                "website", // type
+                "http://www.example.com", // url
+                "http://www.example.com/image.gif", // url of an image
+                "Example of FB controls that don't need AppId", // site name (simple description)
+                FBScriptGenerator.FBAppId); // id of a facebook user or application id
+
+            return View();
+        }
+
+        public ActionResult WithAppId()
+        {
+            SetCommonViewData();
+
+            InitHtml5ControlsViewData();
+
+            // TODO: put in appropriate tags
+            ViewData["OpenGraphTags"] = FBScriptGenerator.GenerateOpenGraphTags(
+                "Dummy Title", // title
+                "website", // type
+                "http://www.example.com", // url
+                "http://www.example.com/image.gif", // url of an image
+                "Example of FB controls that use AppId", // site name (simple description)
+                FBScriptGenerator.FBAppId); // id of a facebook user or application id
+
             return View();
         }
 
@@ -110,12 +139,21 @@ namespace SampleWebRole.Controllers
             {
                 fbService.AddFriendResponse("yahoo");
             }
+            Debug.Assert(true == fbService.Model.AddFriendResponseValid);
 
             return RedirectToAction("Dialogs", "Facebook");
         }
 
         public ActionResult Dialogs()
         {
+            SetCommonViewData();
+
+            Debug.Assert(null != fbService);
+            if (false == fbService.Model.AddFriendResponseValid)
+            {
+                fbService.AddFriendResponse("placeholder");
+            }
+
             ViewData.Model = fbService.Model;
 
             // TODO: put in appropriate tags
@@ -178,53 +216,10 @@ namespace SampleWebRole.Controllers
             return View();
         }
 
-        public ActionResult WithAppId()
-        {
-            CodeGenerator.CodeStyle Style = CodeGenerator.CodeStyle.HTML5;
-
-            // TODO: put in appropriate tags
-            ViewData["OpenGraphTags"] = FBScriptGenerator.GenerateOpenGraphTags(
-                "Dummy Title", // title
-                "website", // type
-                "http://www.example.com", // url
-                "http://www.example.com/image.gif", // url of an image
-                "Example of FB controls that use AppId", // site name (simple description)
-                FBScriptGenerator.FBAppId); // id of a facebook user or application id
-
-            ViewData["FBRoot"] = FBScriptGenerator.GenerateRoot(true);
-
-            ViewData["LikeHtml5"] = FBScriptGenerator.GenerateLike(
-                            Style,
-                            "Ref3",
-                            ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url),
-                            true);
-
-            ViewData["LikeBoxHtml5"] = FBScriptGenerator.GenerateLikeBox(
-                            Style,
-                //                            this.Url.Encode("http://www.facebook.com/praveen.seshadri"),
-                            "www.facebook.com/cocacola",
-                            true, false);
-
-            ViewData["ActivityFeedHtml5"] = FBScriptGenerator.GenerateActivityFeed(
-                                        Style,
-                                        "Ref4",
-                                        "www.huffingtonpost.com,news.yahoo.com");
-
-            ViewData["CommentsHtml5"] = FBScriptGenerator.GenerateComments(
-                            Style,
-                            ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url));
-
-            ViewData["LikeFacepileHtml5"] = FBScriptGenerator.GenerateLikeFacepile(
-                Style,
-                ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url));
-
-            ViewData["AppFacepileHtml5"] = FBScriptGenerator.GenerateAppFacepile(Style);
-
-            return View();
-        }
-
         public ActionResult Queries()
         {
+            SetCommonViewData();
+
             CodeGenerator.CodeStyle Style = CodeGenerator.CodeStyle.HTML5;
 
             ViewData["FBRoot"] = FBScriptGenerator.GenerateRoot(true);
@@ -251,6 +246,8 @@ namespace SampleWebRole.Controllers
         // **************************************
         public ActionResult LogOn()
         {
+            SetCommonViewData();
+
             ViewData["FBRoot"] = FBScriptGenerator.GenerateRoot(true);
             ViewData["FBLoginHtml5"] = FBScriptGenerator.GenerateLogin(CodeGenerator.CodeStyle.HTML5, null, true, 200, 1);
 
@@ -265,6 +262,8 @@ namespace SampleWebRole.Controllers
         // **************************************
         public ActionResult Register()
         {
+            SetCommonViewData();
+
             ViewData["FBRoot"] = FBScriptGenerator.GenerateRoot(true);
 
             string RegistrationCallbackUri = (null != ConfigHelper.GetConfigurationSettingValue(FBRegCallbackKey)) ?

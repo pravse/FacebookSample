@@ -12,9 +12,9 @@ namespace SampleWebRole.Controllers
     {
         public ActionResult Index()
         {
+            SetCommonViewData();
+
             ViewData["Message"] = "Welcome to the Facebook Sample App";
-            System.Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            ViewData["AppBuildVersion"] = version.ToString();
             return View();
         }
 

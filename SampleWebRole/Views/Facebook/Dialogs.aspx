@@ -29,7 +29,7 @@
 
         $(function () {
             // any jquery stuff you want to add
-            alert("document.ready: started. Response valid = " + "<%= this.Model.AddFriendResponseValid%>");
+            alert("document.ready: started. Response valid = " + "<%= this.Model.AddFriendResponseValid%>" + " Response = " + "<%= this.Model.AddFriendResponse%>");
             if (true == <%= this.Model.AddFriendResponseValid.ToString().ToLower()%>) {
                 alert("Received message from action: " + "<%= this.Model.AddFriendResponse%>");
             }

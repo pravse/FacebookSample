@@ -41,11 +41,15 @@ namespace SampleWebRole.Controllers
 
 #endif
 
+        public System.Version  CodeVersion;   // useful to print the build version with the app UI
+
         public CodeGenerator FBScriptGenerator { get; set; }
 
         protected override void Initialize(RequestContext requestContext)
         {
             base.Initialize(requestContext);
+
+            CodeVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
 
             JavascriptSDKOptions Options = new JavascriptSDKOptions();
             Options.AppId = ConfigHelper.GetConfigurationSettingValue(FBAppIdLookupKey);
@@ -57,6 +61,11 @@ namespace SampleWebRole.Controllers
             Options.ParseXFBML = true;
 
             FBScriptGenerator = new CodeGenerator(Options);
+        }
+
+        protected void SetCommonViewData()
+        {
+            ViewData["AppBuildVersion"] = CodeVersion.ToString();
         }
 
    
