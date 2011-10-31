@@ -2,13 +2,16 @@
 <%
     if (Request.IsAuthenticated) {
 %>
-        Welcome <b><%: Page.User.Identity.Name %></b>!
+        <div id="LogOff">
         [ <%: Html.ActionLink("Log Off", "LogOff", "Facebook") %> ]
+        </div>
 <%
     }
     else {
 %> 
+        <div id="LogOn">
         [ <%: Html.ActionLink("Log On", "LogOn", "Facebook") %> ]
+        </div>
 <%
     }
 %>

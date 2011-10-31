@@ -12,24 +12,23 @@
     <script type="text/javascript" src="../Scripts/jquery-1.4.1.js"></script>
     <script type="text/javascript">
 
-        function PostFBInit() {
-            FB.getLoginStatus(function (response) {
-                if (response.authResponse) {
+        function PostFBAuth() {
+                if (FBIsAuthenticated) {
                     $('#LoggedIn')[0].style.display = "";
                     $('#NotLoggedIn')[0].style.display = "none";
-                    $('#LoggedIn')[0].innerHTML = "Welcome " + response.authResponse.userID + ". You are already logged in with access token " + response.authResponse.accessToken + "\n";
+                    $('#LoggedIn')[0].innerHTML = "Welcome " + FBUserName + ". You are already logged in with access token " + FBAccessToken + "\n";
                 }
                 else {
                     $('#LoggedIn')[0].style.display = "none";
                     $('#NotLoggedIn')[0].style.display = "";
                 }
-            });
+            };
         }
 
         $(function () {
             $('#LoggedIn')[0].style.display = "none";
             $('#NotLoggedIn')[0].style.display = "none";
-        });
+        };
 
     </script>
 </asp:Content>

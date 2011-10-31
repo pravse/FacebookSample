@@ -88,7 +88,7 @@ namespace FacebookIntegration
                 returnHTML = "<div class=\"fb-login-button\" " +
                                             "data-show-faces=\"" + ((true == ShowFaces) ? "true" : "false") + "\" " +
                                             "data-width=\"" + DataWidth + "\" " +
-                                            "data-max-rows=\"" + MaxDataRows +
+                                            "data-max-rows=\"" + MaxDataRows + "\" " +
                                             ((null != Permissions) ? Permissions.GetPermissionList() : "") +
                                             "></div>";
             }
@@ -114,9 +114,9 @@ namespace FacebookIntegration
             if (CodeStyle.HTML5 == Style)
             {
                 // note ---- this only exists in XFBML right now. Cheat for now and return XFBML until FB fixes this
-                returnHTML = "<fb:login-button " +
+                returnHTML = "<div><fb:login-button " +
                                             "registration-url=\"" + RegisterCallbackUri + "\" " +
-                                            "/>";
+                                            "/></div>";
             }
             else
             {

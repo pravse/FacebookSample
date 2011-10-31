@@ -53,7 +53,7 @@ namespace SampleWebRole.Controllers
 
             ViewData["AppFacepileIFrame"] = FBScriptGenerator.GenerateAppFacepile(Style);
 
-            return View();
+            return View("IFramePlugins");
         }
 
         public void InitHtml5ControlsViewData()
@@ -107,7 +107,7 @@ namespace SampleWebRole.Controllers
                 "Example of FB controls that don't need AppId", // site name (simple description)
                 FBScriptGenerator.FBAppId); // id of a facebook user or application id
 
-            return View();
+            return View("NoAppId");
         }
 
         public ActionResult WithAppId()
@@ -125,7 +125,7 @@ namespace SampleWebRole.Controllers
                 "Example of FB controls that use AppId", // site name (simple description)
                 FBScriptGenerator.FBAppId); // id of a facebook user or application id
 
-            return View();
+            return View("WithAppId");
         }
 
         public ActionResult AddFriendCallback()
@@ -151,10 +151,6 @@ namespace SampleWebRole.Controllers
             SetCommonViewData();
 
             Debug.Assert(null != fbService);
-            if (false == fbService.Model.AddFriendResponseValid)
-            {
-                fbService.AddFriendResponse("placeholder");
-            }
 
             ViewData.Model = fbService.Model;
 
@@ -215,7 +211,7 @@ namespace SampleWebRole.Controllers
                                      "http://static.howstuffworks.com/gif/willow/goldfish-info0.gif",
                                      true);
 
-            return View();
+            return View("Dialogs");
         }
 
         public ActionResult Queries()
@@ -240,7 +236,7 @@ namespace SampleWebRole.Controllers
                             "http://www.facebook.com/cocacola",
                             true, true);
 
-            return View();
+            return View("Queries");
         }
 
         // **************************************
@@ -256,7 +252,7 @@ namespace SampleWebRole.Controllers
             ViewData["FBRegisterOrLoginHtml5"] = FBScriptGenerator.GenerateRegisterOrLogin(CodeGenerator.CodeStyle.HTML5,
                       ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Register", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url));
 
-            return View();
+            return View("LogOn");
         }
 
         // **************************************
@@ -280,7 +276,7 @@ namespace SampleWebRole.Controllers
                 ViewData["SignedRequest"] = SignedRequest;
             }
  
-            return View();
+            return View("Register");
         }
 
         [HttpPost]
