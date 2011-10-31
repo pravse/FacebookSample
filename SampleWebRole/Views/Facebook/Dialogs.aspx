@@ -16,15 +16,11 @@
     <script type="text/javascript">
         
         PostFBInit = function() {
-            alert("PostFBInit: Got to stage A");
             FB.getLoginStatus(function (response) {
-                alert("PostFBInit: Got to stage B");
                 if (response.authResponse) {
                     $("a").each(function () {
                         if (null != this.href.match("ACCESS_TOKEN_STUB")) {
-                            alert("PostFBInit: Found href :" + this.href);
                             this.href = this.href.replace("ACCESS_TOKEN_STUB", response.authResponse.accessToken);
-                            alert("PostFBInit: replaced by href :" + this.href);
                         }
                     });
                 }

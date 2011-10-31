@@ -106,6 +106,10 @@ namespace SampleWebRole.Controllers
             {
                 fbService.AddFriendResponse(this.Request["action"]);
             }
+            else
+            {
+                fbService.AddFriendResponse("yahoo");
+            }
 
             return RedirectToAction("Dialogs", "Facebook");
         }

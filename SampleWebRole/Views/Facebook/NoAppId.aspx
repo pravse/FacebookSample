@@ -34,29 +34,29 @@
     <table>
         <tr>
             <td>
-        Here is some general content with a Like Button. 
+        <p>Here is some general content with a Like Button. </p>
         <%= ViewData["LikeHtml5"] %>
             </td>
+           <td>
+        <p>Here is a like Facepile (photos of users who like this page). This will be empty if no users currently like this page.</p>
+        <%= ViewData["LikeFacepileHtml5"] %>
+            </td>
+           <td>
+        <p>Here is an App Facepile (photos of people who signed up for this Facebook app). This will be empty if no users currently are signed up for this app.</p>
+        <%= ViewData["AppFacepileHtml5"] %>
+            </td>
+         </tr>
+        <tr>
             <td>
-        Add some comments to this page ...
+        <p>Add some comments to this page ...</p>
         <%= ViewData["CommentsHtml5"] %>
             </td>
             <td>
-         Here is an Activity Feed (for the www.huffingtonpost.com and news.yahoo.com 
-        domains).
+         <p>Here is an Activity Feed (for the www.huffingtonpost.com and news.yahoo.com domains).</p>
         <%= ViewData["ActivityFeedHtml5"] %> 
             </td>
-        </tr>
-        <tr>
             <td>
-        Here is a like Facepile (photos of users who like this page). This will be empty if no users currently like this page.
-        <%= ViewData["LikeFacepileHtml5"] %>
-
-        Here is an App Facepile (photos of people who signed up for this Facebook app). This will be empty if no users currently are signed up for this app.
-        <%= ViewData["AppFacepileHtml5"] %>
-            </td>
-            <td>
-         LikeBox to like the CocaCola page (this only works for commercial FB pages, not user pages)
+         <p>LikeBox to like the CocaCola page (this only works for commercial FB pages, not user pages)</p>
         <%= ViewData["LikeBoxHtml5"] %>
             </td>
        </tr>
