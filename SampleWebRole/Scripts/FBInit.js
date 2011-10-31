@@ -18,8 +18,8 @@ function AuthStatusDelegate(response) {
             FBAccessToken = response.authResponse.accessToken;
             alert("Got to this point");
             FB.api('/me?access_token='+FBAccessToken, function (response) {
-                FBUserName = response.Name;
-                alert("Got the user name : " + FBUserName);
+                FBUserName = response;
+                alert("Got the user : " + FBUserName);
             });
 
             $("a").each(function () {
