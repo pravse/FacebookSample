@@ -247,7 +247,13 @@ namespace SampleWebRole.Controllers
             SetCommonViewData();
 
             ViewData["FBRoot"] = FBScriptGenerator.GenerateRoot(true);
-            ViewData["FBLoginHtml5"] = FBScriptGenerator.GenerateLogin(CodeGenerator.CodeStyle.HTML5, null, true, 200, 1);
+
+            FBPermissions Permissions = new FBPermissions();
+            Permissions.AddUserPermission(FBUserAndFriendPermissions.ABOUT_ME);
+            Permissions.AddUserPermission(FBUserAndFriendPermissions.BIRTHDAY);
+            Permissions.AddUserPermission(FBUserAndFriendPermissions.EMAIL);
+
+            ViewData["FBLoginHtml5"] = FBScriptGenerator.GenerateLogin(CodeGenerator.CodeStyle.HTML5, Permissions, true, 200, 1);
 
             ViewData["FBRegisterOrLoginHtml5"] = FBScriptGenerator.GenerateRegisterOrLogin(CodeGenerator.CodeStyle.HTML5,
                       ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Register", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url));
