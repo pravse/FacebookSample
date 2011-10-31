@@ -17,7 +17,7 @@ function AuthStatusDelegate(response) {
             FBUserId = response.authResponse.userID;
             FBAccessToken = response.authResponse.accessToken;
             alert("Got to this point");
-            FB.api('/me', function (response) {
+            FB.api('/me?access_token='+FBAccessToken, function (response) {
                 FBUserName = response.Name;
                 alert("Got the user name : " + FBUserName);
             });

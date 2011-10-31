@@ -7,6 +7,10 @@
 <asp:Content ID="JQueryInclude" ContentPlaceHolderID="JQuery" runat="server">
     <script type="text/javascript" src="../Scripts/jquery-1.4.1.js"></script>
     <script type="text/javascript">
+
+        function PostFBAuth() {
+        };
+
         $(function () {
             // any jquery stuff you want to add
         });
@@ -14,6 +18,7 @@
 </asp:Content>
 
 <asp:Content ID="registerContent" ContentPlaceHolderID="MainContent" runat="server">
+    <%= this.ViewData["FBRoot"] %>
     <h2>Register</h2>
 
     <script type="text/javascript">
