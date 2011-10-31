@@ -16,25 +16,27 @@ function AuthStatusDelegate(response) {
             FBIsAuthenticated = true;
             FBUserId = response.authResponse.userID;
             FBAccessToken = response.authResponse.accessToken;
-            alert("Got to this point");
-            FB.api('/me', function (response) {
-                alert("Got the user : " + response.name);
-                FBUserName = response.name;
-            });
-
             $("a").each(function () {
                 if (null != this.href.match("ACCESS_TOKEN_STUB")) {
                     this.href = this.href.replace("ACCESS_TOKEN_STUB", FBAccessToken);
                 }
+            });
+
+            alert("Got to this point");
+            FB.api('/me', function (response) {
+                alert("Got the user : " + response.name);
+                FBUserName = response.name;
+                // poor man's eventing model ---- change to use JQuery custom events
+                if (typeof PostFBAuth == 'function') { PostFBAuth(); }
             });
         }
         else {
             FBIsAuthenticated = false;
             FBUserId = "";
             FBAccessToken = "";
+            // poor man's eventing model ---- change to use JQuery custom events
+            if (typeof PostFBAuth == 'function') { PostFBAuth(); }
         }
-        // poor man's eventing model ---- change to use JQuery custom events
-        if (typeof PostFBAuth == 'function') { PostFBAuth(); }
     };
 
 

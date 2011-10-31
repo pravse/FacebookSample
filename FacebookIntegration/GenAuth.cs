@@ -89,7 +89,7 @@ namespace FacebookIntegration
                                             "data-show-faces=\"" + ((true == ShowFaces) ? "true" : "false") + "\" " +
                                             "data-width=\"" + DataWidth + "\" " +
                                             "data-max-rows=\"" + MaxDataRows + "\" " +
-                                            ((null != Permissions) ? Permissions.GetPermissionList() : "") +
+                                            ((null != Permissions) ? ("perms=\"" + Permissions.GetPermissionList() + "\"") : "") +
                                             "></div>";
             }
             else
