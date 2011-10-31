@@ -92,7 +92,15 @@ namespace FacebookIntegration
 
         private string GetPermissionString(FBUserOrFriends ForWhom, FBUserAndFriendPermissions Perm)
         {
-            return PermissionPrefix(ForWhom) + System.Enum.GetName(typeof(FBUserAndFriendPermissions), Perm).ToLower();
+            if (FBUserAndFriendPermissions.EMAIL == Perm)
+            {
+                Debug.Assert(FBUserOrFriends.USER == ForWhom);
+                return System.Enum.GetName(typeof(FBUserAndFriendPermissions), Perm).ToLower();
+            }
+            else
+            {
+                return PermissionPrefix(ForWhom) + System.Enum.GetName(typeof(FBUserAndFriendPermissions), Perm).ToLower();
+            }
         }
 
         private string GetPermissionString(FBExtendedPermissions Perm)
