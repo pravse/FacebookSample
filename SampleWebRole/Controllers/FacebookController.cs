@@ -252,6 +252,9 @@ namespace SampleWebRole.Controllers
             Permissions.AddUserPermission(FBUserAndFriendPermissions.ABOUT_ME);
             Permissions.AddUserPermission(FBUserAndFriendPermissions.BIRTHDAY);
             Permissions.AddUserPermission(FBUserAndFriendPermissions.EMAIL);
+            Permissions.AddFriendsPermission(FBUserAndFriendPermissions.ABOUT_ME);
+            Permissions.AddExtendedPermission(FBExtendedPermissions.READ_MAILBOX);
+            Permissions.AddExtendedPermission(FBExtendedPermissions.OFFLINE_ACCESS);
 
             ViewData["FBLoginHtml5"] = FBScriptGenerator.GenerateLogin(CodeGenerator.CodeStyle.HTML5, Permissions, true, 200, 1);
 
