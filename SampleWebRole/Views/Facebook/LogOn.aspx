@@ -23,12 +23,11 @@
                     $('#NotLoggedIn')[0].style.display = "";
                 }
             };
-        }
 
         $(function () {
             $('#LoggedIn')[0].style.display = "none";
-            $('#NotLoggedIn')[0].style.display = "none";
-        };
+            $('#NotLoggedIn')[0].style.display = "";
+        });
 
     </script>
 </asp:Content>
