@@ -16,8 +16,10 @@ function AuthStatusDelegate(response) {
             FBIsAuthenticated = true;
             FBUserId = response.authResponse.userID;
             FBAccessToken = response.authResponse.accessToken;
+            alert("Got to this point");
             FB.api('/me', function (response) {
                 FBUserName = response.Name;
+                alert("Got the user name : " + FBUserName);
             });
 
             $("a").each(function () {
