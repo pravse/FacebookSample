@@ -141,7 +141,9 @@ namespace SampleWebRole.Controllers
             }
             Debug.Assert(true == fbService.Model.AddFriendResponseValid);
 
-            return RedirectToAction("Dialogs", "Facebook");
+            // return RedirectToAction("Dialogs", "Facebook");
+            // Better to redirect, but doing this for now to ensure that the same controller state is maintained
+            return Dialogs();
         }
 
         public ActionResult Dialogs()
