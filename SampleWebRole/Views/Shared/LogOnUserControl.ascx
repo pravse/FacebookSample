@@ -1,17 +1,11 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
+        <div id="LogOn">
 <%
     if (Request.IsAuthenticated) {
-%>
-        <div id="LogOff">
-        [ <%: Html.ActionLink("Log Off", "LogOff", "Facebook") %> ]
-        </div>
-<%
+       Html.ActionLink("Log Off", "LogOff", "Facebook") ;
     }
     else {
-%> 
-        <div id="LogOn">
-        [ <%: Html.ActionLink("Log On", "LogOn", "Facebook") %> ]
-        </div>
-<%
+        Html.ActionLink("Log On", "LogOn", "Facebook") ;
     }
 %>
+        </div>

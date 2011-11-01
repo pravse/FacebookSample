@@ -27,7 +27,8 @@ function AuthStatusDelegate(response) {
                 alert("Got the user : " + response.name);
                 FBUserName = response.name;
                 // poor man's eventing model ---- change to use JQuery custom events
-                if (typeof PostFBAuth == 'function') { PostFBAuth(); }
+                // if (typeof PostFBAuth == 'function') { PostFBAuth(); }
+                $("#fb-root").trigger("authsuccess");
             });
         }
         else {
@@ -35,7 +36,7 @@ function AuthStatusDelegate(response) {
             FBUserId = "";
             FBAccessToken = "";
             // poor man's eventing model ---- change to use JQuery custom events
-            if (typeof PostFBAuth == 'function') { PostFBAuth(); }
+            // if (typeof PostFBAuth == 'function') { PostFBAuth(); }
         }
     };
 
