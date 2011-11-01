@@ -26,17 +26,14 @@ function AuthStatusDelegate(response) {
             FB.api('/me', function (response) {
                 alert("Got the user : " + response.name);
                 FBUserName = response.name;
-                // poor man's eventing model ---- change to use JQuery custom events
-                // if (typeof PostFBAuth == 'function') { PostFBAuth(); }
-                $("#fb-root").trigger("authsuccess");
+                $("#fb-root").trigger("authsuccess", { userId: FBUserId, userName: FBUserName, accessToken: FBAccessToken } );
             });
         }
         else {
             FBIsAuthenticated = false;
             FBUserId = "";
             FBAccessToken = "";
-            // poor man's eventing model ---- change to use JQuery custom events
-            // if (typeof PostFBAuth == 'function') { PostFBAuth(); }
+            $("#fb-root").trigger("authfailure");
         }
     };
 

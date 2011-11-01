@@ -12,11 +12,11 @@
     <script type="text/javascript" src="../Scripts/jquery-1.4.1.js"></script>
     <script type="text/javascript">
 
-        function PostFBAuth(event) {
+        function PostFBAuth(event, params) {
                 if (FBIsAuthenticated) {
                     $('#LoggedIn')[0].style.display = "";
                     $('#NotLoggedIn')[0].style.display = "none";
-                    $('#LoggedIn')[0].innerHTML = 'Welcome ' + FBUserName + '!. You are already logged into Facebook already.';
+                    $('#LoggedIn')[0].innerHTML = 'Welcome ' + params.userName + '!. You are already logged into Facebook already.';
                 }
                 else {
                     $('#LoggedIn')[0].style.display = "none";
@@ -28,7 +28,7 @@
             $(function () {
                 $('#LoggedIn')[0].style.display = "none";
                 $('#NotLoggedIn')[0].style.display = "";
-                $("#fb-root").bind("authsuccess", PostFBAuth);
+                $("#fb-root").bind("authsuccess authfailure", PostFBAuth);
             });
 
     </script>
