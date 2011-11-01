@@ -6,7 +6,25 @@
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="OpenGraphTags" runat="server" />
-    <asp:ContentPlaceHolder ID="JQuery" runat="server" />
+    <script type="text/javascript" src="../Scripts/jquery-1.4.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            // any jquery stuff you want to add
+            if (typeof PostFBAuth == 'function') { $("#fb-root").bind("authsuccess authfailure", PostFBAuth); }
+            if (typeof PageInit == 'function') { $("#header").bind("docready", PageInit); }
+            if (typeof HeaderInit == 'function') { $("#fb-root").bind("authsuccess authfailure", HeaderPostFBAuth); }
+        });
+
+        function HeaderPostFBauth(event, params) {
+            if (params.isAuthenticated) {
+                $('#logindisplay')[0].innerHTML = 'Welcome ' + params.userName + '!.';
+            }
+            else {
+                $('#logindisplay')[0].innerHTML = "<%:Html.ActionLink("Log On", "LogOn", "Account") %>; 
+            }
+        };
+
+     </script>
 </head>
 
 <body>
@@ -18,7 +36,8 @@
             </div>
               
             <div id="logindisplay">
-                <% Html.RenderPartial("LogOnUserControl"); %>
+                <!-- The text here is a placeholder and will be replaced based on whether the user is logged in or not. -->
+                Log On
             </div> 
             
             <div id="menucontainer">

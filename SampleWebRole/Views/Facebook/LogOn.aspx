@@ -8,35 +8,33 @@
     <%=this.ViewData["OpenGraphTags"]%>
 </asp:Content>
 
-<asp:Content ID="JQueryInclude" ContentPlaceHolderID="JQuery" runat="server">
-    <script type="text/javascript" src="../Scripts/jquery-1.4.1.js"></script>
-    <script type="text/javascript">
-
-        function PostFBAuth(event, params) {
-                if (FBIsAuthenticated) {
-                    $('#LoggedIn')[0].style.display = "";
-                    $('#NotLoggedIn')[0].style.display = "none";
-                    $('#LoggedIn')[0].innerHTML = 'Welcome ' + params.userName + '!. You are already logged into Facebook already.';
-                }
-                else {
-                    $('#LoggedIn')[0].style.display = "none";
-                    $('#NotLoggedIn')[0].style.display = "";
-                }
-            };
-
-
-            $(function () {
-                $('#LoggedIn')[0].style.display = "none";
-                $('#NotLoggedIn')[0].style.display = "";
-                $("#fb-root").bind("authsuccess authfailure", PostFBAuth);
-            });
-
-    </script>
-</asp:Content>
-
 
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
     <%= this.ViewData["FBRoot"] %>
+    <script type="text/javascript">
+
+        // callback invoked from FB.init delegate
+        function PostFBAuth(event, params) {
+            if (params.isAuthenticated) {
+                $('#LoggedIn')[0].style.display = "";
+                $('#NotLoggedIn')[0].style.display = "none";
+                $('#LoggedIn')[0].innerHTML = 'Welcome ' + params.userName + '!. You are already logged into Facebook already.';
+            }
+            else {
+                $('#LoggedIn')[0].style.display = "none";
+                $('#NotLoggedIn')[0].style.display = "";
+            }
+        };
+
+        // callback invoked from JQuery document.ready delegate
+        function PageInit(event) {
+            $('#LoggedIn')[0].style.display = "none";
+            $('#NotLoggedIn')[0].style.display = "";
+        };
+
+
+    </script>
+
     <h2>Log On and Registration</h2>
 
     <div id="LoggedIn"  style="display:block">

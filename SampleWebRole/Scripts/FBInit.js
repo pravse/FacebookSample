@@ -6,13 +6,14 @@
    d.getElementsByTagName('head')[0].appendChild(js); 
   } (document));
 
-var FBIsAuthenticated = false;
-var FBUserId = "";
-var FBUserName = "";
-var FBAccessToken = "";
 
 function AuthStatusDelegate(response) {
-        if (response.authResponse) {
+    var FBIsAuthenticated = false;
+    var FBUserId = "";
+    var FBUserName = "";
+    var FBAccessToken = "";
+
+    if (response.authResponse) {
             FBIsAuthenticated = true;
             FBUserId = response.authResponse.userID;
             FBAccessToken = response.authResponse.accessToken;
@@ -22,18 +23,18 @@ function AuthStatusDelegate(response) {
                 }
             });
 
-            alert("Got to this point");
+            // alert("Got to this point");
             FB.api('/me', function (response) {
-                alert("Got the user : " + response.name);
+                // alert("Got the user : " + response.name);
                 FBUserName = response.name;
-                $("#fb-root").trigger("authsuccess", { userId: FBUserId, userName: FBUserName, accessToken: FBAccessToken } );
+                $("#fb-root").trigger("authsuccess", { userId: FBUserId, userName: FBUserName, accessToken: FBAccessToken, isAuthenticated: FBIsAuthenticated } );
             });
         }
         else {
             FBIsAuthenticated = false;
             FBUserId = "";
             FBAccessToken = "";
-            $("#fb-root").trigger("authfailure");
+            $("#fb-root").trigger("authfailure", { userId: FBUserId, userName: FBUserName, accessToken: FBAccessToken, isAuthenticated: FBIsAuthenticated });
         }
     };
 
