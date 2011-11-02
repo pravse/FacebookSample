@@ -11,6 +11,7 @@
         $(function () {
             // any jquery stuff you want to add
             CreateLogOnHeader();
+            alert("Got to document.ready");
             if (typeof PostFBAuth == 'function') { $("#fb-root").bind("authsuccess authfailure", PostFBAuth); }
             if (typeof PageInit == 'function') { $("#header").bind("docready", PageInit); }
             if (typeof HeaderInit == 'function') { $("#fb-root").bind("authsuccess authfailure", HeaderPostFBAuth); }
@@ -27,6 +28,7 @@
         }
 
         function HeaderPostFBAuth(event, params) {
+            alert("Got to HeaderPostFBAuth");
             if (params.isAuthenticated) {
                 CreateLogOnHeader();
             }
