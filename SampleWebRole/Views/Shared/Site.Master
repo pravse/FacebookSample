@@ -28,12 +28,12 @@
         }
 
         function HeaderPostFBAuth(event, params) {
-            alert("Got to HeaderPostFBAuth");
+            // alert("Got to HeaderPostFBAuth with " + params.userName);
             if (params.isAuthenticated) {
-                CreateLogOnHeader();
+                CreateLogOffHeader(params.userName);
             }
             else {
-                CreateLogOffHeader(params.userName);
+                CreateLogOnHeader();
             }
         };
 

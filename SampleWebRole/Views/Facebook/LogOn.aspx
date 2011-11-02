@@ -18,7 +18,7 @@
             if (params.isAuthenticated) {
                 $('#LoggedIn')[0].style.display = "";
                 $('#NotLoggedIn')[0].style.display = "none";
-                $('#LoggedIn')[0].innerHTML = 'Welcome ' + params.userName + '!. You are already logged into Facebook already.';
+                $('#LoggedIn')[0].innerHTML = 'Welcome ' + params.userName + '!. You are already logged into Facebook.';
             }
             else {
                 $('#LoggedIn')[0].style.display = "none";
