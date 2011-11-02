@@ -28,7 +28,7 @@
         }
 
         function HeaderPostFBAuth(event, params) {
-            // alert("Got to HeaderPostFBAuth");
+            alert("Got to HeaderPostFBAuth");
             if (params.isAuthenticated) {
                 CreateLogOnHeader();
             }

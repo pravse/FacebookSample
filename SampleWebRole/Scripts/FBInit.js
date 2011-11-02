@@ -28,7 +28,7 @@ function AuthStatusDelegate(response) {
                 // alert("Got the user : " + response.name);
                 FBUserName = response.name;
                 $("#fb-root").trigger("authsuccess", { userId: FBUserId, userName: FBUserName, accessToken: FBAccessToken, isAuthenticated: FBIsAuthenticated } );
-                // alert("Got to auth success");
+                alert("Got to auth success");
             });
         }
         else {
@@ -36,14 +36,14 @@ function AuthStatusDelegate(response) {
             FBUserId = "";
             FBAccessToken = "";
             $("#fb-root").trigger("authfailure", { userId: FBUserId, userName: FBUserName, accessToken: FBAccessToken, isAuthenticated: FBIsAuthenticated });
-            // alert("Got to auth failure");
+            alert("Got to auth failure");
         }
     };
 
 
 // this function will be invoked right after the asynchronous initialization of the FB object
 function PostFBInit() {
-    // alert("Got to PostFBInit");
+    alert("Got to PostFBInit");
     FB.getLoginStatus(AuthStatusDelegate);
 
     //subscribe for any further status changes
