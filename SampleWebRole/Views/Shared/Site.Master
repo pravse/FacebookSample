@@ -22,18 +22,15 @@
         }
 
         function CreateLogOffHeader(UserName) {
-            var innerHtmlString = '<%:Html.ActionLink("Welcome DUUUUDE!", "LogOn", "Facebook") %>';
-            innerHtmlString.replace("DUUUUDE", userName);
-            $('#logindisplay').html(innerHtmlString);
+            var innerHtmlString = '<%:Html.ActionLink("Welcome DUUUUDE!", "LogOff", "Facebook") %>';
+            $('#logindisplay').html(innerHtmlString.replace("DUUUUDE", UserName));
         }
 
         function HeaderPostFBAuth(event, params) {
             if (true == params.isAuthenticated) {
-                alert("Got to HeaderPostFBAuth logoff with " + params.userName);
                 CreateLogOffHeader(params.userName);
             }
             else {
-                alert("Got to HeaderPostFBAuth logon with " + params.userName);
                 CreateLogOnHeader();
             }
         };
