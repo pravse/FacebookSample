@@ -20,7 +20,13 @@
             if (true == <%= this.Model.AddFriendResponseValid.ToString().ToLower()%>) {
                 alert("Received message from action: " + "<%= this.Model.AddFriendResponse%>");
             }
-        });
+        };
+
+        function DeleteAPost() {
+            FB.api('/674675628_168537363238450', 'delete', function(response) {
+                    alert("Got a response to the delete request: " + response);
+                });
+        };
 
     </script>
 
@@ -63,6 +69,7 @@
             </td>
         </tr>
     </table>
+    <button type="button" onclick="DeleteAPost()">Delete a Post</button>
 </asp:Content>
 
 
