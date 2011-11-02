@@ -26,7 +26,7 @@
             $('#logindisplay').html(innerHtmlString);
         }
 
-        function HeaderPostFBauth(event, params) {
+        function HeaderPostFBAuth(event, params) {
             if (params.isAuthenticated) {
                 CreateLogOnHeader();
             }
