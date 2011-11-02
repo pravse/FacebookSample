@@ -10,17 +10,28 @@
     <script type="text/javascript">
         $(function () {
             // any jquery stuff you want to add
+            CreateLogOnHeader();
             if (typeof PostFBAuth == 'function') { $("#fb-root").bind("authsuccess authfailure", PostFBAuth); }
             if (typeof PageInit == 'function') { $("#header").bind("docready", PageInit); }
             if (typeof HeaderInit == 'function') { $("#fb-root").bind("authsuccess authfailure", HeaderPostFBAuth); }
         });
 
+        function CreateLogOnHeader() {
+            $('#logindisplay').html('<%:Html.ActionLink("Log On", "LogOn", "Facebook") %>'); 
+        }
+
+        function CreateLogOffHeader(UserName) {
+            var innerHtmlString = '<%:Html.ActionLink("Welcome DUUUUDE!", "LogOff", "Facebook") %>';
+            innerHtmlString.replace("DUUUUDE", userName);
+            $('#logindisplay').html(innerHtmlString);
+        }
+
         function HeaderPostFBauth(event, params) {
             if (params.isAuthenticated) {
-                $('#logindisplay')[0].innerHTML = 'Welcome ' + params.userName + '!.';
+                CreateLogOnHeader();
             }
             else {
-                $('#logindisplay')[0].innerHTML = "<%:Html.ActionLink("Log On", "LogOn", "Account") %>; 
+                CreateLogOffHeader(params.userName);
             }
         };
 
@@ -37,7 +48,7 @@
               
             <div id="logindisplay">
                 <!-- The text here is a placeholder and will be replaced based on whether the user is logged in or not. -->
-                Log On
+                Placeholder
             </div> 
             
             <div id="menucontainer">

@@ -10,6 +10,7 @@
 
     <script type="text/javascript">
 
+        // page=specific callback invoked from FB.init delegate
         function PostFBAuth(event, params) {
             if (params.isAuthenticated) {
                 $('#AlreadyRegistered')[0].style.display = "none";
@@ -22,6 +23,7 @@
             }
         };
 
+        // page=specific callback invoked from JQuery document.ready delegate
         function PageInit(event) {
             $('#AlreadyRegistered')[0].style.display = "none";
             $('#RegistrationOptions')[0].style.display = "";

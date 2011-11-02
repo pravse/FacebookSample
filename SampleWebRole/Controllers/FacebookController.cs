@@ -295,8 +295,10 @@ namespace SampleWebRole.Controllers
             SignedRequest = this.Request["signed_request"];
             Debug.Assert(null != SignedRequest);
 
-            // should have received a signed request. Get it and try to decipher it
-            return RedirectToAction("Register", "Facebook");
+            // should have received a signed request. Get it and try to decipher it: TODO
+
+            return RedirectToAction("Index", "Home");
+
             /****
             if (ModelState.IsValid)
             {

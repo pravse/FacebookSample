@@ -11,23 +11,19 @@
     Interacting via Dialogs
 </asp:Content>
 
-<asp:Content ID="JQueryInclude" ContentPlaceHolderID="JQuery" runat="server">
-    <script type="text/javascript" src="../Scripts/jquery-1.4.1.js"></script>
+<asp:Content ID="NoJSContent" ContentPlaceHolderID="MainContent" runat="server">
+    <%= this.ViewData["FBRoot"] %>
     <script type="text/javascript">
         
-        $(function () {
-            // any jquery stuff you want to add
+        // page=specific callback invoked from JQuery document.ready delegate
+        function PageInit(event) {
             if (true == <%= this.Model.AddFriendResponseValid.ToString().ToLower()%>) {
                 alert("Received message from action: " + "<%= this.Model.AddFriendResponse%>");
             }
         });
 
     </script>
-</asp:Content>
 
-
-<asp:Content ID="NoJSContent" ContentPlaceHolderID="MainContent" runat="server">
-    <%= this.ViewData["FBRoot"] %>
     <h2>Dialogs</h2>
     <p>
         The Facebook "dialog" controls do not require any authentication to have occurred. 
