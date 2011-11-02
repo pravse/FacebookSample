@@ -43,7 +43,7 @@ function AuthStatusDelegate(response) {
 
 // this function will be invoked right after the asynchronous initialization of the FB object
 function PostFBInit() {
-    alert("Got to PostFBInit");
+    // alert("Got to PostFBInit");
     FB.getLoginStatus(AuthStatusDelegate);
 
     //subscribe for any further status changes
