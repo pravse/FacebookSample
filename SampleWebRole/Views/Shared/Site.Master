@@ -10,11 +10,11 @@
     <script type="text/javascript">
         $(function () {
             // any jquery stuff you want to add
+            // alert("Got to document.ready");
             CreateLogOnHeader();
-            alert("Got to document.ready");
             if (typeof PostFBAuth == 'function') { $("#fb-root").bind("authsuccess authfailure", PostFBAuth); }
             if (typeof PageInit == 'function') { $("#header").bind("docready", PageInit); }
-            if (typeof HeaderInit == 'function') { $("#fb-root").bind("authsuccess authfailure", HeaderPostFBAuth); }
+            if (typeof HeaderPostFBAuth == 'function') { $("#fb-root").bind("authsuccess authfailure", HeaderPostFBAuth); }
         });
 
         function CreateLogOnHeader() {
@@ -28,7 +28,7 @@
         }
 
         function HeaderPostFBAuth(event, params) {
-            alert("Got to HeaderPostFBAuth");
+            // alert("Got to HeaderPostFBAuth");
             if (params.isAuthenticated) {
                 CreateLogOnHeader();
             }
