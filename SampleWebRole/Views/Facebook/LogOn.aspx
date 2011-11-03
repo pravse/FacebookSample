@@ -45,9 +45,13 @@
 
     <div id="AuthUnknown"  style="display:block">
         <p> You are not logged into Facebook. Please do so now. If you have not authorized this app, you will also be asked to do so. </p>
-        <%= this.ViewData["FBRegisterOrLoginHtml5"] %>        
+        <%= this.ViewData["FBLoginHtml5"] %>        
     </div>
 
+    <div id="Registration"  style="display:none">
+        <p> User this only if the app needs an explicit registration system where it needs to ask the user for information that isn't in FB, or it needs to enable users to create new FB accounts</p>
+        <%= this.ViewData["FBRegisterOrLoginHtml5"] %>        
+    </div>
 
 
     <p>
