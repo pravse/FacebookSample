@@ -7,6 +7,7 @@
 
         // callback invoked from FB.init delegate
         function PostFBAuth(event, params) {
+            alert("Status received = " + params.authStatus);
             if ("connected" == params.authStatus) {
                 $('#AuthConnected')[0].style.display = "";
                 $('#AuthNotConnected')[0].style.display = "none";
@@ -38,10 +39,8 @@
     </div>
 
     <div id="AuthNotConnected"  style="display:block">
-
         <p> You are logged into Facebook, but have not authorized this app. Please do so now. </p>
         <%= this.ViewData["FBLoginHtml5"] %>
-        
     </div>
 
     <div id="AuthUnknown"  style="display:block">
