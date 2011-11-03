@@ -34,7 +34,7 @@ function AuthStatusDelegate(response) {
             FBUserId = "";
             FBAccessToken = "";
             var eventName;
-            if (response.status == 'notConnected') {
+            if (response.status == 'not_authorized') {
                 eventName = "authNotConnected";
             }
             else {

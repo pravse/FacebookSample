@@ -13,7 +13,7 @@
                 $('#AuthNotConnected')[0].style.display = "none";
                 $('#AuthUnknown')[0].style.display = "none";
             }
-            else if ("notConnected" == params.authStatus) {
+            else if ("not_authorized" == params.authStatus) {
                 $('#AuthConnected')[0].style.display = "none";
                 $('#AuthNotConnected')[0].style.display = "";
                 $('#AuthUnknown')[0].style.display = "none";
