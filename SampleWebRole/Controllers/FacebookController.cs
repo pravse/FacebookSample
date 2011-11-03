@@ -52,7 +52,7 @@ namespace SampleWebRole.Controllers
             CodeGenerator.CodeStyle Style = CodeGenerator.CodeStyle.HTML5;
             string homeUrl = ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url);
 
-            ViewData["LikeIHtml5"] = FBScriptGenerator.GenerateLike(Style, "Ref1", homeUrl, true);
+            ViewData["LikeHtml5"] = FBScriptGenerator.GenerateLike(Style, "Ref1", homeUrl, true);
             ViewData["LikeBoxHtml5"] = FBScriptGenerator.GenerateLikeBox(Style, "www.facebook.com/cocacola", true, false);
             ViewData["ActivityFeedHtml5"] = FBScriptGenerator.GenerateActivityFeed(Style, "Ref4", "www.huffingtonpost.com,news.yahoo.com");
             ViewData["CommentsHtml5"] = FBScriptGenerator.GenerateComments(Style, homeUrl);
@@ -97,11 +97,6 @@ namespace SampleWebRole.Controllers
             {
                 fbService.AddFriendResponse(this.Request["action"]);
             }
-            else
-            {
-                fbService.AddFriendResponse("yahoo");
-            }
-            Debug.Assert(true == fbService.Model.AddFriendResponseValid);
 
             // return RedirectToAction("Dialogs", "Facebook");
             // Better to redirect, but doing this for now to ensure that the same controller state is maintained

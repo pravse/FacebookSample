@@ -2,7 +2,7 @@
 
 
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
-    <%= this.ViewData["FBRoot"] %>
+    <%= ViewData["FBRoot"] %>
     <script type="text/javascript">
 
         // callback invoked from FB.init delegate

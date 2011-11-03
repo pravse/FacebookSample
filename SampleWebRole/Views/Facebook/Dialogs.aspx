@@ -9,20 +9,15 @@
 </script>
 
 <asp:Content ID="NoJSContent" ContentPlaceHolderID="MainContent" runat="server">
-    <%= this.ViewData["FBRoot"] %>
+    <%= ViewData["FBRoot"]%>
     <script type="text/javascript">
         
         // page=specific callback invoked from JQuery document.ready delegate
         function PageInit(event) {
+            alert("this.Model.AddFriendResponseValid.ToString().ToLower() = " + <%= this.Model.AddFriendResponseValid.ToString().ToLower()%>);
             if (true == <%= this.Model.AddFriendResponseValid.ToString().ToLower()%>) {
                 alert("Received message from action: " + "<%= this.Model.AddFriendResponse%>");
             }
-        };
-
-        function DeleteAPost() {
-            FB.api('/674675628_168537363238450', 'delete', function(response) {
-                    alert("Got a response to the delete request: " + response);
-                });
         };
 
     </script>
@@ -30,7 +25,7 @@
     <p>
         The Facebook "dialog" controls do not require any authentication to have occurred. 
         However, they all do need a Facebook App Id that is specified as a parameter to each dialog. 
-        Each dialog can be open (via href) as a whole page (hosted by Facebook) or can run inside an IFrame on this page.
+        Each dialog can be opened as a whole page (hosted by Facebook) or can run inside an IFrame on this page.
         If using IFrames, there does need to be an authentication token --- i.e. you need to have logged in to Facebook and the user needs to have authenticated the app. 
         See the docs for more details on this. NOTE: so far, I have been unable to get the IFrame examples to work --- get error 191 saying that the redirect_uri is not approved for this app.
     </p>
@@ -65,7 +60,6 @@
             </td>
         </tr>
     </table>
-    <button type="button" onclick="DeleteAPost()">Delete a Post</button>
 </asp:Content>
 
 

@@ -14,9 +14,16 @@ namespace SampleWebRole.Models
     #region Models
     public class SocialModel
     {
+        public bool HasCurrentResponse = false;
+
         public string AddFriendResponse = ""; 
         public bool   AddFriendResponseValid = false;
 
+        public void ResetAllResponses()
+        {
+            HasCurrentResponse = false;
+            AddFriendResponseValid = false;
+        }
     }
 
     #endregion
@@ -25,6 +32,7 @@ namespace SampleWebRole.Models
 
     public interface ISocialService
     {
+        void ResetAllResponses();
         void AddFriendResponse(string responseAction);
         SocialModel Model { get;}
     }
@@ -36,8 +44,13 @@ namespace SampleWebRole.Models
         {
             FBModel.AddFriendResponseValid = true;
             FBModel.AddFriendResponse = responseAction;
+
+            FBModel.HasCurrentResponse = true;
         }
+
         public SocialModel Model { get { return FBModel; } }
+
+        public void ResetAllResponses() { FBModel.ResetAllResponses(); }
     }
     #endregion
 

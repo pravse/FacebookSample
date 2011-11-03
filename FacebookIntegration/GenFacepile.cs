@@ -59,7 +59,7 @@ namespace FacebookIntegration
             }
             else if (CodeStyle.IFRAME == Style)
             {
-                returnHTML = "<iframe src=\"http://www.facebook.com/plugins/facepile.php?appId=" + this.FBAppId + "&amp;" +
+                returnHTML = "<iframe src=\"http://www.facebook.com/plugins/facepile.php?app_id=" + this.FBAppId + "&amp;" +
                                 "width=" + PluginWidth + "\"" +
                                 "scrolling=\"no\" frameborder=\"0\"" +
                                 "style=\"border:none; width:" + PluginWidth + "px; height:80px\"></iframe>";

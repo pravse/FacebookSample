@@ -44,11 +44,11 @@
         </tr>
         <tr>
             <td>
-            In an IFrame ....    
+            <p>In an IFrame ....    </p>
              <%= this.ViewData["FBRegistrationIFrame"] %>
             </td>
             <td>
-            Or via a HTML5 control ....     
+            <p>Or via a HTML5 control ....  </p>   
             <%= this.ViewData["FBRegistrationHtml5"] %>
             </td>
         </tr>
