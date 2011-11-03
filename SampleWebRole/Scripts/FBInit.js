@@ -8,13 +8,11 @@
 
 
 function AuthStatusDelegate(response) {
-    var FBIsAuthenticated = false;
     var FBUserId = "";
-    var FBUserName = "";
     var FBAccessToken = "";
+    var FBStatus = response.status;
 
     if (response.authResponse) {
-            FBIsAuthenticated = true;
             FBUserId = response.authResponse.userID;
             FBAccessToken = response.authResponse.accessToken;
             $("a").each(function () {
@@ -25,18 +23,27 @@ function AuthStatusDelegate(response) {
 
             // alert("Got to this point");
             FB.api('/me', function (response) {
-                // alert("Got the user : " + response.name);
-                FBUserName = response.name;
-                $("#fb-root").trigger("authsuccess", { userId: FBUserId, userName: FBUserName, accessToken: FBAccessToken, isAuthenticated: FBIsAuthenticated } );
-                // alert("Got to auth success");
+                var eventName = "authConnected";
+                $("#fb-root").trigger(eventName,  { userId: FBUserId,
+                                                    userName: response.name,
+                                                    accessToken: FBAccessToken,
+                                                    authStatus: FBStatus });
             });
         }
         else {
-            FBIsAuthenticated = false;
             FBUserId = "";
             FBAccessToken = "";
-            $("#fb-root").trigger("authfailure", { userId: FBUserId, userName: FBUserName, accessToken: FBAccessToken, isAuthenticated: FBIsAuthenticated });
-            // alert("Got to auth failure");
+            var eventName;
+            if (response.status == 'notConnected') {
+                eventName = "authNotConnected";
+            }
+            else {
+                eventName = "authUnknown";
+            }
+            $("#fb-root").trigger(eventName, {  userId: FBUserId,
+                                                userName: "",
+                                                accessToken: FBAccessToken,
+                                                authStatus: FBStatus });
         }
     };
 

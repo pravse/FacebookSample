@@ -7,14 +7,20 @@
 
         // callback invoked from FB.init delegate
         function PostFBAuth(event, params) {
-            if (params.isAuthenticated) {
-                $('#LoggedIn')[0].style.display = "";
-                $('#NotLoggedIn')[0].style.display = "none";
-                $('#LoggedIn')[0].innerHTML = 'Welcome ' + params.userName + '!. You are already logged into Facebook.';
+            if ("connected" == params.authStatus) {
+                $('#AuthConnected')[0].style.display = "";
+                $('#AuthNotConnected')[0].style.display = "none";
+                $('#AuthUnknown')[0].style.display = "none";
+            }
+            else if ("notConnected" == params.authStatus) {
+                $('#AuthConnected')[0].style.display = "none";
+                $('#AuthNotConnected')[0].style.display = "";
+                $('#AuthUnknown')[0].style.display = "none";
             }
             else {
-                $('#LoggedIn')[0].style.display = "none";
-                $('#NotLoggedIn')[0].style.display = "";
+                $('#AuthConnected')[0].style.display = "none";
+                $('#AuthNotConnected')[0].style.display = "none";
+                $('#AuthUnknown')[0].style.display = "";
             }
         };
 
@@ -27,19 +33,20 @@
 
     </script>
 
-    <div id="LoggedIn"  style="display:block">
+    <div id="AuthConnected"  style="display:block">
         You are logged into Facebook already.
     </div>
 
-    <div id="NotLoggedIn"  style="display:block">
-        <p> Simplest way to do this is via the FB Register+Login button</p>
-        <%= this.ViewData["FBRegisterOrLoginHtml5"] %>
+    <div id="AuthNotConnected"  style="display:block">
 
-
-
-        <p> Or if you already have registered this app, just log in now via Facebook</p>
+        <p> You are logged into Facebook, but have not authorized this app. Please do so now. </p>
         <%= this.ViewData["FBLoginHtml5"] %>
         
+    </div>
+
+    <div id="AuthUnknown"  style="display:block">
+        <p> You are not logged into Facebook. Please do so now. If you have not authorized this app, you will also be asked to do so. </p>
+        <%= this.ViewData["FBRegisterOrLoginHtml5"] %>        
     </div>
 
 

@@ -7,7 +7,7 @@
 
         // page=specific callback invoked from FB.init delegate
         function PostFBAuth(event, params) {
-            if (params.isAuthenticated) {
+            if ("connected" == params.authStatus) {
                 $('#AlreadyRegistered')[0].style.display = "";
                 $('#RegistrationOptions')[0].style.display = "none";
                 $('#AlreadyRegisteredMessage')[0].innerHTML = 'Welcome ' + params.userName + '!. You are already registered already.';
