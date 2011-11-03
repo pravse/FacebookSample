@@ -19,6 +19,7 @@
                 alert("Received message from action: " + "<%= this.Model.AddFriendResponse%>");
             }
         };
+        $("#header").bind("docready", PageInit);
 
     </script>
 

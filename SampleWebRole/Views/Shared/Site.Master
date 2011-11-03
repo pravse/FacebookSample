@@ -13,8 +13,8 @@
             // alert("Got to document.ready");
             // CreateLogOnHeader();
             if (typeof PostFBAuth == 'function') { $("#fb-root").bind("authsuccess authfailure", PostFBAuth); }
-            if (typeof PageInit == 'function') { $("#header").bind("docready", PageInit); }
             if (typeof HeaderPostFBAuth == 'function') { $("#fb-root").bind("authsuccess authfailure", HeaderPostFBAuth); }
+            $("#header").trigger("docready"); 
         });
 
         function CreateLogOnHeader() {

@@ -23,6 +23,7 @@
             $('#LoggedIn')[0].style.display = "none";
             $('#NotLoggedIn')[0].style.display = "";
         };
+        $("#header").bind("docready", PageInit);
 
     </script>
 

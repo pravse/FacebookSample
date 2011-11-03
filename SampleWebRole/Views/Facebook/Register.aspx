@@ -24,6 +24,8 @@
             $('#RegistrationOptions')[0].style.display = "";
         };
 
+        $("#header").bind("docready", PageInit);
+
     </script>
 
     <table id="AlreadyRegistered" style="display:none">
