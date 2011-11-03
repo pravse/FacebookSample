@@ -1,13 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
-<asp:Content ID="loginTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Log On
-</asp:Content>
-
-<asp:Content ID="OpenGraphTagsContent" ContentPlaceHolderID="OpenGraphTags" runat="server">
-    <%=this.ViewData["OpenGraphTags"]%>
-</asp:Content>
-
 
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
     <%= this.ViewData["FBRoot"] %>
@@ -32,10 +24,7 @@
             $('#NotLoggedIn')[0].style.display = "";
         };
 
-
     </script>
-
-    <h2>Log On and Registration</h2>
 
     <div id="LoggedIn"  style="display:block">
         You are logged into Facebook already.

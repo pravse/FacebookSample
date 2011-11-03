@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Configuration;
+using System.Diagnostics;
 using SampleWebRole.Models;
 using FacebookIntegration;
 
@@ -63,9 +64,25 @@ namespace SampleWebRole.Controllers
             FBScriptGenerator = new CodeGenerator(Options);
         }
 
-        protected void SetCommonViewData()
+        protected void SetCommonViewData(string PageTitle, string PageUrl, string PageGifUrl, string PageCaption, string PageDescription)
         {
+            Debug.Assert(null != PageTitle);
+            Debug.Assert(null != PageUrl);
+            Debug.Assert(null != PageGifUrl);
+            Debug.Assert(null != PageDescription);
+            Debug.Assert(null != PageCaption);
+
             ViewData["AppBuildVersion"] = CodeVersion.ToString();
+            ViewData["OpenGraphTags"] = FBScriptGenerator.GenerateOpenGraphTags(PageTitle, "website", PageUrl, PageGifUrl, PageDescription, FBScriptGenerator.FBAppId);
+            ViewData["PageTitle"] = PageTitle;
+            ViewData["PageUrl"] = PageUrl;
+            ViewData["PageGifUrl"] = PageGifUrl;
+            ViewData["PageCaption"] = PageCaption;
+            ViewData["PageDescription"] = PageDescription;
+
+            ViewData["FBRoot"] = FBScriptGenerator.GenerateRoot(true);
+            ViewData["FBRootWithoutAppId"] = FBScriptGenerator.GenerateRoot(false);
+
         }
 
    

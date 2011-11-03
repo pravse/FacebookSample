@@ -3,27 +3,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <title><%=this.ViewData["PageTitle"]%></title>
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
-    <asp:ContentPlaceHolder ID="OpenGraphTags" runat="server" />
+    <%=this.ViewData["OpenGraphTags"]%>
     <script type="text/javascript" src="../Scripts/jquery-1.4.1.js"></script>
     <script type="text/javascript">
         $(function () {
             // any jquery stuff you want to add
             // alert("Got to document.ready");
-            CreateLogOnHeader();
+            // CreateLogOnHeader();
             if (typeof PostFBAuth == 'function') { $("#fb-root").bind("authsuccess authfailure", PostFBAuth); }
             if (typeof PageInit == 'function') { $("#header").bind("docready", PageInit); }
             if (typeof HeaderPostFBAuth == 'function') { $("#fb-root").bind("authsuccess authfailure", HeaderPostFBAuth); }
         });
 
         function CreateLogOnHeader() {
-            $('#logindisplay').html('<%:Html.ActionLink("Log On", "LogOn", "Facebook") %>'); 
+            $('#logindisplay').html('<%:Html.ActionLink("Log On", "LogOn", "Facebook") %>');
+            $('#logindisplay')[0].style.display = "block";
         }
 
         function CreateLogOffHeader(UserName) {
             var innerHtmlString = '<%:Html.ActionLink("Welcome DUUUUDE!", "LogOff", "Facebook") %>';
             $('#logindisplay').html(innerHtmlString.replace("DUUUUDE", UserName));
+            $('#logindisplay')[0].style.display = "block";
         }
 
         function HeaderPostFBAuth(event, params) {
@@ -48,7 +50,7 @@
               
             <div id="logindisplay">
                 <!-- The text here is a placeholder and will be replaced based on whether the user is logged in or not. -->
-                Placeholder
+                LogOn
             </div> 
             
             <div id="menucontainer">
@@ -67,6 +69,7 @@
         </div>
 
         <div id="main">
+            <h2><%=this.ViewData["PageCaption"]%></h2>
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
 
             <div id="footer">

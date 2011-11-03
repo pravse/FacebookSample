@@ -7,16 +7,9 @@
 
     }
 </script>
-<asp:Content ID="NoAppId" ContentPlaceHolderID="TitleContent" runat="server">
-    Controls without an AppId
-</asp:Content>
-<asp:Content ID="OpenGraphTagsContent" ContentPlaceHolderID="OpenGraphTags" runat="server">
-    <%=this.ViewData["OpenGraphTags"]%>
-</asp:Content>
 
 <asp:Content ID="NoJSContent" ContentPlaceHolderID="MainContent" runat="server">
     <%= this.ViewData["FBRootWithoutAppId"] %>
-    <h2>No App Id Required</h2>
     <p>
         The Facebook controls on this page require the FB Javascript SDK and HTML5. However, they do not require that the app has registered itself with facebook (i.e. the app does not need an AppId).
         In general, these controls can integrate more richly with the rest of the web page (as compared to IFRAME-based plugins).

@@ -1,25 +1,20 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
-<asp:Content ID="registerTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Register
-</asp:Content>
-
 <asp:Content ID="registerContent" ContentPlaceHolderID="MainContent" runat="server">
     <%= this.ViewData["FBRoot"] %>
-    <h2>Register</h2>
 
     <script type="text/javascript">
 
         // page=specific callback invoked from FB.init delegate
         function PostFBAuth(event, params) {
             if (params.isAuthenticated) {
-                $('#AlreadyRegistered')[0].style.display = "none";
-                $('#RegistrationOptions')[0].style.display = "";
+                $('#AlreadyRegistered')[0].style.display = "";
+                $('#RegistrationOptions')[0].style.display = "none";
                 $('#AlreadyRegisteredMessage')[0].innerHTML = 'Welcome ' + params.userName + '!. You are already registered already.';
             }
             else {
-                $('#AlreadyRegistered')[0].style.display = "";
-                $('#RegistrationOptions')[0].style.display = "none";
+                $('#AlreadyRegistered')[0].style.display = "none";
+                $('#RegistrationOptions')[0].style.display = "";
             }
         };
 

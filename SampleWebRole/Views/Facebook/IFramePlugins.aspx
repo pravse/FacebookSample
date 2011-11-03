@@ -7,15 +7,8 @@
 
     }
 </script>
-<asp:Content ID="NoJSTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Interacting via IFrames
-</asp:Content>
-<asp:Content ID="OpenGraphTagsContent" ContentPlaceHolderID="OpenGraphTags" runat="server">
-    <%=this.ViewData["OpenGraphTags"]%>
-</asp:Content>
 
 <asp:Content ID="NoJSContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>IFrame Plugins</h2>
     <p>
         The Facebook "plugin" controls on this page do not require the FB Javascript SDK. They do not use XFBML/HTML5. 
         Instead, they are all hosted in IFrames. This makes it very simple to add FB plugins to any web page.

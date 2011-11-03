@@ -7,9 +7,6 @@
 
     }
 </script>
-<asp:Content ID="NoJSTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Interacting via Dialogs
-</asp:Content>
 
 <asp:Content ID="NoJSContent" ContentPlaceHolderID="MainContent" runat="server">
     <%= this.ViewData["FBRoot"] %>
@@ -30,7 +27,6 @@
 
     </script>
 
-    <h2>Dialogs</h2>
     <p>
         The Facebook "dialog" controls do not require any authentication to have occurred. 
         However, they all do need a Facebook App Id that is specified as a parameter to each dialog. 

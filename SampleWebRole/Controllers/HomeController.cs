@@ -12,9 +12,14 @@ namespace SampleWebRole.Controllers
     {
         public ActionResult Index()
         {
-            SetCommonViewData();
+            string linkUrl = ConfigHelper.CreateExternalUrl(Request.Url.AbsoluteUri, Request.Url);
+            string linkTitle = "Home page -- FB API Sample";
+            string linkCaption = "Examples of FB API usage";
+            string pictureUrl = "http://static.howstuffworks.com/gif/willow/goldfish-info0.gif";
+            string linkDescription = "Very useful if you don't know the first thing about FB APIs";
 
-            ViewData["Message"] = "Welcome to the Facebook Sample App";
+            SetCommonViewData(linkTitle, linkUrl, pictureUrl, linkCaption, linkDescription);
+
             return View();
         }
 

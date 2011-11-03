@@ -54,8 +54,8 @@ namespace FacebookIntegration
         }
 
         public string SendDialogUri(
-            string RedirectUri,
             string SendTo,
+            string RedirectUri,
             string LinkUri,
             string LinkName,
             string LinkCaption,

@@ -7,12 +7,6 @@
 
     }
 </script>
-<asp:Content ID="NoAppId" ContentPlaceHolderID="TitleContent" runat="server">
-    Facebook Queries
-</asp:Content>
-<asp:Content ID="OpenGraphTagsContent" ContentPlaceHolderID="OpenGraphTags" runat="server">
-    <%=this.ViewData["OpenGraphTags"]%>
-</asp:Content>
 
 <asp:Content ID="NoJSContent" ContentPlaceHolderID="MainContent" runat="server">
     <%= this.ViewData["FBRootWithoutAppId"] %>
