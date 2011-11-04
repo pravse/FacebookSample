@@ -9,11 +9,11 @@
 </script>
 
 <asp:Content ID="NoJSContent" ContentPlaceHolderID="MainContent" runat="server">
-    <%= this.ViewData["FBRootWithoutAppId"] %>
     <p>
-        The Facebook "plugin" controls on this page do not require the FB Javascript SDK. They do not use XFBML/HTML5. 
+        The Facebook "plugin" controls on this page do not require the FB Javascript SDK or an AppId. They do not use XFBML/HTML5. 
         Instead, they are all hosted in IFrames. This makes it very simple to add FB plugins to any web page.
         The downside is that the rest of the page cannot interact with the plugins and the user activity in those plugins.
+        Also note that the login/authentication (top right of the page) doesn't work because without the AppId, Facebook does not permit user authentication.
     </p>
     <table>
         <tr>

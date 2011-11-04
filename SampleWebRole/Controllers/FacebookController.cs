@@ -18,14 +18,10 @@ namespace SampleWebRole.Controllers
     public class FacebookController : FBEnabledController
     {
         string          SignedRequest = null;
-        ISocialService  fbService = null;
-        FBPermissions  permissions;
 
         protected override void Initialize(RequestContext requestContext)
         {
             base.Initialize(requestContext);
-            fbService = new FacebookService();
-            permissions = new FBPermissions();
 
             // a sample set of permissions for demonstration
             permissions.AddUserPermission(FBUserAndFriendPermissions.ABOUT_ME);

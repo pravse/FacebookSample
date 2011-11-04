@@ -13,7 +13,8 @@
     <p>
         The Facebook controls on this page require the FB Javascript SDK and HTML5. However, they do not require that the app has registered itself with facebook (i.e. the app does not need an AppId).
         In general, these controls can integrate more richly with the rest of the web page (as compared to IFRAME-based plugins).
-        If you serve this page on a site that isn't accessible by Facebook (eg: on your localhost for debugging), some of the control will not be fully functional because Facebook checks the calling site.
+        If you serve this page on a site that isn't accessible by Facebook (eg: on your localhost for debugging), some of the controls will not be fully functional because Facebook checks the calling site.
+        Also note that the login/authentication (top right of the page) doesn't work because without the AppId, Facebook does not permit user authentication.
     </p>
     <table>
         <tr>

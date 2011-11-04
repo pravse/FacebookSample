@@ -19,6 +19,9 @@ namespace SampleWebRole.Controllers
         static public string FBAppIdLookupKey = "FBAppId";
         static public string FBRegCallbackKey = "FBRegistrationCallback";
 
+        protected ISocialService fbService = null;
+        protected FBPermissions permissions;
+
 
 #if  !RUNNING_IN_AZURE
         public class ConfigHelper
@@ -62,6 +65,9 @@ namespace SampleWebRole.Controllers
             Options.ParseXFBML = true;
 
             FBScriptGenerator = new CodeGenerator(Options);
+            fbService = new FacebookService();
+            permissions = new FBPermissions();
+
         }
 
         protected virtual void SetCommonViewData(string PageTitle, string PageUrl, string PageGifUrl, string PageCaption, string PageDescription)
