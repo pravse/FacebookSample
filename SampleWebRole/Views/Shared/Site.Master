@@ -20,9 +20,9 @@
             $('#logindisplay')[0].style.display = "block";
         }
 
-        function CreateLogOffHeader(UserName) {
+        function CreateWelcomeHeader(UserName, MissingParams) {
             var innerHtmlString = '<%:Html.ActionLink("Welcome DUUUUDE!", "LogOn", "Facebook") %>';
-            $('#logindisplay').html(innerHtmlString.replace("DUUUUDE", UserName));
+            $('#logindisplay').html(innerHtmlString.replace("DUUUUDE", (MissingParams?UserName+"(need permissions)":UserName)));
             $('#logindisplay')[0].style.display = "block";
         }
 
@@ -37,8 +37,17 @@
         function HeaderPostFBAuth(event, params) {
             if ("connected" == params.authStatus) {
                 alert("Recvd permissions : \n" + DebugPrintJSON(params.authPerms));
-                alert('Expected permissions : \n' + DebugPrintJSON(jQuery.parseJSON('<%=this.ViewData["ExpectedPermissions"]%>')));
-                CreateLogOffHeader(params.userName);
+                var expectedPerms = '<%=this.ViewData["ExpectedPermissions"]%>';
+                alert('Expected permissions : \n' + expectedPerms);
+
+                var missingParams = false;
+                for (prop in expectedPerms) {
+                    if (null == params.authPerms[prop]) {
+                        alert('Missing permission : ' + prop);
+                        missingParams = true;
+                    }
+                } 
+                CreateWelcomeHeader(params.userName, missingParams);
             }
             else {
                 CreateLogOnHeader();
