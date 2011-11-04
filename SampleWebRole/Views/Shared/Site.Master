@@ -39,6 +39,7 @@
             for (prop in expectedPerms) {
                 if (null == authPerms[prop]) {
                     adequatePerms = false;
+                    alert("Missing perm :" + prop);
                     break;
                 }
             }
