@@ -21,26 +21,36 @@ function AuthStatusDelegate(response) {
                 }
             });
 
-            // alert("Got to this point");
-            FB.api('/me', function (response) {
-                var eventName = "authConnected";
-                $("#fb-root").trigger(eventName,  { userId: FBUserId,
-                                                    userName: response.name,
-                                                    accessToken: FBAccessToken,
-                                                    authStatus: FBStatus });
+            FB.api('/me', function (response1) {
+                var FBUserName = response1.name
+                // now check that the user actually provided the desired permissions
+                FB.api('/me/permissions', function (response2) {
+                    var EventName;
+                    alert("Recvd permissions : " + response2);
+                    if (true) {
+                        EventName = "authConnected";
+                    }
+                    else {
+                        EventName = "authPartial";
+                    }
+                    $("#fb-root").trigger(EventName, { userId: FBUserId,
+                                                        userName: FBUserName,
+                                                        accessToken: FBAccessToken,
+                                                        authStatus: FBStatus});
+                });
             });
         }
         else {
             FBUserId = "";
             FBAccessToken = "";
-            var eventName;
+            var EventName;
             if (response.status == 'not_authorized') {
-                eventName = "authNotConnected";
+                EventName = "authNotConnected";
             }
             else {
-                eventName = "authUnknown";
+                EventName = "authUnknown";
             }
-            $("#fb-root").trigger(eventName, {  userId: FBUserId,
+            $("#fb-root").trigger(EventName, {  userId: FBUserId,
                                                 userName: "",
                                                 accessToken: FBAccessToken,
                                                 authStatus: FBStatus });
