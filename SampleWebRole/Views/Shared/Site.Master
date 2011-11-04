@@ -34,20 +34,22 @@
             return returnString;
         };
 
+        function ComparePerms(authPerms, expectedPerms) {
+            var missingPerms = false;
+            for (prop in expectedPerms) {
+                if (null == authPerms[prop]) {
+                    missingPerms = true;
+                }
+            }
+            return missingPerms;
+        };
+
         function HeaderPostFBAuth(event, params) {
             if ("connected" == params.authStatus) {
-                alert("Recvd permissions : \n" + DebugPrintJSON(params.authPerms));
+                // alert("Recvd permissions : \n" + DebugPrintJSON(params.authPerms));
                 var expectedPerms = '<%=this.ViewData["ExpectedPermissions"]%>';
-                alert('Expected permissions : \n' + expectedPerms);
-
-                var missingParams = false;
-                for (prop in expectedPerms) {
-                    if (null == params.authPerms[prop]) {
-                        alert('Missing permission : ' + prop);
-                        missingParams = true;
-                    }
-                } 
-                CreateWelcomeHeader(params.userName, missingParams);
+                // alert('Expected permissions : \n' + expectedPerms);
+                CreateWelcomeHeader(params.userName, ComparePerms(params.authPerms, expectedPerms));
             }
             else {
                 CreateLogOnHeader();

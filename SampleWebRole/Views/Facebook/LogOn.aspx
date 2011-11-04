@@ -7,20 +7,33 @@
 
         // callback invoked from FB.init delegate
         function PostFBAuth(event, params) {
-            if ("connected" == params.authStatus) {
+            var expectedPerms = '<%=this.ViewData["ExpectedPermissions"]%>';
+            var fullPermsGranted = false;
+            if ("connected" == params.authStatus) { fullPermsGranted = ComparePerms(params.authPerms, expectedPerms); }
+
+            if (fullPermsGranted) {
                 $('#AuthConnected')[0].style.display = "";
-                $('#AuthConnected')[0].innerHTML = "You (userID = " + params.userId + ") are logged in with access token " + params.accessToken;
                 $('#AuthNotConnected')[0].style.display = "none";
+                $('#AuthInadequatePerms')[0].style.display = "none";
+                $('#AuthUnknown')[0].style.display = "none";
+                $('#AuthConnected')[0].innerHTML = "You are logged in with access token " + params.accessToken;
+            }
+            else if ("connected" == params.authStatus) {
+                $('#AuthConnected')[0].style.display = "none";
+                $('#AuthNotConnected')[0].style.display = "none";
+                $('#AuthInadequatePerms')[0].style.display = "";
                 $('#AuthUnknown')[0].style.display = "none";
             }
             else if ("not_authorized" == params.authStatus) {
                 $('#AuthConnected')[0].style.display = "none";
                 $('#AuthNotConnected')[0].style.display = "";
+                $('#AuthInadequatePerms')[0].style.display = "none";
                 $('#AuthUnknown')[0].style.display = "none";
             }
             else {
                 $('#AuthConnected')[0].style.display = "none";
                 $('#AuthNotConnected')[0].style.display = "none";
+                $('#AuthInadequatePerms')[0].style.display = "none";
                 $('#AuthUnknown')[0].style.display = "";
             }
         };
@@ -35,16 +48,21 @@
 
     </script>
 
-    <div id="AuthConnected"  style="display:block">
+    <div id="AuthConnected"  style="display:none">
         You are logged into Facebook already.
     </div>
 
-    <div id="AuthNotConnected"  style="display:block">
+    <div id="AuthNotConnected"  style="display:none">
         <p> You are logged into Facebook, but have not authorized this app. Please do so now. </p>
         <%= this.ViewData["FBLoginHtml5"] %>
     </div>
 
-    <div id="AuthUnknown"  style="display:block">
+    <div id="AuthInadequatePerms"  style="display:none">
+        <p> You are logged into Facebook and authorized this app, but without adequate permissions. Please do so now. </p>
+        <%= this.ViewData["FBLoginHtml5"] %>
+    </div>
+
+    <div id="AuthUnknown"  style="display:none">
         <p> You are not logged into Facebook. Please do so now. If you have not authorized this app, you will also be asked to do so. </p>
         <%= this.ViewData["FBLoginHtml5"] %>        
     </div>
