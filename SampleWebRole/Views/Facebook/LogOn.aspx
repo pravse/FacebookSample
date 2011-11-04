@@ -9,6 +9,7 @@
         function PostFBAuth(event, params) {
             if ("connected" == params.authStatus) {
                 $('#AuthConnected')[0].style.display = "";
+                $('#AuthConnected')[0].innerHTML = "You (userID = " + params.userId + ") are logged in with access token " + params.accessToken;
                 $('#AuthNotConnected')[0].style.display = "none";
                 $('#AuthUnknown')[0].style.display = "none";
                 /***
