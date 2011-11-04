@@ -50,3 +50,6 @@ C:\AzureProjects\FBSample\SampleWebRole\bin\System.Web.Mvc.xml
 C:\AzureProjects\FBSample\SampleWebRole\obj\Debug\ResolveAssemblyReference.cache
 C:\AzureProjects\FBSample\SampleWebRole\obj\Debug\MvcWebRole1.dll
 C:\AzureProjects\FBSample\SampleWebRole\obj\Debug\MvcWebRole1.pdb
+C:\AzureProjects\FBSample\SampleWebRole\bin\Newtonsoft.Json.dll
+C:\AzureProjects\FBSample\SampleWebRole\bin\Newtonsoft.Json.pdb
+C:\AzureProjects\FBSample\SampleWebRole\bin\Newtonsoft.Json.xml

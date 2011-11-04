@@ -77,6 +77,7 @@ namespace FacebookIntegration
         /// <returns></returns>
         public string GenerateLogin(
             CodeStyle       Style,
+            string          ButtonText,
             FBPermissions   Permissions = null, 
             bool            ShowFaces=false, 
             int             DataWidth=200, 
@@ -89,8 +90,8 @@ namespace FacebookIntegration
                                             "data-show-faces=\"" + ((true == ShowFaces) ? "true" : "false") + "\" " +
                                             "data-width=\"" + DataWidth + "\" " +
                                             "data-max-rows=\"" + MaxDataRows + "\" " +
-                                            ((null != Permissions) ? ("data-perms=\"" + Permissions.GetPermissionList() + "\"") : "") +
-                                            "></div>";
+                                            ((null != Permissions) ? ("data-perms=\"" + Permissions.Perms + "\"") : "") +
+                                            ">" + ButtonText + "</div>";
             }
             else
             {
@@ -117,7 +118,7 @@ namespace FacebookIntegration
                 // note ---- this only exists in XFBML right now. Cheat for now and return XFBML until FB fixes this
                 returnHTML = "<div><fb:login-button " +
                                             "registration-url=\"" + RegisterCallbackUri + "\" " +
-                                            ((null != Permissions) ? ("perms=\"" + Permissions.GetPermissionList() + "\"") : "") +
+                                            ((null != Permissions) ? ("perms=\"" + Permissions.Perms + "\"") : "") +
                                             "/></div>";
             }
             else

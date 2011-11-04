@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Diagnostics;
+using Newtonsoft.Json;
 
 namespace FacebookIntegration
 {
@@ -111,33 +113,71 @@ namespace FacebookIntegration
         #endregion
 
         // returns a comma-separated list
-        public string GetPermissionList()
+        public string Perms
         {
-            string returnList = "";
-            int permCount = 0;
-
-            foreach (FBUserAndFriendPermissions Perm in userPermissions)
+            get
             {
-                if (permCount > 0) { returnList += ","; }
-                returnList += GetPermissionString(FBUserOrFriends.USER, Perm);
-                permCount++;
-            }
+                string returnList = "";
+                int permCount = 0;
 
-            foreach (FBUserAndFriendPermissions Perm in friendsPermissions)
-            {
-                if (permCount > 0) { returnList += ","; }
-                returnList += GetPermissionString(FBUserOrFriends.FRIENDS, Perm);
-                permCount++;
-            }
+                foreach (FBUserAndFriendPermissions Perm in userPermissions)
+                {
+                    if (permCount > 0) { returnList += ","; }
+                    returnList += GetPermissionString(FBUserOrFriends.USER, Perm);
+                    permCount++;
+                }
 
-            foreach (FBExtendedPermissions Perm in extendedPermissions)
-            {
-                if (permCount > 0) { returnList += ","; }
-                returnList += GetPermissionString(Perm);
-                permCount++;
-            }
+                foreach (FBUserAndFriendPermissions Perm in friendsPermissions)
+                {
+                    if (permCount > 0) { returnList += ","; }
+                    returnList += GetPermissionString(FBUserOrFriends.FRIENDS, Perm);
+                    permCount++;
+                }
 
-            return returnList;
+                foreach (FBExtendedPermissions Perm in extendedPermissions)
+                {
+                    if (permCount > 0) { returnList += ","; }
+                    returnList += GetPermissionString(Perm);
+                    permCount++;
+                }
+
+                return returnList;
+            }
         }
-    }
-}
+
+        // returns a JSON-encoded list
+        public string JSON
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                StringWriter sw = new StringWriter(sb);
+
+                using (JsonWriter jsonWriter = new JsonTextWriter(sw))
+                {
+                    jsonWriter.Formatting = Formatting.Indented;
+
+                    jsonWriter.WriteStartObject();
+                    foreach (FBUserAndFriendPermissions Perm in userPermissions)
+                    {
+                        jsonWriter.WritePropertyName(GetPermissionString(FBUserOrFriends.USER, Perm));
+                        jsonWriter.WriteValue("1");
+                    }
+                    foreach (FBUserAndFriendPermissions Perm in friendsPermissions)
+                    {
+                        jsonWriter.WritePropertyName(GetPermissionString(FBUserOrFriends.FRIENDS, Perm));
+                        jsonWriter.WriteValue("1");
+                    }
+                    foreach (FBExtendedPermissions Perm in extendedPermissions)
+                    {
+                        jsonWriter.WritePropertyName(GetPermissionString(Perm));
+                    }
+                    jsonWriter.WriteEndObject();
+                }
+                sw.Close();
+                return sb.ToString();
+            } // get
+        } // JSON
+
+    } // class
+} // namespace

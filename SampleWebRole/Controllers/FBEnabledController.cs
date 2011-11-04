@@ -64,7 +64,7 @@ namespace SampleWebRole.Controllers
             FBScriptGenerator = new CodeGenerator(Options);
         }
 
-        protected void SetCommonViewData(string PageTitle, string PageUrl, string PageGifUrl, string PageCaption, string PageDescription)
+        protected virtual void SetCommonViewData(string PageTitle, string PageUrl, string PageGifUrl, string PageCaption, string PageDescription)
         {
             Debug.Assert(null != PageTitle);
             Debug.Assert(null != PageUrl);

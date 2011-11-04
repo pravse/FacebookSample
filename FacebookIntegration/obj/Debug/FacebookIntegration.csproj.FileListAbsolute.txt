@@ -13,3 +13,6 @@ C:\AzureProjects\FBSample\FacebookIntegration\bin\Debug\FBIntegration.pdb
 C:\AzureProjects\FBSample\FacebookIntegration\obj\Debug\ResolveAssemblyReference.cache
 C:\AzureProjects\FBSample\FacebookIntegration\obj\Debug\FBIntegration.dll
 C:\AzureProjects\FBSample\FacebookIntegration\obj\Debug\FBIntegration.pdb
+C:\AzureProjects\FBSample\FacebookIntegration\bin\Debug\Newtonsoft.Json.dll
+C:\AzureProjects\FBSample\FacebookIntegration\bin\Debug\Newtonsoft.Json.pdb
+C:\AzureProjects\FBSample\FacebookIntegration\bin\Debug\Newtonsoft.Json.xml

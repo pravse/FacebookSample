@@ -10,10 +10,8 @@
     <script type="text/javascript">
         $(function () {
             // any jquery stuff you want to add
-            // alert("Got to document.ready");
-            // CreateLogOnHeader();
-            if (typeof PostFBAuth == 'function') { $("#fb-root").bind("authConnected authPartial authNotConnected authUnknown", PostFBAuth); }
-            if (typeof HeaderPostFBAuth == 'function') { $("#fb-root").bind("authConnected  authPartial authNotConnected authUnknown", HeaderPostFBAuth); }
+            if (typeof PostFBAuth == 'function') { $("#fb-root").bind("authConnected authNotConnected authUnknown", PostFBAuth); }
+            if (typeof HeaderPostFBAuth == 'function') { $("#fb-root").bind("authConnected  authNotConnected authUnknown", HeaderPostFBAuth); }
             $("#header").trigger("docready"); 
         });
 
@@ -23,13 +21,15 @@
         }
 
         function CreateLogOffHeader(UserName) {
-            var innerHtmlString = '<%:Html.ActionLink("Welcome DUUUUDE!", "LogOff", "Facebook") %>';
+            var innerHtmlString = '<%:Html.ActionLink("Welcome DUUUUDE!", "LogOn", "Facebook") %>';
             $('#logindisplay').html(innerHtmlString.replace("DUUUUDE", UserName));
             $('#logindisplay')[0].style.display = "block";
         }
 
         function HeaderPostFBAuth(event, params) {
             if ("connected" == params.authStatus) {
+                alert("Recvd permissions : \n" + DebugPrintJSON(response2.data[0]));
+                alert("Expected permissions : \n" + "<%=this.ViewData["ExpeectedPermissions"]%>");
                 CreateLogOffHeader(params.userName);
             }
             else {

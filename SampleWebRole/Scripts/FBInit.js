@@ -7,10 +7,10 @@
   } (document));
 
 
-function DebugPrintJSON(JSONString) {
+function DebugPrintJSON(JSONObject) {
     var returnString = "";
-    for (prop in JSONString) {
-        returnString += prop + ":" + JSONString[prop] + "\n";
+    for (prop in JSONObject) {
+        returnString += "\t" + prop + ":" + JSONObject[prop] + "\n";
     }
     return returnString;
   };
@@ -33,18 +33,14 @@ function AuthStatusDelegate(response) {
                 var FBUserName = response1.name
                 // now check that the user actually provided the desired permissions
                 FB.api('/me/permissions', function (response2) {
-                    var EventName;
-                    alert("Recvd permissions : " + DebugPrintJSON(response2.data[0]));
-                    if (true) {
-                        EventName = "authConnected";
-                    }
-                    else {
-                        EventName = "authPartial";
-                    }
+                    var EventName = "authConnected";
+
                     $("#fb-root").trigger(EventName, { userId: FBUserId,
                                                         userName: FBUserName,
                                                         accessToken: FBAccessToken,
-                                                        authStatus: FBStatus});
+                                                        authStatus: FBStatus,
+                                                        authPerms: response2.data[0]
+                                                      });
                 });
             });
         }
@@ -61,7 +57,8 @@ function AuthStatusDelegate(response) {
             $("#fb-root").trigger(EventName, {  userId: FBUserId,
                                                 userName: "",
                                                 accessToken: FBAccessToken,
-                                                authStatus: FBStatus });
+                                                authStatus: FBStatus,
+                                                authPerms : null });
         }
     };
 

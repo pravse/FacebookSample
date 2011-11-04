@@ -12,11 +12,6 @@
                 $('#AuthConnected')[0].innerHTML = "You (userID = " + params.userId + ") are logged in with access token " + params.accessToken;
                 $('#AuthNotConnected')[0].style.display = "none";
                 $('#AuthUnknown')[0].style.display = "none";
-                /***
-                $('#AuthConnected')[0].show();
-                $('#AuthNotConnected')[0].hide();
-                $('#AuthUnknown')[0].hide();
-                ***/
             }
             else if ("not_authorized" == params.authStatus) {
                 $('#AuthConnected')[0].style.display = "none";

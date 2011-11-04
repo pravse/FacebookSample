@@ -19,11 +19,27 @@ namespace SampleWebRole.Controllers
     {
         string          SignedRequest = null;
         ISocialService  fbService = null;
+        FBPermissions  permissions;
 
         protected override void Initialize(RequestContext requestContext)
         {
             base.Initialize(requestContext);
             fbService = new FacebookService();
+            permissions = new FBPermissions();
+
+            // a sample set of permissions for demonstration
+            permissions.AddUserPermission(FBUserAndFriendPermissions.ABOUT_ME);
+            permissions.AddUserPermission(FBUserAndFriendPermissions.BIRTHDAY);
+            permissions.AddUserPermission(FBUserAndFriendPermissions.EMAIL);
+            permissions.AddFriendsPermission(FBUserAndFriendPermissions.ABOUT_ME);
+            permissions.AddExtendedPermission(FBExtendedPermissions.READ_MAILBOX);
+            permissions.AddExtendedPermission(FBExtendedPermissions.OFFLINE_ACCESS);
+        }
+
+        protected override void SetCommonViewData(string PageTitle, string PageUrl, string PageGifUrl, string PageCaption, string PageDescription)
+        {
+            base.SetCommonViewData(PageTitle, PageUrl, PageGifUrl, PageCaption, PageDescription);
+            ViewData["ExpectedPermissions"] = permissions.JSON;
         }
 
         public ActionResult IFramePlugins()
@@ -159,22 +175,12 @@ namespace SampleWebRole.Controllers
             string linkCaption = "How to LogOn via Facebook authentication";
             string pictureUrl = "http://static.howstuffworks.com/gif/willow/goldfish-info0.gif";
             string linkDescription = "Very useful if you don't know the first thing about FB APIs";
+            string registerUrl = ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Register", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url);
 
             SetCommonViewData(linkTitle, linkUrl, pictureUrl, linkCaption, linkDescription);
 
-            FBPermissions Permissions = new FBPermissions();
-            Permissions.AddUserPermission(FBUserAndFriendPermissions.ABOUT_ME);
-            Permissions.AddUserPermission(FBUserAndFriendPermissions.BIRTHDAY);
-            Permissions.AddUserPermission(FBUserAndFriendPermissions.EMAIL);
-            Permissions.AddFriendsPermission(FBUserAndFriendPermissions.ABOUT_ME);
-            Permissions.AddExtendedPermission(FBExtendedPermissions.READ_MAILBOX);
-            Permissions.AddExtendedPermission(FBExtendedPermissions.OFFLINE_ACCESS);
-
-            ViewData["FBLoginHtml5"] = FBScriptGenerator.GenerateLogin(CodeGenerator.CodeStyle.HTML5, Permissions, true, 200, 1);
-
-            ViewData["FBRegisterOrLoginHtml5"] = FBScriptGenerator.GenerateRegisterOrLogin(CodeGenerator.CodeStyle.HTML5,
-                      ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Register", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url),
-                      Permissions);
+            ViewData["FBLoginHtml5"] = FBScriptGenerator.GenerateLogin(CodeGenerator.CodeStyle.HTML5, "LogOn via Facebook", permissions, true, 200, 1);
+            ViewData["FBRegisterOrLoginHtml5"] = FBScriptGenerator.GenerateRegisterOrLogin(CodeGenerator.CodeStyle.HTML5, registerUrl, permissions);
 
             return View("LogOn");
         }
