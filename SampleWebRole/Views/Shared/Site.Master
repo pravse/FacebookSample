@@ -51,7 +51,7 @@
                 alert("Recvd permissions : \n" + DebugPrintJSON(params.authPerms));
                 var expectedPerms = '<%=this.ViewData["ExpectedPermissionsJSON"]%>';
                 alert('Expected permissions : \n' + expectedPerms);
-                CreateWelcomeHeader(params.userName, AdequatePerms(params.authPerms, expectedPerms));
+                CreateWelcomeHeader(params.userName, AdequatePerms(params.authPerms, jQuery.parseJSON(expectedPerms)));
             }
             else {
                 CreateLogOnHeader();

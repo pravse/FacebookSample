@@ -9,7 +9,7 @@
         function PostFBAuth(event, params) {
             var expectedPerms = '<%=this.ViewData["ExpectedPermissionsJSON"]%>';
             var adequatePermsGranted = false;
-            if ("connected" == params.authStatus) { fullPermsGranted = AdequatePerms(params.authPerms, expectedPerms); }
+            if ("connected" == params.authStatus) { fullPermsGranted = AdequatePerms(params.authPerms, jQuery.parseJSON(expectedPerms)); }
 
             if (adequatePermsGranted) {
                 $('#AuthConnected')[0].style.display = "";
