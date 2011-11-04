@@ -39,7 +39,7 @@ namespace SampleWebRole.Controllers
         protected override void SetCommonViewData(string PageTitle, string PageUrl, string PageGifUrl, string PageCaption, string PageDescription)
         {
             base.SetCommonViewData(PageTitle, PageUrl, PageGifUrl, PageCaption, PageDescription);
-            ViewData["ExpectedPermissions"] = permissions.JSON;
+            // ViewData["ExpectedPermissions"] = permissions.JSON;
         }
 
         public ActionResult IFramePlugins()

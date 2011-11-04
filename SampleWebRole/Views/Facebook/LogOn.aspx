@@ -27,8 +27,9 @@
 
         // callback invoked from JQuery document.ready delegate
         function PageInit(event) {
-            $('#LoggedIn')[0].style.display = "none";
-            $('#NotLoggedIn')[0].style.display = "";
+            $('#AuthConnected')[0].style.display = "none";
+            $('#AuthNotConnected')[0].style.display = "none";
+            $('#AuthUnknown')[0].style.display = "";
         };
         $("#header").bind("docready", PageInit);
 
