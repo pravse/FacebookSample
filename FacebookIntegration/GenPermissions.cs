@@ -171,6 +171,7 @@ namespace FacebookIntegration
                     foreach (FBExtendedPermissions Perm in extendedPermissions)
                     {
                         jsonWriter.WritePropertyName(GetPermissionString(Perm));
+                        jsonWriter.WriteValue("1");
                     }
                     jsonWriter.WriteEndObject();
                 }

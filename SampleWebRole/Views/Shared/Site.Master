@@ -29,7 +29,7 @@
         function HeaderPostFBAuth(event, params) {
             if ("connected" == params.authStatus) {
                 alert("Recvd permissions : \n" + DebugPrintJSON(response2.data[0]));
-                alert("Expected permissions : \n" + "<%=this.ViewData["ExpeectedPermissions"]%>");
+                alert('Expected permissions : \n' + '<%=this.ViewData["ExpectedPermissions"]%>');
                 CreateLogOffHeader(params.userName);
             }
             else {
