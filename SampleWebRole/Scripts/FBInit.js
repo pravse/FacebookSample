@@ -7,14 +7,6 @@
   } (document));
 
 
-function DebugPrintJSON(JSONObject) {
-    var returnString = "";
-    for (prop in JSONObject) {
-        returnString += "\t" + prop + ":" + JSONObject[prop] + "\n";
-    }
-    return returnString;
-  };
-
 function AuthStatusDelegate(response) {
     var FBUserId = "";
     var FBAccessToken = "";

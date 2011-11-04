@@ -10,9 +10,10 @@
     <script type="text/javascript">
         $(function () {
             // any jquery stuff you want to add
+            alert("1: got here");
             if (typeof PostFBAuth == 'function') { $("#fb-root").bind("authConnected authNotConnected authUnknown", PostFBAuth); }
             if (typeof HeaderPostFBAuth == 'function') { $("#fb-root").bind("authConnected  authNotConnected authUnknown", HeaderPostFBAuth); }
-            $("#header").trigger("docready"); 
+            $("#header").trigger("docready");
         });
 
         function CreateLogOnHeader() {
@@ -26,10 +27,19 @@
             $('#logindisplay')[0].style.display = "block";
         }
 
+        function DebugPrintJSON(JSONObject) {
+            var returnString = "";
+            for (prop in JSONObject) {
+                returnString += "\t" + prop + ":" + JSONObject[prop] + "\n";
+            }
+            return returnString;
+        };
+
         function HeaderPostFBAuth(event, params) {
+            alert("2: got here");
             if ("connected" == params.authStatus) {
                 alert("Recvd permissions : \n" + DebugPrintJSON(response2.data[0]));
-                alert('Expected permissions : \n' + '<%=this.ViewData["ExpectedPermissions"]%>');
+                // alert('Expected permissions : \n' + '<%=this.ViewData["ExpectedPermissions"]%>');
                 CreateLogOffHeader(params.userName);
             }
             else {
