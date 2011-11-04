@@ -14,10 +14,12 @@
         
         // page=specific callback invoked from JQuery document.ready delegate
         function PageInit(event) {
+             /**
             alert("this.Model.AddFriendResponseValid.ToString().ToLower() = " + <%= this.Model.AddFriendResponseValid.ToString().ToLower()%>);
             if (true == <%= this.Model.AddFriendResponseValid.ToString().ToLower()%>) {
                 alert("Received message from action: " + "<%= this.Model.AddFriendResponse%>");
             }
+            ****/
         };
         $("#header").bind("docready", PageInit);
 

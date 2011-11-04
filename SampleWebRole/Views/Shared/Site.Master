@@ -39,7 +39,7 @@
             for (prop in expectedPerms) {
                 if (null == authPerms[prop]) {
                     adequatePerms = false;
-                    alert("Missing perm :" + prop);
+                    // alert("Missing perm :" + prop);
                     break;
                 }
             }
@@ -48,9 +48,9 @@
 
         function HeaderPostFBAuth(event, params) {
             if ("connected" == params.authStatus) {
-                alert("Recvd permissions : \n" + DebugPrintJSON(params.authPerms));
+                // alert("Recvd permissions : \n" + DebugPrintJSON(params.authPerms));
                 var expectedPerms = '<%=this.ViewData["ExpectedPermissionsJSON"]%>';
-                alert('Expected permissions : \n' + expectedPerms);
+                // alert('Expected permissions : \n' + expectedPerms);
                 CreateWelcomeHeader(params.userName, AdequatePerms(params.authPerms, jQuery.parseJSON(expectedPerms)));
             }
             else {

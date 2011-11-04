@@ -9,7 +9,7 @@
         function PostFBAuth(event, params) {
             var expectedPerms = '<%=this.ViewData["ExpectedPermissionsJSON"]%>';
             var adequatePermsGranted = false;
-            if ("connected" == params.authStatus) { fullPermsGranted = AdequatePerms(params.authPerms, jQuery.parseJSON(expectedPerms)); }
+            if ("connected" == params.authStatus) { adequatePermsGranted = AdequatePerms(params.authPerms, jQuery.parseJSON(expectedPerms)); }
 
             if (adequatePermsGranted) {
                 $('#AuthConnected')[0].style.display = "";
@@ -40,8 +40,8 @@
 
         function FBOAuthDialog() {
             var expectedPerms = '<%=this.ViewData["ExpectedPermissionsCSV"]%>';
-            // no need for a callback handler for FB.login because in any case, an authResponseChange event will be raised and there are already handlers for it
-            FB.login(function (response) { }, { scope: expectedPerms });
+            FB.login(AuthStatusDelegate, { scope: expectedPerms });
+            
         };
 
         // callback invoked from JQuery document.ready delegate
@@ -66,7 +66,6 @@
     <div id="AuthInadequatePerms"  style="display:none">
         <p> You are logged into Facebook and authorized this app, but without adequate permissions. Please do so now. </p>
         <button type="button" onclick="FBOAuthDialog()">Provide Permissions</button>
-        <%= this.ViewData["FBLoginHtml5"] %>
     </div>
 
     <div id="AuthUnknown"  style="display:none">

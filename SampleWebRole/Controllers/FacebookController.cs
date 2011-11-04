@@ -22,21 +22,11 @@ namespace SampleWebRole.Controllers
         protected override void Initialize(RequestContext requestContext)
         {
             base.Initialize(requestContext);
-
-            // a sample set of permissions for demonstration
-            permissions.AddUserPermission(FBUserAndFriendPermissions.ABOUT_ME);
-            permissions.AddUserPermission(FBUserAndFriendPermissions.BIRTHDAY);
-            permissions.AddUserPermission(FBUserAndFriendPermissions.EMAIL);
-            permissions.AddFriendsPermission(FBUserAndFriendPermissions.ABOUT_ME);
-            permissions.AddExtendedPermission(FBExtendedPermissions.READ_MAILBOX);
-            permissions.AddExtendedPermission(FBExtendedPermissions.OFFLINE_ACCESS);
         }
 
         protected override void SetCommonViewData(string PageTitle, string PageUrl, string PageGifUrl, string PageCaption, string PageDescription)
         {
             base.SetCommonViewData(PageTitle, PageUrl, PageGifUrl, PageCaption, PageDescription);
-            ViewData["ExpectedPermissionsJSON"] = permissions.JSON;
-            ViewData["ExpectedPermissionsCSV"] = permissions.CSV;
         }
 
         public ActionResult IFramePlugins()
@@ -176,8 +166,8 @@ namespace SampleWebRole.Controllers
 
             SetCommonViewData(linkTitle, linkUrl, pictureUrl, linkCaption, linkDescription);
 
-            ViewData["FBLoginHtml5"] = FBScriptGenerator.GenerateLogin(CodeGenerator.CodeStyle.HTML5, "LogOn via Facebook", permissions, true, 200, 1);
-            ViewData["FBRegisterOrLoginHtml5"] = FBScriptGenerator.GenerateRegisterOrLogin(CodeGenerator.CodeStyle.HTML5, registerUrl, permissions);
+            ViewData["FBLoginHtml5"] = FBScriptGenerator.GenerateLogin(CodeGenerator.CodeStyle.HTML5, "LogOn via Facebook", fbService.Permissions, true, 200, 1);
+            ViewData["FBRegisterOrLoginHtml5"] = FBScriptGenerator.GenerateRegisterOrLogin(CodeGenerator.CodeStyle.HTML5, registerUrl, fbService.Permissions);
 
             return View("LogOn");
         }
@@ -192,14 +182,12 @@ namespace SampleWebRole.Controllers
             string linkCaption = "How to Register via Facebook";
             string pictureUrl = "http://static.howstuffworks.com/gif/willow/goldfish-info0.gif";
             string linkDescription = "Very useful if you don't know the first thing about FB APIs";
+            string registrationCallbackUrl = ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "RegisterCallback", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url);
 
             SetCommonViewData(linkTitle, linkUrl, pictureUrl, linkCaption, linkDescription);
 
-            string RegistrationCallbackUri = (null != ConfigHelper.GetConfigurationSettingValue(FBRegCallbackKey)) ?
-                                                ConfigHelper.GetConfigurationSettingValue(FBRegCallbackKey) : linkUrl;
-
-            ViewData["FBRegistrationIFrame"] = FBScriptGenerator.GenerateRegister(CodeGenerator.CodeStyle.IFRAME, RegistrationCallbackUri);
-            ViewData["FBRegistrationHtml5"] = FBScriptGenerator.GenerateRegister(CodeGenerator.CodeStyle.HTML5, RegistrationCallbackUri);
+            ViewData["FBRegistrationIFrame"] = FBScriptGenerator.GenerateRegister(CodeGenerator.CodeStyle.IFRAME, registrationCallbackUrl);
+            ViewData["FBRegistrationHtml5"] = FBScriptGenerator.GenerateRegister(CodeGenerator.CodeStyle.HTML5, registrationCallbackUrl);
 
             if (null != SignedRequest)
             {

@@ -17,10 +17,9 @@ namespace SampleWebRole.Controllers
     public abstract class FBEnabledController : Controller
     {
         static public string FBAppIdLookupKey = "FBAppId";
-        static public string FBRegCallbackKey = "FBRegistrationCallback";
+        static public string FBAppSecretLookupKey = "FBAppSecret";
 
         protected ISocialService fbService = null;
-        protected FBPermissions permissions;
 
 
 #if  !RUNNING_IN_AZURE
@@ -66,8 +65,6 @@ namespace SampleWebRole.Controllers
 
             FBScriptGenerator = new CodeGenerator(Options);
             fbService = new FacebookService();
-            permissions = new FBPermissions();
-
         }
 
         protected virtual void SetCommonViewData(string PageTitle, string PageUrl, string PageGifUrl, string PageCaption, string PageDescription)
@@ -86,9 +83,11 @@ namespace SampleWebRole.Controllers
             ViewData["PageCaption"] = PageCaption;
             ViewData["PageDescription"] = PageDescription;
 
+            ViewData["ExpectedPermissionsJSON"] = fbService.Permissions.JSON;
+            ViewData["ExpectedPermissionsCSV"] = fbService.Permissions.CSV;
+
             ViewData["FBRoot"] = FBScriptGenerator.GenerateRoot(true);
             ViewData["FBRootWithoutAppId"] = FBScriptGenerator.GenerateRoot(false);
-
         }
 
    

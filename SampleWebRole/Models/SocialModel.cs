@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using FacebookIntegration;
 
 namespace SampleWebRole.Models
 {
@@ -35,22 +36,41 @@ namespace SampleWebRole.Models
         void ResetAllResponses();
         void AddFriendResponse(string responseAction);
         SocialModel Model { get;}
+        FBPermissions Permissions { get; }
     }
 
     public class FacebookService : ISocialService
     {
-        public SocialModel FBModel = new SocialModel();
-        public void AddFriendResponse(string responseAction)
-        {
-            FBModel.AddFriendResponseValid = true;
-            FBModel.AddFriendResponse = responseAction;
+        private SocialModel   sharedFBModel;
+        private FBPermissions permissions;
 
-            FBModel.HasCurrentResponse = true;
+        public FacebookService()
+        {
+            sharedFBModel = new SocialModel();
+            permissions = new FBPermissions();
+
+            // a set of permissions for use by the app
+            permissions.AddUserPermission(FBUserAndFriendPermissions.ABOUT_ME);
+            permissions.AddUserPermission(FBUserAndFriendPermissions.BIRTHDAY);
+            permissions.AddUserPermission(FBUserAndFriendPermissions.EMAIL);
+            permissions.AddFriendsPermission(FBUserAndFriendPermissions.ABOUT_ME);
+            permissions.AddExtendedPermission(FBExtendedPermissions.READ_MAILBOX);
+            permissions.AddExtendedPermission(FBExtendedPermissions.OFFLINE_ACCESS);
         }
 
-        public SocialModel Model { get { return FBModel; } }
+        public void AddFriendResponse(string responseAction)
+        {
+            sharedFBModel.AddFriendResponseValid = true;
+            sharedFBModel.AddFriendResponse = responseAction;
 
-        public void ResetAllResponses() { FBModel.ResetAllResponses(); }
+            sharedFBModel.HasCurrentResponse = true;
+        }
+
+        public SocialModel Model { get { return sharedFBModel; } }
+
+        public FBPermissions Permissions { get { return permissions; } }
+
+        public void ResetAllResponses() { sharedFBModel.ResetAllResponses(); }
     }
     #endregion
 
