@@ -7,6 +7,14 @@
   } (document));
 
 
+function DebugPrintJSON(JSONString) {
+    var returnString = "";
+    for (prop in JSONString) {
+        returnString += prop + ":" + JSONString[prop] + "\n";
+    }
+    return returnString;
+  };
+
 function AuthStatusDelegate(response) {
     var FBUserId = "";
     var FBAccessToken = "";
@@ -26,7 +34,7 @@ function AuthStatusDelegate(response) {
                 // now check that the user actually provided the desired permissions
                 FB.api('/me/permissions', function (response2) {
                     var EventName;
-                    alert("Recvd permissions : " + response2);
+                    alert("Recvd permissions : " + DebugPrintJSON(response2));
                     if (true) {
                         EventName = "authConnected";
                     }

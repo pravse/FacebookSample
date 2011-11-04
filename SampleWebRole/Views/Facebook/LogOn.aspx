@@ -8,14 +8,14 @@
         // callback invoked from FB.init delegate
         function PostFBAuth(event, params) {
             if ("connected" == params.authStatus) {
-              /****
                 $('#AuthConnected')[0].style.display = "";
                 $('#AuthNotConnected')[0].style.display = "none";
                 $('#AuthUnknown')[0].style.display = "none";
-                ****/
+                /***
                 $('#AuthConnected')[0].show();
                 $('#AuthNotConnected')[0].hide();
                 $('#AuthUnknown')[0].hide();
+                ***/
             }
             else if ("not_authorized" == params.authStatus) {
                 $('#AuthConnected')[0].style.display = "none";
