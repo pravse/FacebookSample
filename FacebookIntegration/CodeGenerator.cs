@@ -21,7 +21,7 @@ namespace FacebookIntegration
 
         public string GetInitParameters(bool WithAppId)
         {
-            return      ((null == WithAppId)?"":("   appId  : '" + AppId + "',")) +
+            return      ((false == WithAppId)?"":("   appId  : '" + AppId + "',")) +
                         ((null == ChannelUrl)?"":("   channelURL  : '" + ChannelUrl + "',")) +
                         "   status   : " + (CheckLoginStatus?"true":"false") + "," +
                         "   cookie   : " + (EnableCookies ? "true" : "false") + "," +

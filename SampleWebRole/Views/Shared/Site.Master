@@ -37,7 +37,7 @@
         function HeaderPostFBAuth(event, params) {
             if ("connected" == params.authStatus) {
                 alert("Recvd permissions : \n" + DebugPrintJSON(params.authPerms));
-                alert('Expected permissions : \n' + '<%=this.ViewData["ExpectedPermissions"]%>');
+                alert('Expected permissions : \n' + DebugPrintJSON(jQuery.parseJSON('<%=this.ViewData["ExpectedPermissions"]%>')));
                 CreateLogOffHeader(params.userName);
             }
             else {

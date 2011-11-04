@@ -155,7 +155,7 @@ namespace FacebookIntegration
 
                 using (JsonWriter jsonWriter = new JsonTextWriter(sw))
                 {
-                    jsonWriter.Formatting = Formatting.Indented;
+                    jsonWriter.Formatting = Formatting.None;
 
                     jsonWriter.WriteStartObject();
                     foreach (FBUserAndFriendPermissions Perm in userPermissions)
