@@ -20,9 +20,9 @@
             $('#logindisplay')[0].style.display = "block";
         }
 
-        function CreateWelcomeHeader(UserName, MissingParams) {
+        function CreateWelcomeHeader(UserName, AdequatePerms) {
             var innerHtmlString = '<%:Html.ActionLink("Welcome DUUUUDE!", "LogOn", "Facebook") %>';
-            $('#logindisplay').html(innerHtmlString.replace("DUUUUDE", (MissingParams?UserName+"(need permissions)":UserName)));
+            $('#logindisplay').html(innerHtmlString.replace("DUUUUDE", (AdequatePerms?UserName:UserName+"(need permissions)")));
             $('#logindisplay')[0].style.display = "block";
         }
 
@@ -34,14 +34,15 @@
             return returnString;
         };
 
-        function ComparePerms(authPerms, expectedPerms) {
-            var missingPerms = false;
+        function AdequatePerms(authPerms, expectedPerms) {
+            var adequatePerms = true;
             for (prop in expectedPerms) {
                 if (null == authPerms[prop]) {
-                    missingPerms = true;
+                    adequatePerms = false;
+                    break;
                 }
             }
-            return missingPerms;
+            return adequatePerms;
         };
 
         function HeaderPostFBAuth(event, params) {
@@ -49,7 +50,7 @@
                 // alert("Recvd permissions : \n" + DebugPrintJSON(params.authPerms));
                 var expectedPerms = '<%=this.ViewData["ExpectedPermissions"]%>';
                 // alert('Expected permissions : \n' + expectedPerms);
-                CreateWelcomeHeader(params.userName, ComparePerms(params.authPerms, expectedPerms));
+                CreateWelcomeHeader(params.userName, AdequatePerms(params.authPerms, expectedPerms));
             }
             else {
                 CreateLogOnHeader();

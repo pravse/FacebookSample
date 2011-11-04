@@ -8,10 +8,10 @@
         // callback invoked from FB.init delegate
         function PostFBAuth(event, params) {
             var expectedPerms = '<%=this.ViewData["ExpectedPermissions"]%>';
-            var fullPermsGranted = false;
-            if ("connected" == params.authStatus) { fullPermsGranted = ComparePerms(params.authPerms, expectedPerms); }
+            var adequatePermsGranted = false;
+            if ("connected" == params.authStatus) { fullPermsGranted = AdequatePerms(params.authPerms, expectedPerms); }
 
-            if (fullPermsGranted) {
+            if (adequatePermsGranted) {
                 $('#AuthConnected')[0].style.display = "";
                 $('#AuthNotConnected')[0].style.display = "none";
                 $('#AuthInadequatePerms')[0].style.display = "none";
