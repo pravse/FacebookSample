@@ -34,7 +34,7 @@ function AuthStatusDelegate(response) {
                 // now check that the user actually provided the desired permissions
                 FB.api('/me/permissions', function (response2) {
                     var EventName;
-                    alert("Recvd permissions : " + DebugPrintJSON(response2));
+                    alert("Recvd permissions : " + DebugPrintJSON(response2.data));
                     if (true) {
                         EventName = "authConnected";
                     }
