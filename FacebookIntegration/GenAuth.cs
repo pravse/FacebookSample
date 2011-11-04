@@ -90,7 +90,7 @@ namespace FacebookIntegration
                                             "data-show-faces=\"" + ((true == ShowFaces) ? "true" : "false") + "\" " +
                                             "data-width=\"" + DataWidth + "\" " +
                                             "data-max-rows=\"" + MaxDataRows + "\" " +
-                                            ((null != Permissions) ? ("data-perms=\"" + Permissions.Perms + "\"") : "") +
+                                            ((null != Permissions) ? ("data-perms=\"" + Permissions.CSV + "\"") : "") +
                                             ">" + ButtonText + "</div>";
             }
             else
@@ -118,7 +118,7 @@ namespace FacebookIntegration
                 // note ---- this only exists in XFBML right now. Cheat for now and return XFBML until FB fixes this
                 returnHTML = "<div><fb:login-button " +
                                             "registration-url=\"" + RegisterCallbackUri + "\" " +
-                                            ((null != Permissions) ? ("perms=\"" + Permissions.Perms + "\"") : "") +
+                                            ((null != Permissions) ? ("perms=\"" + Permissions.CSV + "\"") : "") +
                                             "/></div>";
             }
             else

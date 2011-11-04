@@ -113,7 +113,7 @@ namespace FacebookIntegration
         #endregion
 
         // returns a comma-separated list
-        public string Perms
+        public string CSV
         {
             get
             {
