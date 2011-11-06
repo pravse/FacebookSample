@@ -139,6 +139,8 @@ namespace SampleWebRole.Controllers
 
             string dialogsUrl = ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "Dialogs", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url);
             string addFriendCallbackUrl = ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "AddFriendCallback", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url);
+            string sendMessageCallbackUrl = ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "SendMessageCallback", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url);
+            string postToFeedCallbackUrl = ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Facebook", action = "PostToFeedCallback", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url);
             string linkUrl = ConfigHelper.CreateExternalUrl(Request.Url.AbsoluteUri, Request.Url);
             string linkTitle = "Interacting via Dialogs"; 
             string linkCaption = "Example of FB dialogs";
@@ -150,11 +152,11 @@ namespace SampleWebRole.Controllers
             ViewData["FriendsDialogUriPage"] = FBScriptGenerator.FriendDialogUri("Satya.Nadella", addFriendCallbackUrl, false);
             ViewData["FriendsDialogUriIFrame"] = FBScriptGenerator.FriendDialogUri("Satya.Nadella", addFriendCallbackUrl, true);
 
-            ViewData["FeedDialogUriPage"] = FBScriptGenerator.FeedDialogUri(dialogsUrl, linkUrl, linkTitle, linkCaption, linkDescription, pictureUrl, false);
-            ViewData["FeedDialogUriIFrame"] = FBScriptGenerator.FeedDialogUri(dialogsUrl, linkUrl, linkTitle, linkCaption, linkDescription, pictureUrl, true);
+            ViewData["FeedDialogUriPage"] = FBScriptGenerator.FeedDialogUri(postToFeedCallbackUrl, linkUrl, linkTitle, linkCaption, linkDescription, pictureUrl, false);
+            ViewData["FeedDialogUriIFrame"] = FBScriptGenerator.FeedDialogUri(postToFeedCallbackUrl, linkUrl, linkTitle, linkCaption, linkDescription, pictureUrl, true);
 
-            ViewData["SendDialogUriPage"] = FBScriptGenerator.SendDialogUri("praveen.seshadri", dialogsUrl, linkUrl, linkTitle, linkCaption, linkDescription, pictureUrl, false);
-            ViewData["SendDialogUriIFrame"] = FBScriptGenerator.SendDialogUri("praveen.seshadri", dialogsUrl, linkUrl, linkTitle, linkCaption, linkDescription, pictureUrl, true);
+            ViewData["SendDialogUriPage"] = FBScriptGenerator.SendDialogUri("praveen.seshadri", sendMessageCallbackUrl, linkUrl, linkTitle, linkCaption, linkDescription, pictureUrl, false);
+            ViewData["SendDialogUriIFrame"] = FBScriptGenerator.SendDialogUri("praveen.seshadri", sendMessageCallbackUrl, linkUrl, linkTitle, linkCaption, linkDescription, pictureUrl, true);
 
             return View("Dialogs");
         }

@@ -26,7 +26,7 @@
                 if (true == <%= this.Model.PostToFeedResponseValid.ToString().ToLower()%>) {
                     alert("Received message from PostToFeed dialog: " + "<%= this.Model.PostToFeedResponse%>");
                 }
-                var dummy = <%= this.Model.ResetAllResponses() %>
+                var dummy = <%= this.Model.ResetAllResponses().ToString().ToLower() %>;
             }
         };
         $("#header").bind("docready", PageInit);
