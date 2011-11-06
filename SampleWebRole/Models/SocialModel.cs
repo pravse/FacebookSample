@@ -24,13 +24,15 @@ namespace SampleWebRole.Models
         public string PostToFeedResponse = "";
         public bool PostToFeedResponseValid = false;
 
-        public void ResetAllResponses()
+        public bool ResetAllResponses()
         {
             HasCurrentResponse = false;
 
             AddFriendResponseValid = false;
             PostToFeedResponseValid = false;
             SendMessageResponseValid = false;
+
+            return HasCurrentResponse;
         }
     }
 
@@ -40,7 +42,7 @@ namespace SampleWebRole.Models
 
     public interface ISocialService
     {
-        void ResetAllResponses();
+        bool ResetAllResponses();
         void AddFriendResponse(string responseAction);
         void PostToFeedResponse(string postId);
         void SendMessageResponse(string responseAction);
@@ -95,7 +97,7 @@ namespace SampleWebRole.Models
 
         public FBPermissions Permissions { get { return permissions; } }
 
-        public void ResetAllResponses() { sharedFBModel.ResetAllResponses(); }
+        public bool ResetAllResponses() { return sharedFBModel.ResetAllResponses(); }
     }
     #endregion
 
