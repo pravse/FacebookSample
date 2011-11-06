@@ -14,12 +14,20 @@
         
         // page=specific callback invoked from JQuery document.ready delegate
         function PageInit(event) {
-             /**
-            alert("this.Model.AddFriendResponseValid.ToString().ToLower() = " + <%= this.Model.AddFriendResponseValid.ToString().ToLower()%>);
-            if (true == <%= this.Model.AddFriendResponseValid.ToString().ToLower()%>) {
-                alert("Received message from action: " + "<%= this.Model.AddFriendResponse%>");
+             
+            // alert("this.Model.AddFriendResponseValid.ToString().ToLower() = " + <%= this.Model.AddFriendResponseValid.ToString().ToLower()%>);
+            if (true == <%= this.Model.HasCurrentResponse.ToString().ToLower()%>) {
+                if (true == <%= this.Model.AddFriendResponseValid.ToString().ToLower()%>) {
+                    alert("Received message from AddFriend dialog: " + "<%= this.Model.AddFriendResponse%>");
+                }
+                if (true == <%= this.Model.SendMessageResponseValid.ToString().ToLower()%>) {
+                    alert("Received message from SendMessage dialog: " + "<%= this.Model.SendMessageResponse%>");
+                }
+                if (true == <%= this.Model.PostToFeedResponseValid.ToString().ToLower()%>) {
+                    alert("Received message from PostToFeed dialog: " + "<%= this.Model.PostToFeedResponse%>");
+                }
+                <%= this.Model.ResetAllResponses(); %>
             }
-            ****/
         };
         $("#header").bind("docready", PageInit);
 

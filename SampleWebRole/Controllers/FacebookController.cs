@@ -106,6 +106,32 @@ namespace SampleWebRole.Controllers
             return Dialogs();
         }
 
+        public ActionResult SendMessageCallback()
+        {
+            Debug.Assert(null != fbService);
+            if (null != this.Request["action"])
+            {
+                fbService.SendMessageResponse(this.Request["action"]);
+            }
+
+            // return RedirectToAction("Dialogs", "Facebook");
+            // Better to redirect, but doing this for now to ensure that the same controller state is maintained
+            return Dialogs();
+        }
+
+        public ActionResult PostToFeedCallback()
+        {
+            Debug.Assert(null != fbService);
+            if (null != this.Request["post_id"])
+            {
+                fbService.PostToFeedResponse(this.Request["post_id"]);
+            }
+
+            // return RedirectToAction("Dialogs", "Facebook");
+            // Better to redirect, but doing this for now to ensure that the same controller state is maintained
+            return Dialogs();
+        }
+
         public ActionResult Dialogs()
         {
             Debug.Assert(null != fbService);

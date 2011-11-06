@@ -19,11 +19,18 @@ namespace SampleWebRole.Models
 
         public string AddFriendResponse = ""; 
         public bool   AddFriendResponseValid = false;
+        public string SendMessageResponse = "";
+        public bool SendMessageResponseValid = false;
+        public string PostToFeedResponse = "";
+        public bool PostToFeedResponseValid = false;
 
         public void ResetAllResponses()
         {
             HasCurrentResponse = false;
+
             AddFriendResponseValid = false;
+            PostToFeedResponseValid = false;
+            SendMessageResponseValid = false;
         }
     }
 
@@ -35,7 +42,9 @@ namespace SampleWebRole.Models
     {
         void ResetAllResponses();
         void AddFriendResponse(string responseAction);
-        SocialModel Model { get;}
+        void PostToFeedResponse(string postId);
+        void SendMessageResponse(string responseAction);
+        SocialModel Model { get; }
         FBPermissions Permissions { get; }
     }
 
@@ -62,6 +71,22 @@ namespace SampleWebRole.Models
         {
             sharedFBModel.AddFriendResponseValid = true;
             sharedFBModel.AddFriendResponse = responseAction;
+
+            sharedFBModel.HasCurrentResponse = true;
+        }
+
+        public void PostToFeedResponse(string postId)
+        {
+            sharedFBModel.PostToFeedResponseValid = true;
+            sharedFBModel.PostToFeedResponse = postId;
+
+            sharedFBModel.HasCurrentResponse = true;
+        }
+
+        public void SendMessageResponse(string responseAction)
+        {
+            sharedFBModel.SendMessageResponseValid = true;
+            sharedFBModel.SendMessageResponse = responseAction;
 
             sharedFBModel.HasCurrentResponse = true;
         }
