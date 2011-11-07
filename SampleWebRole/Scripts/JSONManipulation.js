@@ -13,7 +13,7 @@
         printString += GetTabString(tabLevel) + " } \n";
     }
     else {
-        printString += GetTabString(tabLevel) + JSONObject;
+        printString += '\t' + JSONObject;
     }
     return printString;
 };

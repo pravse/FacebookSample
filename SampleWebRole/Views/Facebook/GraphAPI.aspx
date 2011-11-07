@@ -15,7 +15,7 @@
     </p>
     <script type="text/javascript">
         function GraphAPIData(objectId) {
-            FB.api(objectId, function (response) {
+            FB.api(objectId, { limit : 3 }, function (response) {
                 alert("Recvd graph API data : \n" + DebugPrintJSON(response, 0));
             });
         }
@@ -27,6 +27,18 @@
             </td>
             <td>
                 <p><button type="button" onclick="GraphAPIData('4');">All about Zuck</button></p>
+            </td>
+            <td>
+                <p><button type="button" onclick="GraphAPIData('me/posts');">My posts (most recent 3)</button></p>
+            </td>
+            <td>
+                <p><button type="button" onclick="GraphAPIData('me/friends');">My friends (limit 3)</button></p>
+            </td>
+            <td>
+                <p><button type="button" onclick="GraphAPIData('me/home');">My news feed (limit 3)</button></p>
+            </td>
+            <td>
+                <p><button type="button" onclick="GraphAPIData('me?metadata=1');">All my connections</button></p>
             </td>
         </tr>
     </table>
