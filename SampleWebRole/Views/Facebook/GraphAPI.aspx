@@ -38,7 +38,7 @@
                 <p><button type="button" onclick="GraphAPIData('me/home');">My news feed (limit 3)</button></p>
             </td>
             <td>
-                <p><button type="button" onclick="GraphAPIData('me?fields=metadata');">All my connections</button></p>
+                <p><button type="button" onclick="GraphAPIData('me?metadata=1&fields=name');">All my connections</button></p>
             </td>
         </tr>
     </table>

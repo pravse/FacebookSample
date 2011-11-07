@@ -23,10 +23,13 @@
         };
 
         function CreateWelcomeHeader(UserName, AdequatePerms) {
+            $("<img/>").attr('src', 'http://graph.facebook.com/me/picture').appendTo("#logindisplay");
+            /***
             var innerHtmlString = '<%:Html.ActionLink("Welcome DUUUUDE!", "LogOn", "Facebook") %>';
             $('#logindisplay').html(innerHtmlString.replace("DUUUUDE", (AdequatePerms?UserName:UserName+"(need permissions)")));
             // $("<img/>").attr('src', '<%:this.ViewData["MyPictureUrl"]%>').appendTo("#loginDisplay");
             $("<img/>").attr('src', 'http://graph.facebook.com/me/picture').appendTo("#logindisplay");
+            ***/
             $('#logindisplay')[0].style.display = "block";
         };
 
