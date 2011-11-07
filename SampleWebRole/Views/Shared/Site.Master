@@ -28,11 +28,23 @@
         }
 
         function DebugPrintJSON(JSONObject) {
-            var returnString = "";
+            var printString = "";
+            /***
             for (prop in JSONObject) {
                 returnString += "\t" + prop + ":" + JSONObject[prop] + "\n";
             }
-            return returnString;
+            ***/
+            if (typeof JSONObject == 'object') {
+                printString += " { \n";
+                $.each(JSONObject, function (key, value) {
+                    printString += "\t" + key + ":" + DebugPrintJSON(value) + "\n";
+                });
+                printString += " } \n";
+            }
+            else {
+                printString += JSONObject;
+            }
+            return printString;
         };
 
         function AdequatePerms(authPerms, expectedPerms) {
