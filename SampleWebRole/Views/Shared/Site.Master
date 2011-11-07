@@ -24,13 +24,9 @@
 
         function CreateWelcomeHeader(UserName, AdequatePerms) {
             var innerHtmlString = '<%:Html.ActionLink("Welcome DUUUUDE!", "LogOn", "Facebook") %>';
-            innerHtmlString = innerHtmlString.replace("DUUUUDE", (AdequatePerms?UserName:UserName+"(need permissions)"));
-            /**
             $('#logindisplay').html(innerHtmlString.replace("DUUUUDE", (AdequatePerms?UserName:UserName+"(need permissions)")));
-            **/
             // $("<img/>").attr('src', '<%:this.ViewData["MyPictureUrl"]%>').appendTo("#loginDisplay");
-            $("<img/>").attr('src', 'http://graph.facebook.com/praveen.seshadri/picture').appendTo("#loginDisplay");
-            $("#loginDisplay").append(innerHtmlString);
+            $("<img/>").attr('src', 'http://graph.facebook.com/me/picture').appendTo("#logindisplay");
             $('#logindisplay')[0].style.display = "block";
         };
 
