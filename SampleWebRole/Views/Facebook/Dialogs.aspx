@@ -31,6 +31,15 @@
         };
         $("#header").bind("docready", PageInit);
 
+
+        function SendRequestDialog() {
+            FB.ui({method: 'apprequests', message: 'Please click on this trial request'}, SendRequestCallback);
+        }
+
+        function SendRequestCallback(response) {
+            alert ("Received response : request id = " + response.request);
+        }
+
     </script>
 
     <p>
@@ -62,12 +71,14 @@
             </td>
             <td>
                 <h2> Send Dialog</h2>
-                <p>
-        <a href="<%= ViewData["SendDialogUriPage"]%>">Here</a> is a link to a dialog (on a separate page) to send a message.
-                </p>
-                <p>
-        <a href="<%= ViewData["SendDialogUriIFrame"]%>">Here</a> is a link to a dialog (in an IFrame) to send a message.
-                </p>
+                <p><a href="<%= ViewData["SendDialogUriPage"]%>">Here</a> is a link to a dialog (on a separate page) to send a message.</p>
+                <p><a href="<%= ViewData["SendDialogUriIFrame"]%>">Here</a> is a link to a dialog (in an IFrame) to send a message.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h2> Requests Dialog</h2>
+                <p><input type="button" onclick="SendRequestDialog();" value="Send a request to many friends" /></p>
             </td>
         </tr>
     </table>

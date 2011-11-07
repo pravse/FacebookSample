@@ -17,6 +17,7 @@ namespace FacebookIntegration
         public bool   EnableCookies = false;
         public bool   EnableOAuth2 = false;
         public bool   ParseXFBML = false;
+        public bool   FrictionlessRequests = true;
         public bool   EnableLogging = true;
 
         public string GetInitParameters(bool WithAppId)
@@ -27,6 +28,7 @@ namespace FacebookIntegration
                         "   cookie   : " + (EnableCookies ? "true" : "false") + "," +
                         "   oauth    : " + (EnableOAuth2 ? "true" : "false") + "," +
                         "   xfbml    : " + (ParseXFBML ? "true" : "false") + "," +
+                        "   frictionlessRequests    : " + (FrictionlessRequests ? "true" : "false") + "," +
                         "   logging  : " + (EnableLogging ? "true" : "false");
 
         }

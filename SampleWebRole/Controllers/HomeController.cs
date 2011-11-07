@@ -20,6 +20,13 @@ namespace SampleWebRole.Controllers
 
             SetCommonViewData(linkTitle, linkUrl, pictureUrl, linkCaption, linkDescription);
 
+            if (null != this.Request["request_ids"])
+            {
+                // The user has come to this page hosted as a FB canvas page by clicking on a request sent by the application.
+                // The app needs to read the request ids, process them and delete them
+                ViewData["RequestIds"] = this.Request["request_ids"];
+            }
+
             return View();
         }
 
