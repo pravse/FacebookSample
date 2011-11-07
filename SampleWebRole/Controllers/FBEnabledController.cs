@@ -76,7 +76,7 @@ namespace SampleWebRole.Controllers
             Debug.Assert(null != PageCaption);
 
             ViewData["AppBuildVersion"] = CodeVersion.ToString();
-            ViewData["OpenGraphTags"] = FBScriptGenerator.GenerateOpenGraphTags(PageTitle, "website", PageUrl, PageGifUrl, PageDescription, FBScriptGenerator.FBAppId);
+            ViewData["OpenGraphTags"] = FBScriptGenerator.OpenGraphTags(PageTitle, "website", PageUrl, PageGifUrl, PageDescription, FBScriptGenerator.FBAppId);
             ViewData["PageTitle"] = PageTitle;
             ViewData["PageUrl"] = PageUrl;
             ViewData["PageGifUrl"] = PageGifUrl;
@@ -86,8 +86,9 @@ namespace SampleWebRole.Controllers
             ViewData["ExpectedPermissionsJSON"] = fbService.Permissions.JSON;
             ViewData["ExpectedPermissionsCSV"] = fbService.Permissions.CSV;
 
-            ViewData["FBRoot"] = FBScriptGenerator.GenerateRoot(true);
-            ViewData["FBRootWithoutAppId"] = FBScriptGenerator.GenerateRoot(false);
+            ViewData["FBRoot"] = FBScriptGenerator.Root(true);
+            ViewData["FBRootWithoutAppId"] = FBScriptGenerator.Root(false);
+            ViewData["MyPictureUrl"] = FBScriptGenerator.MyPictureUri();
         }
 
    

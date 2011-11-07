@@ -8,7 +8,7 @@ namespace FacebookIntegration
 {
     public partial class CodeGenerator
     {
-        public string GenerateActivityFeed(
+        public string ActivityFeed(
             CodeStyle   Style,                                 
             string      Ref,    // always pass a unique Ref for all FB plugins --- any clickbacks have this passed as a fb_ref parameter
             string      Sites,  // comma-separated list of domains to show activity for

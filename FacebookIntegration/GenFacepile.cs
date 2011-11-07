@@ -15,7 +15,7 @@ namespace FacebookIntegration
         /// <param name="HRef"></param>
         /// <param name="PluginWidth"></param>
         /// <returns></returns>
-        public string GenerateLikeFacepile(
+        public string LikeFacepile(
             CodeStyle Style,
             string HRef,
             int PluginWidth = 200)
@@ -45,7 +45,7 @@ namespace FacebookIntegration
         /// <param name="Style"></param>
         /// <param name="PluginWidth"></param>
         /// <returns></returns>
-        public string GenerateAppFacepile(
+        public string AppFacepile(
             CodeStyle Style,
             int PluginWidth = 200)
         {

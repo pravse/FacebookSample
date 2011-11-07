@@ -40,7 +40,7 @@ namespace FacebookIntegration
 
         #endregion
 
-        public string GenerateRegister(
+        public string Register(
             CodeStyle Style,
             string redirectUri)
         {
@@ -75,7 +75,7 @@ namespace FacebookIntegration
         /// <param name="DataWidth"></param>
         /// <param name="MaxDataRows"></param>
         /// <returns></returns>
-        public string GenerateLogin(
+        public string Login(
             CodeStyle       Style,
             string          ButtonText,
             FBPermissions   Permissions = null, 
@@ -106,7 +106,7 @@ namespace FacebookIntegration
         /// <param name="Style"></param>
         /// <param name="RegisterCallbackUri"></param>
         /// <returns></returns>
-        public string GenerateRegisterOrLogin(
+        public string RegisterOrLogin(
             CodeStyle       Style,
             string          RegisterCallbackUri,
             FBPermissions   Permissions = null)

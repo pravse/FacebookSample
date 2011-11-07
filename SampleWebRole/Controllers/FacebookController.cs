@@ -42,10 +42,10 @@ namespace SampleWebRole.Controllers
 
             SetCommonViewData(linkTitle, linkUrl, pictureUrl, linkCaption, linkDescription);
 
-            ViewData["LikeIFrame"] = FBScriptGenerator.GenerateLike(Style,"Ref1", homeUrl);
-            ViewData["ActivityFeedIFrame"] = FBScriptGenerator.GenerateActivityFeed(Style, "Ref2", "www.huffingtonpost.com,news.yahoo.com");
-            ViewData["LikeFacepileIFrame"] = FBScriptGenerator.GenerateLikeFacepile(Style, homeUrl);
-            ViewData["AppFacepileIFrame"] = FBScriptGenerator.GenerateAppFacepile(Style);
+            ViewData["LikeIFrame"] = FBScriptGenerator.Like(Style,"Ref1", homeUrl);
+            ViewData["ActivityFeedIFrame"] = FBScriptGenerator.ActivityFeed(Style, "Ref2", "www.huffingtonpost.com,news.yahoo.com");
+            ViewData["LikeFacepileIFrame"] = FBScriptGenerator.LikeFacepile(Style, homeUrl);
+            ViewData["AppFacepileIFrame"] = FBScriptGenerator.AppFacepile(Style);
 
             return View("IFramePlugins");
         }
@@ -55,12 +55,12 @@ namespace SampleWebRole.Controllers
             CodeGenerator.CodeStyle Style = CodeGenerator.CodeStyle.HTML5;
             string homeUrl = ConfigHelper.CreateExternalUrl(this.Url.RouteUrl("Default", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, Request.Url.Scheme), Request.Url);
 
-            ViewData["LikeHtml5"] = FBScriptGenerator.GenerateLike(Style, "Ref1", homeUrl, true);
-            ViewData["LikeBoxHtml5"] = FBScriptGenerator.GenerateLikeBox(Style, "www.facebook.com/cocacola", true, false);
-            ViewData["ActivityFeedHtml5"] = FBScriptGenerator.GenerateActivityFeed(Style, "Ref4", "www.huffingtonpost.com,news.yahoo.com");
-            ViewData["CommentsHtml5"] = FBScriptGenerator.GenerateComments(Style, homeUrl);
-            ViewData["LikeFacepileHtml5"] = FBScriptGenerator.GenerateLikeFacepile(Style, homeUrl);
-            ViewData["AppFacepileHtml5"] = FBScriptGenerator.GenerateAppFacepile(Style);
+            ViewData["LikeHtml5"] = FBScriptGenerator.Like(Style, "Ref1", homeUrl, true);
+            ViewData["LikeBoxHtml5"] = FBScriptGenerator.LikeBox(Style, "www.facebook.com/cocacola", true, false);
+            ViewData["ActivityFeedHtml5"] = FBScriptGenerator.ActivityFeed(Style, "Ref4", "www.huffingtonpost.com,news.yahoo.com");
+            ViewData["CommentsHtml5"] = FBScriptGenerator.Comments(Style, homeUrl);
+            ViewData["LikeFacepileHtml5"] = FBScriptGenerator.LikeFacepile(Style, homeUrl);
+            ViewData["AppFacepileHtml5"] = FBScriptGenerator.AppFacepile(Style);
         }
 
         public ActionResult NoAppId()
@@ -187,8 +187,8 @@ namespace SampleWebRole.Controllers
 
             SetCommonViewData(linkTitle, linkUrl, pictureUrl, linkCaption, linkDescription);
 
-            ViewData["FBLoginHtml5"] = FBScriptGenerator.GenerateLogin(CodeGenerator.CodeStyle.HTML5, "LogOn via Facebook", fbService.Permissions, true, 200, 1);
-            ViewData["FBRegisterOrLoginHtml5"] = FBScriptGenerator.GenerateRegisterOrLogin(CodeGenerator.CodeStyle.HTML5, registerUrl, fbService.Permissions);
+            ViewData["FBLoginHtml5"] = FBScriptGenerator.Login(CodeGenerator.CodeStyle.HTML5, "LogOn via Facebook", fbService.Permissions, true, 200, 1);
+            ViewData["FBRegisterOrLoginHtml5"] = FBScriptGenerator.RegisterOrLogin(CodeGenerator.CodeStyle.HTML5, registerUrl, fbService.Permissions);
 
             return View("LogOn");
         }
@@ -207,8 +207,8 @@ namespace SampleWebRole.Controllers
 
             SetCommonViewData(linkTitle, linkUrl, pictureUrl, linkCaption, linkDescription);
 
-            ViewData["FBRegistrationIFrame"] = FBScriptGenerator.GenerateRegister(CodeGenerator.CodeStyle.IFRAME, registrationCallbackUrl);
-            ViewData["FBRegistrationHtml5"] = FBScriptGenerator.GenerateRegister(CodeGenerator.CodeStyle.HTML5, registrationCallbackUrl);
+            ViewData["FBRegistrationIFrame"] = FBScriptGenerator.Register(CodeGenerator.CodeStyle.IFRAME, registrationCallbackUrl);
+            ViewData["FBRegistrationHtml5"] = FBScriptGenerator.Register(CodeGenerator.CodeStyle.HTML5, registrationCallbackUrl);
 
             if (null != SignedRequest)
             {

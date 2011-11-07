@@ -18,7 +18,7 @@ namespace FacebookIntegration
         /// <param name="ShowFaces"></param>
         /// <param name="PluginWidth"></param>
         /// <returns></returns>
-        public string GenerateLike(
+        public string Like(
             CodeStyle   Style,
             string      Ref,    // always pass a unique Ref for all FB plugins --- any clickbacks have this passed as a fb_ref parameter
             string      HRef, 
@@ -62,7 +62,7 @@ namespace FacebookIntegration
         /// <param name="ShowHeader"></param>
         /// <param name="PluginWidth"></param>
         /// <returns></returns>
-        public string GenerateLikeBox(
+        public string LikeBox(
             CodeStyle Style,
             string HRef,
             bool ShowFaces = true,

@@ -29,7 +29,7 @@
             /**
             $('#logindisplay').html(innerHtmlString.replace("DUUUUDE", (AdequatePerms?UserName:UserName+"(need permissions)")));
             **/
-            $("<img/>").attr("src", "").appendTo("#loginDisplay");
+            $("<img/>").attr('src', '<%=this.ViewData["MyPictureUrl"]%>').appendTo("#loginDisplay");
             $("#loginDisplay").append(innerHtmlString);
             $('#logindisplay')[0].style.display = "block";
         };

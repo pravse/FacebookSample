@@ -8,7 +8,7 @@ namespace FacebookIntegration
 {
     public partial class CodeGenerator
     {
-        public string GenerateComments(
+        public string Comments(
             CodeStyle   Style,
             string      HRef, 
             int         NumComments=10,

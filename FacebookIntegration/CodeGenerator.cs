@@ -62,7 +62,7 @@ namespace FacebookIntegration
         /// This asynchronously loads the FB Javascript SDK (for HTML5 and XFBML)
         /// </summary>
         /// <returns></returns>
-        public string GenerateRoot(bool WithAppId=true)
+        public string Root(bool WithAppId=true)
         {
             return "<div id=\"fb-root\"></div> " +
                    "<script>  " + generateFBInit(WithAppId) + "</script> \n" +
@@ -73,12 +73,12 @@ namespace FacebookIntegration
         /// This needs to be added to the <html> tag of the page in order to enable XFBML. Probably defunct.</html>
         /// </summary>
         /// <returns></returns>
-        public string GenerateNamespace()
+        public string Namespace()
         {
             return "xmlns:fb=\"http://ogp.me/ns/fb#\"";
         }
 
-        public string GenerateOpenGraphTags(
+        public string OpenGraphTags(
             string Title,
             string Type,
             string Url,

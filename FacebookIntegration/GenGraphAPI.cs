@@ -8,6 +8,10 @@ namespace FacebookIntegration
 {
     public partial class CodeGenerator
     {
+        public string MyPictureUri()
+        {
+            return "http://graph.facebook.com/me/picture";
+        }
     }
 }
 
