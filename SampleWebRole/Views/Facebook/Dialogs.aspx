@@ -38,6 +38,8 @@
 
         function SendRequestCallback(response) {
             alert ("Received response : request id = " + response.request);
+            // TODO: Should save this request_id along with its context somewhere persistent,
+            //       so that when the friend responds, we can correlate the response to the request made
         }
 
     </script>

@@ -161,23 +161,16 @@ namespace SampleWebRole.Controllers
             return View("Dialogs");
         }
 
-        public ActionResult Queries()
+        public ActionResult GraphAPI()
         {
             string linkUrl = ConfigHelper.CreateExternalUrl(Request.Url.AbsoluteUri, Request.Url);
-            string linkTitle = "Queries over the graph API";
-            string linkCaption = "Example of FB queries using the graph API";
+            string linkTitle = "Using the GraphAPI";
+            string linkCaption = "Examples of Graph APIs";
             string pictureUrl = "http://static.howstuffworks.com/gif/willow/goldfish-info0.gif";
             string linkDescription = "Very useful if you don't know the first thing about FB APIs";
-            CodeGenerator.CodeStyle Style = CodeGenerator.CodeStyle.HTML5;
-
             SetCommonViewData(linkTitle, linkUrl, pictureUrl, linkCaption, linkDescription);
 
-            ViewData["LikeBoxHtml5"] = FBScriptGenerator.GenerateLikeBox(
-                            Style,
-                            "http://www.facebook.com/cocacola",
-                            true, true);
-
-            return View("Queries");
+            return View("GraphAPI");
         }
 
         // **************************************

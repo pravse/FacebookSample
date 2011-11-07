@@ -84,10 +84,9 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Scripts\FBInit.js" />
-    <Content Include="Views\Facebook\Requests.aspx" />
+    <Content Include="Views\Facebook\GraphAPI.aspx" />
     <Content Include="Views\Facebook\Dialogs.aspx" />
     <Content Include="Views\Facebook\WithAppId.aspx" />
-    <Content Include="Views\Facebook\Queries.aspx" />
     <Content Include="Views\Facebook\NoAppId.aspx" />
     <Content Include="Views\Facebook\IFramePlugins.aspx" />
     <Content Include="Content\Penguins.jpg" />
