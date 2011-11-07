@@ -67,6 +67,7 @@ namespace SampleWebRole.Models
             permissions.AddFriendsPermission(FBUserAndFriendPermissions.ABOUT_ME);
             permissions.AddExtendedPermission(FBExtendedPermissions.READ_MAILBOX);
             permissions.AddExtendedPermission(FBExtendedPermissions.OFFLINE_ACCESS);
+            permissions.AddExtendedPermission(FBExtendedPermissions.READ_STREAM);
         }
 
         public void AddFriendResponse(string responseAction)

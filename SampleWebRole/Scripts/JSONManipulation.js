@@ -6,14 +6,14 @@
     }
     ***/
     if (typeof JSONObject == 'object') {
-        printString += GetTabString(tabLevel) + "{ \n";
+        printString += "{ \n";
         $.each(JSONObject, function (key, value) {
-            printString += GetTabString(tabLevel) + key + ":" + DebugPrintJSON(value, tabLevel + 1) + "\n";
+            printString += GetTabString(tabLevel) + key + ":\t" + DebugPrintJSON(value, tabLevel + 1) + "\n";
         });
         printString += GetTabString(tabLevel) + " } \n";
     }
     else {
-        printString += '\t' + JSONObject;
+        printString += JSONObject;
     }
     return printString;
 };

@@ -25,7 +25,12 @@
 
         function CreateWelcomeHeader(UserName, AdequatePerms) {
             var innerHtmlString = '<%:Html.ActionLink("Welcome DUUUUDE!", "LogOn", "Facebook") %>';
+            innerHtmlString = innerHtmlString.replace("DUUUUDE", (AdequatePerms?UserName:UserName+"(need permissions)"));
+            /**
             $('#logindisplay').html(innerHtmlString.replace("DUUUUDE", (AdequatePerms?UserName:UserName+"(need permissions)")));
+            **/
+            $("<img/>").attr("src", "").appendTo("#loginDisplay");
+            $("#loginDisplay").append(innerHtmlString);
             $('#logindisplay')[0].style.display = "block";
         };
 
