@@ -22,14 +22,11 @@
             $('#logindisplay')[0].style.display = "block";
         };
 
-        function CreateWelcomeHeader(UserName, AdequatePerms) {
-            $("<img/>").attr('src', 'http://graph.facebook.com/me/picture').appendTo("#logindisplay");
-            /***
+        function CreateWelcomeHeader(UserName, UserId, AdequatePerms) {
             var innerHtmlString = '<%:Html.ActionLink("Welcome DUUUUDE!", "LogOn", "Facebook") %>';
             $('#logindisplay').html(innerHtmlString.replace("DUUUUDE", (AdequatePerms?UserName:UserName+"(need permissions)")));
             // $("<img/>").attr('src', '<%:this.ViewData["MyPictureUrl"]%>').appendTo("#loginDisplay");
-            $("<img/>").attr('src', 'http://graph.facebook.com/me/picture').appendTo("#logindisplay");
-            ***/
+            $("<img/>").attr('src', 'http://graph.facebook.com/' + UserId + '/picture').appendTo("#logindisplay");
             $('#logindisplay')[0].style.display = "block";
         };
 
@@ -46,7 +43,7 @@
                 // alert("Recvd permissions : \n" + DebugPrintJSON(params.authPerms, 0));
                 var expectedPerms = '<%=this.ViewData["ExpectedPermissionsJSON"]%>';
                 // alert('Expected permissions : \n' + expectedPerms);
-                CreateWelcomeHeader(params.userName, AdequatePerms(params.authPerms, jQuery.parseJSON(expectedPerms)));
+                CreateWelcomeHeader(params.userName, params.userId, AdequatePerms(params.authPerms, jQuery.parseJSON(expectedPerms)));
             }
             else {
                 CreateLogOnHeader();
@@ -78,6 +75,7 @@
                     <li><%: Html.ActionLink("Using AppId", "WithAppId", "Facebook")%></li>
                     <li><%: Html.ActionLink("Dialogs", "Dialogs", "Facebook")%></li>
                     <li><%: Html.ActionLink("GraphAPI", "GraphAPI", "Facebook")%></li>
+                    <li><%: Html.ActionLink("Queries", "Queries", "Facebook")%></li>
                 </ul>
             
             </div>

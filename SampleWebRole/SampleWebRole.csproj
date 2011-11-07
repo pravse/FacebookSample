@@ -85,6 +85,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\JSONManipulation.js" />
     <Content Include="Scripts\FBInit.js" />
+    <Content Include="Views\Facebook\Queries.aspx" />
     <Content Include="Views\Facebook\GraphAPI.aspx" />
     <Content Include="Views\Facebook\Dialogs.aspx" />
     <Content Include="Views\Facebook\WithAppId.aspx" />
