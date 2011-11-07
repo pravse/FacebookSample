@@ -64,3 +64,16 @@ function PostFBInit() {
     FB.Event.subscribe('auth.authResponseChange', AuthStatusDelegate);
 };
 
+function AdequatePerms(authPerms, expectedPerms) {
+    var adequatePerms = true;
+    for (prop in expectedPerms) {
+        if (null == authPerms[prop]) {
+            adequatePerms = false;
+            // alert("Missing perm :" + prop);
+            break;
+        }
+    }
+    return adequatePerms;
+};
+
+

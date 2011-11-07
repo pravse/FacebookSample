@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\JSONManipulation.js" />
     <Content Include="Scripts\FBInit.js" />
     <Content Include="Views\Facebook\GraphAPI.aspx" />
     <Content Include="Views\Facebook\Dialogs.aspx" />

@@ -16,7 +16,7 @@
     <script type="text/javascript">
         function GraphAPIData(objectId) {
             FB.api(objectId, function (response) {
-                alert("Recvd graph API data : \n" + DebugPrintJSON(response));
+                alert("Recvd graph API data : \n" + DebugPrintJSON(response, 0));
             });
         }
     </script>
@@ -24,6 +24,9 @@
         <tr>
             <td>
                 <p><button type="button" onclick="GraphAPIData('me');">All about me</button></p>
+            </td>
+            <td>
+                <p><button type="button" onclick="GraphAPIData('4');">All about Zuck</button></p>
             </td>
         </tr>
     </table>
