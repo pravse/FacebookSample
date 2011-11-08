@@ -15,7 +15,7 @@ namespace FacebookIntegration
 
         public string FQLMyFriends()
         {
-            return "SELECT uid2 FROM friend WHERE uid1=me()";
+            return "SELECT+uid2+FROM+friend+WHERE+uid1=me()";
         }
     }
 }
