@@ -173,6 +173,20 @@ namespace SampleWebRole.Controllers
             return View("GraphAPI");
         }
 
+        public ActionResult Queries()
+        {
+            string linkUrl = ConfigHelper.CreateExternalUrl(Request.Url.AbsoluteUri, Request.Url);
+            string linkTitle = "Using FQL";
+            string linkCaption = "Examples of FQL";
+            string pictureUrl = "http://static.howstuffworks.com/gif/willow/goldfish-info0.gif";
+            string linkDescription = "Very useful if you don't know the first thing about FB APIs";
+            SetCommonViewData(linkTitle, linkUrl, pictureUrl, linkCaption, linkDescription);
+
+            ViewData["FQLMyFriends"] = FBScriptGenerator.FQLMyFriends();
+
+            return View("Queries");
+        }
+
         // **************************************
         // URL: /Facebook/LogOn
         // **************************************
