@@ -13,13 +13,6 @@
     <p>
         This page demonstrates the use of a variety of FB GraphAPI calls to retrieve information of interest directly from the FB graph.
     </p>
-    <script type="text/javascript">
-        function GraphAPIData(objectId) {
-            FB.api(objectId, { limit : 3 }, function (response) {
-                alert("Recvd graph API data : \n" + DebugPrintJSON(response, 0));
-            });
-        }
-    </script>
     <table>
         <tr>
             <td>

@@ -18,4 +18,11 @@
     return printString;
 };
 
+function GraphAPIData(objectPath) {
+    FB.api(objectPath, { limit : 3 }, function (response) {
+                alert("Recvd graph API data : \n" + DebugPrintJSON(response, 0));
+    });
+};
+
+
 

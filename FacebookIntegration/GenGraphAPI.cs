@@ -12,6 +12,11 @@ namespace FacebookIntegration
         {
             return "http://graph.facebook.com/me/picture";
         }
+
+        public string FQLMyFriends()
+        {
+            return "SELECT uid2 FROM friend WHERE uid=me()";
+        }
     }
 }
 

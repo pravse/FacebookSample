@@ -7,7 +7,7 @@
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
     <%=this.ViewData["OpenGraphTags"]%>
     <script type="text/javascript" src="../Scripts/jquery-1.4.1.js"></script>
-    <script type="text/javascript" src="../Scripts/JSONManipulation.js"></script>
+    <script type="text/javascript" src="../Scripts/GraphAPI.js"></script>
     <script type="text/javascript">
 
         $(function () {
@@ -25,7 +25,6 @@
         function CreateWelcomeHeader(UserName, UserId, AdequatePerms) {
             var innerHtmlString = '<%:Html.ActionLink("Welcome DUUUUDE!", "LogOn", "Facebook") %>';
             $('#logindisplay').html(innerHtmlString.replace("DUUUUDE", (AdequatePerms?UserName:UserName+"(need permissions)")));
-            // $("<img/>").attr('src', '<%:this.ViewData["MyPictureUrl"]%>').appendTo("#loginDisplay");
             $("<img/>").attr('src', 'http://graph.facebook.com/' + UserId + '/picture').appendTo("#logindisplay");
             $('#logindisplay')[0].style.display = "block";
         };
