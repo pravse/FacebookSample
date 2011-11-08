@@ -18,7 +18,7 @@
     <table>
         <tr>
             <td>
-                <p><button type="button" onclick="GraphAPIData('fql/q=?<%:ViewData["FQLMyFriends"]%>');">My friends</button></p>
+                <p><button type="button" onclick="GraphAPIData('fql?q=<%:ViewData["FQLMyFriends"]%>');">My friends</button></p>
             </td>
         </tr>
     </table>
