@@ -21,7 +21,7 @@
                 <p><button type="button" onclick="GraphAPIData('fql?q=<%:ViewData["FQLMyFriends"]%>');">My friends (just uid)</button></p>
             </td>
             <td>
-                <p><button type="button" onclick="GraphAPIData('fql?q={"q1":"<%:ViewData["FQLMyFriends"]%>","q2":"SELECT+name+FROM+user+WHERE+uid+IN+(SELECT+uid2+from+#q1)"}');">My friends names</button></p>
+                <p><button type="button" onclick="GraphAPIData('fql?q={q1:<%:ViewData["FQLMyFriends"]%>, q2: SELECT+name+FROM+user+WHERE+uid+IN+(SELECT+uid2+FROM+#q1)}');">My friends names</button></p>
             </td>
         </tr>
     </table>
